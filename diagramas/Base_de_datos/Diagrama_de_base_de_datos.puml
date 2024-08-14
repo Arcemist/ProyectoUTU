@@ -37,7 +37,7 @@ entity "Trabaja en" {
 }
 
 entity "Empresas Terciarizadas" {
-	* Rut : Int
+	* RUT : Int
 	--
 	* Nombre : Text
 }
@@ -53,7 +53,7 @@ entity "Trabajadores Terciarizados" {
 	* Cedula : Int
 	--
 	* Nombre : Text
-	* Trabaja_en : Text <<FK>>
+	* Trabaja_en : Int <<FK>>
 }
 
 entity "Documentos de los trabajadores" {
@@ -77,15 +77,15 @@ entity "Arreglos" {
 entity "Solicitudes de arreglo" {
 	* ID : Int Autoincrement
 	--
-	* Creada_por : Text <<FK>>
-	* Solicita_arreglar : Text <<FK>>
+	* Creada_por : Int <<FK>>
+	* Solicita_arreglar : Int <<FK>>
 	* Estado : Int
 	Aprobada_por : Text <<FK>>
 }
 
 ' Añadiendo las relaciones:
 "Sucursales" ||-r-o{ "Trabaja en"
-"Guardias" ||-u-o{ "Trabaja en"
+"Guardias" ||-u-|{ "Trabaja en"
 "Administradores" ||-u-o{ "Arreglos"
 "Administradores" ||-u-o{ "Solicitudes de arreglo"
 "Arreglos" }o-r-||"Sucursales"
