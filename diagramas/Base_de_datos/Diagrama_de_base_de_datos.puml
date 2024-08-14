@@ -1,0 +1,100 @@
+@startuml "Diagrama_de_la_Base_de_datos"
+
+skinparam {
+	BackgroundColor white
+	LineType Ortho
+	ArrowColor Black
+	Entity {
+		FontColor Black
+		BackgroundColor White
+		BorderColor Black
+	}
+}
+
+'left to right direction
+
+entity "Sucursales" {
+	* Nombre : Text
+	--
+}
+
+entity "Administradores" {
+	* Cedula : Int
+	--
+	* Nombre : Text
+}
+
+entity "Guardias" {
+	* Cedula : Int
+	--
+	* Nombre : Text
+}
+
+entity "Trabaja en" {
+	* Cedula_guardia : Int <<FK>>
+	* Nombre_sucursal : Nombre <<FK>>
+	--
+}
+
+entity "Empresas Terciarizadas" {
+	* Rut : Int
+	--
+	* Nombre : Text
+}
+
+entity "Documentos de las empresas" {
+	* ID : Int Autoincrement
+	--
+	* Pertenece A : Int <<FK>>
+	* Archivo : Blob
+}
+
+entity "Trabajadores Terciarizados" {
+	* Cedula : Int
+	--
+	* Nombre : Text
+	* Trabaja_en : Text <<FK>>
+}
+
+entity "Documentos de los trabajadores" {
+	* ID : Int Autoincrement
+	--
+	* Pertenece A : Int <<FK>>
+	* Archivo : Blob
+}
+
+entity "Arreglos" {
+	* ID : Int Autoincrement
+	--
+	* Nombre : Text
+	* Descripcion : Text
+	* Creado_por : Int <<FK>>
+	* Sucursal : Text <<FK>>
+	* Fecha_creacion : Date
+	Fecha_realizado : Date
+}
+
+entity "Solicitudes de arreglo" {
+	* ID : Int Autoincrement
+	--
+	* Creada_por : Text <<FK>>
+	* Solicita_arreglar : Text <<FK>>
+	* Estado : Int
+	Aprobada_por : Text <<FK>>
+}
+
+' Añadiendo las relaciones:
+"Sucursales" ||-r-o{ "Trabaja en"
+"Guardias" ||-u-o{ "Trabaja en"
+"Administradores" ||-u-o{ "Arreglos"
+"Administradores" ||-u-o{ "Solicitudes de arreglo"
+"Arreglos" }o-r-||"Sucursales"
+"Arreglos" ||-l-o{ "Solicitudes de arreglo"
+"Empresas Terciarizadas" ||-r-o{ "Solicitudes de arreglo"
+"Empresas Terciarizadas" ||-l-o{ "Documentos de las empresas"
+"Empresas Terciarizadas" ||-d-o{ "Trabajadores Terciarizados"
+"Trabajadores Terciarizados" ||-l-o{ "Documentos de los trabajadores"
+
+' Puedo poner ':' despues de una relacion pa poner comentario en el medio
+
+@enduml

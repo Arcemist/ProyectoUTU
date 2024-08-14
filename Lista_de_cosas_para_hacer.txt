@@ -1,0 +1,31 @@
+Cosas para hacer en el proyecto {
+	-Realizar el diagrama de Gant de el proyecto
+
+	-Diseñar y Programar las paginas de {
+		Login con las 3 opciones
+
+		Registrarse (Servicio Terciarizado)
+		Solicitar Registro (Guardia)
+
+		Calendario Editable (Administrador)
+		Calendario Solo Lectura (Guardia)
+		Informacion Sobre Trabajos pendientes (Servicio Terciarizado)
+
+		Perfil (Administrador)
+		Perfil (Guardia)
+		Gestor de empleados (Equivalente a Perfil para Servicio Terciarizado)
+
+		Gestor de Arreglos (Admin)
+		Postularse a realizar un arreglo (Servicio Terciarizado)
+	}
+
+	-Trabajo Backend {} Por Hacer
+}
+
+Notas {
+	Los administradores no se registran, les crea una cuenta otro administrador.
+	Las empresas terciarizadas se pueden registrar por si mismas.
+	Las empresas terciarizadas se postulan a realizar un arreglo y un administrador las aprueba.
+}
+
+

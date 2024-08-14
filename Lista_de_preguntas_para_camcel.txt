@@ -1,0 +1,38 @@
+La aplicacion tambien deberia ser usada por los guardias?
+Si es asi que limitaciones deberia tener?
+
+Los trabajadores terciarizados suelen ser individuos o grupos/companias?
+Quiere que otras personas puedan agendar arreglos?
+
+Quiere que los administradores puedan ver la informacion de las otras sucursales?
+
+Normalmente son los tecnicos prevencionistas los que agendan los arreglos?
+Quien mas podria necesitar acceso?
+
+
+anotar en una computadora lo que valla respondiendo a las preguntas
+
+
+(Contemplado en el diagrama pero a acordarse)
+Que los tecnicos prevencionistas puedan ver todas las sucursales
+
+(Medio contemplado en el diagrama pero a acordarse)
+Las empresas agendan los arreglos y el tecnico prevencionista acepta o no el arreglo
+
+(A acordarse)
+Que los guardias no vean detalles y puedan poner si llegaron
+
+(A Acordarse)
+Dejar una cuenta de Administrador libre en caso de que un jefe se Mejore en la parte tecnologica( Y darle a la tencnica prevencionista)
+
+(info pal backend)
+Las empresas terciarizadas tienen que tener factura, estar en el bps y estar en el banco de seguros del estado aparte de la otra documentacion segun el trabajo
+EJ: cedula, carne de salud, que van a hacer, induccion de seguridad, entrega de elementos de proteccion personal (EPP)
+
+(A tener en cuenta)
+Hacer la aplicacion lo mas simple posible por todas las entradas
+
+(Contemplado en el diagrama)
+Hay sucursales de Camcel sin guardias
+
+Hacer que quede un historial de arreglos de cada sucursal
