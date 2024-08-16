@@ -1,11 +1,6 @@
 Cosas pa hacer en relacion a la base de datos relacional:
 
-Hacer que la clave primaria de las empresas terciarizadas sea su rut
-
-Los PDFs se guardan en la base de datos directamente por temas de facilidad de respaldo
-
-Contemplar que un Guardia puede trabajar en varias sucursales
-
+	/* La nada misma, por el momento ta pronto */
 
 Limpieza de la base de datos:
 	Borrar las peticiones de arreglo que pidan realizar un arreglo ya realizado
