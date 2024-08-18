@@ -71,7 +71,7 @@ entity "Arreglos" {
 	* Creado_por : Int <<FK>>
 	* Sucursal : Text <<FK>>
 	* Fecha_creacion : Date
-	Fecha_realizado : Date
+	  Fecha_realizado : Date
 }
 
 entity "Solicitudes de arreglo" {
@@ -80,7 +80,7 @@ entity "Solicitudes de arreglo" {
 	* Creada_por : Int <<FK>>
 	* Solicita_arreglar : Int <<FK>>
 	* Estado : Int
-	Aprobada_por : Text <<FK>>
+	  Aprobada_por : Text <<FK>>
 }
 
 ' Añadiendo las relaciones:
