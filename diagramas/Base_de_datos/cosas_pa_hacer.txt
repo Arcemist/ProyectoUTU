@@ -1,8 +1,0 @@
-Cosas pa hacer en relacion a la base de datos relacional:
-
-	/* La nada misma, por el momento ta pronto */
-
-Limpieza de la base de datos:
-	Borrar las peticiones de arreglo que pidan realizar un arreglo ya realizado
-	Ver alguna forma de borrar los datos de las empresas que ya 
-
