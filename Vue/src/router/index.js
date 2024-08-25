@@ -1,6 +1,4 @@
 // router/index.js
-
-import { Component } from '@fullcalendar/core/preact.js'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -12,6 +10,11 @@ const routes = [
   {
     path: '/paginas/:id',
     name: 'paginas',
+    component: () => import('@/pages/AdminPage.vue'),
+  },
+  {
+    path: '/AdminPage',
+    name: 'AdminPage',
     component: () => import('@/pages/AdminPage.vue'),
   },
   // Otras rutas dinámicas aquí

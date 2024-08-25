@@ -7,7 +7,7 @@
               <h2>Registrarse</h2>
             </v-card-title>
             <v-card-text>
-              <v-form>
+              <v-form @submit.stop.prevent="registrarUsuario">
                 <!-- Correo Electrónico -->
                 <v-text-field
                   label="Correo Electrónico"
@@ -53,7 +53,7 @@
                 ></v-text-field>
   
                 <!-- Botón de Registro -->
-                <v-btn @click="registrarUsuario" color="primary">Registrar</v-btn>
+                <v-btn @click="registrarUsuario" color="primary" type="submit" >Registrar</v-btn>
               </v-form>
             </v-card-text>
           </v-card>
@@ -62,18 +62,30 @@
     </v-container>
   </template>
   
-  <script>
-  export default {
-  methods: {
-    registrarUsuario() {
+  <script setup>
+  import { useRouter } from "vue-router"
+  import { ref } from "vue"
+  const router = useRouter()
+  const correo = ref("")
+  const usuario = ref("")
+  const telefono = ref("")
+  const contrasena = ref("")
+  const confirmarContrasena = ref("")
+  const  registrarUsuario = ()=> {
       // Suponiendo que la validación de los campos es correcta
       // Código para registrar al usuario en la base de datos
+     // await axios.post()
+      /* Redirigir a la página del administrador
+      .then(respuesta => {respuesta.json()})
+      .then(datos => {*/
+       // datos.json()
+        router.push("/AdminPage")
+      }
+    /*)  
+    .catch(error => console.log(error))
+    }*/
+    
 
-      // Redirigir a la página del administrador
-      this.$router.push('/AdminPage.vue');
-    }
-  }
-}
 </script>
   
   <style scoped>
