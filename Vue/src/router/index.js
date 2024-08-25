@@ -1,12 +1,13 @@
 // router/index.js
 
+import { Component } from '@fullcalendar/core/preact.js'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
     path: '/',
     name: 'inicio',
-    component: () => import('@/pages/AdminPage.vue'),
+    component: () => import('@/pages/Registro.vue'),
   },
   {
     path: '/paginas/:id',
