@@ -1,25 +1,53 @@
 Cosas para hacer en el proyecto {
-	-Realizar el diagrama de Gant de el proyecto
 
-	-Diseñar y Programar las paginas de {
-		Login con las 3 opciones
+	Login con las 4 opciones
+	
+	Admin {
+		Ver como cambiar el diseño del calendario del admin:
+			-Ver la forma de que no sea blanco.
 
-		Registrarse (Servicio Terciarizado)
-		Solicitar Registro (Guardia)
+		Hacer el gestor de arreglos:
+			-Una tabla que muestre todos los arrelgos de forma dinamica.
+			-Una boton que pueda añadir entradas a la tabla.
+	}
+	
+	Guardia {
+		Hacer el coso de solicitar registro:
+			-Que se pueda rellenar un formulario que despues se manda a una bandeja de entrada de los admins.
 
-		Calendario Editable (Administrador)
-		Calendario Solo Lectura (Guardia)
-		Informacion Sobre Trabajos pendientes (Servicio Terciarizado)
+		Adaptar el perfil de administrador pa este:
+			-Cambiar las cosas que tiene el otro para que se pueda usar aca.
 
-		Perfil (Administrador)
-		Perfil (Guardia)
-		Gestor de empleados (Equivalente a Perfil para Servicio Terciarizado)
-
-		Gestor de Arreglos (Admin)
-		Postularse a realizar un arreglo (Servicio Terciarizado)
+		Hacer una version del calendario del administrador diseñado para ser solo lectura:
+			-Hacer una version sin los botones de agregar cosas y eso.
 	}
 
-	-Trabajo Backend {} Por Hacer
+	Servicio terciarizado(Empresa) {
+		Hacer el coso de registrarse:
+			-Un menu para crear una cuenta nueva que requiera varios datos especificos (Listarlos aca despues).
+
+		Hacer la pagina sobre la informacion de los arreglos pendientes:
+			-Que muestre todas las peticiones de arreglo realizadas y Los arreglos que requieren enviar documentacion.
+
+		Hacer la pagina de gestionar empleados:
+			-Que muestre todos los empleados relacionados a la empresa y tenga opciones para quitar o añadir empleados.
+
+		Hacer la pagina de postularce a realizar un arreglo:
+			-Que muestre los arreglos de temas relevantes en zonas relevantes para esa empresa. 
+	}
+
+	Servicio terciarizado(Empleado) {
+		Hacer la pagina para solicitarle a una empresa que cree tu cuenta:
+			-Poder llenar un formulario que se pueda mandar a la cuenta que administra la empresa.
+
+		Hacer la pagina para ver los arreglos en los que esta involucrado:
+			-Que muestre los arrelos en los que la empresa este involucrada que sean relevantes para este empleado.
+	}
+}
+
+Cosas pa acordarse {
+	-Lo de que la empresa tenga cosas "relevantes" necesita añadirle cosas a la base de datos.
+	-Lo de que los empleados tengan arreglos "relevantes" necesitan unas cosas extra en la base de datos.
 }
 
 Notas {
