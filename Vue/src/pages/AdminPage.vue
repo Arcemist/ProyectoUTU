@@ -4,10 +4,6 @@
       <!-- Barra superior -->
       <v-toolbar-title>Administrador</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-home</v-icon>
-      </v-btn>
-      
       <!-- Menú desplegable para notificaciones -->
       <v-menu
         offset-y
@@ -44,7 +40,7 @@
           <!-- Columna Izquierda -->
           <v-col cols="2">
             <v-card class="sidebar">
-              <v-list>
+              <v-list class="cosa">
                 <v-list-item @click="mostrarCalendario">
                   <v-list-item-content>
                     <v-list-item-title>Calendario</v-list-item-title>
@@ -130,17 +126,27 @@
   
   <style scoped>
   .sidebar {
-    background-color: #444444;
-    padding: 10px;
+    background-color: #000000;
+    padding: 9px;
     border-radius: 8px;
   }
   
   .v-application .v-toolbar {
     background-color: #4CAF50 !important;
+
   }
   
   .v-application .v-btn {
-    color: #444444 !important;
+    color: white !important;
+  }
+
+  .v-list-item{
+    background-color: #0066ff;
+    color: white ;
+    border: 2px solid black ;
+  }
+  .cosa{
+    background-color: #000000;
   }
   </style>
   
