@@ -7,7 +7,11 @@ Las otras ramas son para ir haciendo prototipos.
 Guia de como hacer que funcione un proyecto despues de clonar el repositorio:
 
 Frontend:
-No ta hecha la guia todavia
+```bash
+cd Vue
+npm install
+```
+y pa usarlo `npm run dev`
 
 Backend (Suponiendo SQLite):
 ```bash
