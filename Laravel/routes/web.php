@@ -1,7 +1,19 @@
 <?php
 
+use App\Models\administradores;
+use App\Models\arreglos;
+use App\Models\documentos_de_las_empresas;
+use App\Models\documentos_de_los_trabajadores;
+use App\Models\empresas_terciarizadas;
+use App\Models\guardias;
+use App\Models\solicitudes_de_arreglo;
+use App\Models\sucursales;
+use App\Models\trabaja_en;
+use App\Models\trabajadores_terciarizados;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,8 +27,25 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', [
+        'epas' => sucursales::all()
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/database', function() {
+    return [
+        'Sucursales' => sucursales::all(),
+        'Administradores' => administradores::all(),
+        'Guardias' => guardias::all(),
+        'Trabaja_en' => trabaja_en::all(),
+        'Empresas Terciarizadas' => empresas_terciarizadas::all(),
+        'Documentos de las empresas' => documentos_de_las_empresas::all(),
+        'Trabajadores Terciarizados' => trabajadores_terciarizados::all(),
+        'Documentos de los trabajadores' => documentos_de_los_trabajadores::all(),
+        'Arreglos' => DB::select('select * from arreglos'),
+        'Solicitudes de arreglo' => DB::select('select * from solicitudes_de_arreglo')
+    ];
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

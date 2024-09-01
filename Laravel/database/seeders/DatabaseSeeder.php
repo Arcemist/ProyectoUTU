@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\solicitudes_de_arreglo;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,18 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        // cosas mias:
+
+        $this->call([
+            SucursalesSeeder::class,
+            AdministradoresSeeder::class,
+            GuardiasSeeder::class,
+            EmpresasTerciarizadasSeeder::class,
+            TrabajadoresTerciarizadosSeeder::class,
+            ArreglosSeeder::class,
+            SolicitudesDeArregloSeeder::class,
         ]);
     }
 }
