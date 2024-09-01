@@ -79,7 +79,8 @@ entity "Solicitudes de arreglo" {
 	--
 	* Creada_por : Int <<FK>>
 	* Solicita_arreglar : Int <<FK>>
-	* Estado : Int
+	* Estado : enum
+	* Trabajadores_asignados: json
 	  Aprobada_por : Text <<FK>>
 }
 
