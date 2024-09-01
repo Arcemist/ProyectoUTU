@@ -13,3 +13,10 @@ php artisan key:generate
 php artisan migrate
 ```
 Y ya taria pa el `php artisan serve` 
+
+Lista de cosas para hacer:
+
+Hacer que los trabajadores terciarizados tengan arreglos relevantes
+
+Descubrir como pasarle info a un frontend de Vue
+Y descubrir lo mismo pero con inertia
