@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('solicitudes_de_arreglo', function (Blueprint $table) {
             $table->id();
             $table->integer('Creada_por');
-            $table->integer('Solicita_arreglar');
-            $table->enum('Estado', ['Rechazado', 'Aceptado'])->nullable(true);
+            $table->foreignId('Solicita_arreglar');
+            $table->enum('Estado', ['Rechazada', 'Aceptada', 'En_espera']);
+            $table->json('Personal_Asignado');
             $table->integer('Aprobada_por')->nullable(true);
 
             $table->foreign('Creada_por')->references('RUT')->on('empresas_terciarizadas');

@@ -48,15 +48,10 @@ Route::get('/database', function() {
     ];
 });
 
-Route::get('/epalapa', function() {
-    //DB::insert('insert into sucursales (Nombre) values ("Hola")');
-    //sucursales::create(['Nombre' => 'hola']); solo si 'Nombre' ta en $fillable
-    // la otra opcion es hacer una funcion en el modelo
-
-    return sucursales::all();
-
-    // tambien puedo mandar html xd
-    //return "<body> ".Sucursales::all()."</body>";
+Route::get('/intento', function() {
+    return Inertia::render('intento', [
+        'sucursales' => sucursales::all()
+    ]);
 });
 
 Route::middleware('auth')->group(function () {
