@@ -12,7 +12,6 @@ use App\Models\trabaja_en;
 use App\Models\trabajadores_terciarizados;
 
 use App\Http\Controllers\ProfileController;
-use Database\Seeders\SucursalesSeeder;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -50,9 +49,18 @@ Route::get('/database', function() {
 
 Route::get('/intento', function() {
     return Inertia::render('intento', [
-        'sucursales' => sucursales::all()
+        'sucursales' => sucursales::all(),
+        'administradores' => administradores::all(),
+        'guardias' => guardias::all(),
+        'trabaja_en' => trabaja_en::all(),
+        'empresas_terciarizadas' => empresas_terciarizadas::all(),
+        'documentos_de_las_empresas' => documentos_de_las_empresas::all(),
+        'trabajadores_terciarizados' => trabajadores_terciarizados::all(),
+        'documentos_de_los_trabajadores' => documentos_de_los_trabajadores::all(),
+        'arreglos' => DB::table('arreglos')->select('*')->get(),
+        'solicitudes_de_arreglo' => DB::table('solicitudes_de_arreglo')->select('*')->get()
     ]);
-});
+})->middleware(['auth', 'verified'])->name('intento');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('Creada_por');
             $table->foreignId('Solicita_arreglar');
             $table->enum('Estado', ['Rechazada', 'Aceptada', 'En_espera']);
-            $table->json('Personal_Asignado');
+            $table->json('Personal_asignado');
             $table->integer('Aprobada_por')->nullable(true);
 
             $table->foreign('Creada_por')->references('RUT')->on('empresas_terciarizadas');
