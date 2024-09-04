@@ -1,0 +1,5 @@
+Cosas pa hacer:
+
+	-Hacer los controladores
+
+	-fijarse el tutorial que mando el profe pa saber que mas hacer
