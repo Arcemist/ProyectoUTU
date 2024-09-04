@@ -2,4 +2,6 @@ Cosas pa hacer:
 
 	-Hacer los controladores
 
+	-Hacer las fabricas
+
 	-fijarse el tutorial que mando el profe pa saber que mas hacer

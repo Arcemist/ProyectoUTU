@@ -13,7 +13,7 @@ class SucursalesSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('sucursales')->insert(['Nombre' => 'Cerro largo']);
+        DB::table('sucursales')->insert(['Nombre' => 'Cerro Largo']);
         DB::table('sucursales')->insert(['Nombre' => 'Rivera']);
         DB::table('sucursales')->insert(['Nombre' => 'Montevideo']);
     }

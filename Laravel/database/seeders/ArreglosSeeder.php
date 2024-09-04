@@ -26,7 +26,7 @@ class ArreglosSeeder extends Seeder
             'Nombre' => 'Renovar las tolvas',
             'Descripcion' => 'Reemplazar las tolvas que hay con tolvas nuevas',
             'Creado_por' => 56255419,
-            'Sucursal' => 'Cerro largo',
+            'Sucursal' => 'Cerro Largo',
             'Fecha_creacion' => now('now'),
         ]);
         DB::table('arreglos')->insert([

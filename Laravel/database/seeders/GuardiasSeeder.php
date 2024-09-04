@@ -16,27 +16,17 @@ class GuardiasSeeder extends Seeder
         DB::table('guardias')->insert([
             'Cedula' => 11223344,
             'Nombre' => 'Paladin',
+            'Trabaja_en' => json_encode(['Cerro Largo'])
         ]);
         DB::table('guardias')->insert([
             'Cedula' => 22334455,
             'Nombre' => 'Guerrero',
+            'Trabaja_en' => json_encode(['Montevideo'])
         ]);
         DB::table('guardias')->insert([
             'Cedula' => 33445566,
             'Nombre' => 'Mago',
-        ]);
-
-        DB::table('trabaja_en')->insert([
-            'Cedula_guardia' => 11223344,
-            'Nombre_sucursal' => 'Cerro largo',
-        ]);
-        DB::table('trabaja_en')->insert([
-            'Cedula_guardia' => 22334455,
-            'Nombre_sucursal' => 'Montevideo',
-        ]);
-        DB::table('trabaja_en')->insert([
-            'Cedula_guardia' => 33445566,
-            'Nombre_sucursal' => 'Rivera',
+            'Trabaja_en' => json_encode(['Rivera'])
         ]);
     }
 }

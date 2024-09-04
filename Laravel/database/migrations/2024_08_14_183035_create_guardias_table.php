@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('guardias', function (Blueprint $table) {
             $table->integer('Cedula')->primary();
             $table->string('Nombre');
+            $table->json('Trabaja_en');
         });
     }
 

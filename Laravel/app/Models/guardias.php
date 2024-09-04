@@ -16,6 +16,7 @@ class guardias extends Model
     protected $keyType = 'Integer';
 
     protected $fillable = [
-        'Nombre'
+        'Nombre',
+        'Trabaja_en'
     ] ;
 }

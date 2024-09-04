@@ -8,12 +8,12 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
 import 'vuetify/styles';
 import { createVuetify } from 'vuetify/lib/framework.mjs';
-import * as components from 'vuetify/components';
-import * as directives from 'vuetify/directives';
+import * as vuetifyComponents from 'vuetify/components';
+import * as vuetifyDirectives from 'vuetify/directives';
 
 const vuetify = createVuetify({
-    components,
-    directives,
+    vuetifyComponents,
+    vuetifyDirectives,
 })
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
