@@ -1,0 +1,37 @@
+Diagramas de flujo{
+	Admin{
+		Login de entrada. Segun si tiene cuenta:
+			Si no: Registrarse (Version Admin). *Volver a login
+			Si si: Pagina Menu. Segun lo que elija:
+				Pagina para ver los detalles del perfil (Version Admin).
+				Pagina con el calendario.
+				Pagina para Crear una solicitud de reparacion.
+	}
+
+	Guardia{
+		Login de entrada. Segun si tiene cuenta:
+			Si no: Info sobre como reclamarle a un administrador que le haga una cuenta.
+			Si si: Pagina con el Calendario de Arreglos de donde trabaja.
+	}
+
+	Contratista{
+		Login de entrada. Segun si tiene cuenta:
+			Si no: Info sobre como reclamarle a un admistrador que le haga una cuenta.
+			Si si: Pagina Menu. Segun lo que elija:
+				Pagina para ver los detalles del perfil (Version Contratista).
+				Pagina para mandar trabajadores a hacer un arreglo
+	}
+
+	Trabajador terciarizado{
+		Login de entrada. Segun si tiene cuenta:
+			Si no: Info sobre como reclamarle a un contratista o administrador que le haga una cuenta.
+			Si si: Informacion sobre los arreglos que tiene pendientes.
+	}
+}
+
+Peculiaridades{
+	-Las cuentras de Contratistas y Guardias solo pueden ser registradas por Admins
+	-Las cuentas de Trabajadores pueden ser registradas por Admins y Contratistas
+	-Para los Guardias la aplicacion es solo el calendario de arreglos de donde ellos trabajan
+	-Para los Trabajadores la aplicacion es solo la informacion de los arreglos que tienen por hacer
+}
