@@ -22,14 +22,16 @@ jobs:
     - name: Copy .env
       run: cd Programa && php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
-      run: cd Programa && composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      run:  cd Programa && composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Generate key
-      run: cd Programa && php artisan key:generate
+      run:  cd Programa && php artisan key:generate
     - name: Create Database
       run: |
         cd Programa
         mkdir -p database
         touch database/database.sqlite
+    - name: Compilar el frontend
+      run:  cd Programa && npm install && npm run build
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       env:
         DB_CONNECTION: sqlite
