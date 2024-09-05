@@ -1,22 +1,18 @@
 # Proyecto de la UTU
 
-Repositorio para el Backend del proyecto.
-Aca esta el intento de hacer el backend con Inertia.
-De paso aca se pondra la documentaion de como adaptar el Frontend pa que ande con inertia.
-
+Repositorio para el proyecto.
 Guia de como hacer que funcione esto despues de clonar el repositorio:
 ```bash
-cd laravel
+cd Programa
 composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
+php artisan db:seed
+npm install
+npm run build
 ```
 Y ya taria pa el `php artisan serve` 
 
-Lista de cosas para hacer:
-
-Hacer que los trabajadores terciarizados tengan arreglos relevantes
-
-Descubrir como pasarle info a un frontend de Vue
-Y descubrir lo mismo pero con inertia
+NOTA: para que el la parte del frontend se actualize mientras la vas cambiando tenes que hacer `npm run dev` para levantar el frontend estilo servidor
+      o podes hacer `npm run build` cada vez que haces un cambio para que los utilize en el renderizado del frontend
