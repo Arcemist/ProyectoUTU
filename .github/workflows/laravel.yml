@@ -19,7 +19,7 @@ jobs:
     - name: Moverse a la carpeta que es
       run: cd Programa && ls -a
     - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');" && ls -a
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Generate key
