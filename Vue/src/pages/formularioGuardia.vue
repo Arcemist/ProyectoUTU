@@ -1,5 +1,5 @@
 <template>
-  <div class="formulario">
+  <div class="formulario bg-green">
     <form @submit.prevent="submitForm">
       <div>
         <label for="nombre">Nombre:</label>
