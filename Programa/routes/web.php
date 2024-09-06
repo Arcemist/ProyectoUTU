@@ -8,7 +8,6 @@ use App\Models\empresas_terciarizadas;
 use App\Models\guardias;
 use App\Models\solicitudes_de_arreglo;
 use App\Models\sucursales;
-use App\Models\trabaja_en;
 use App\Models\trabajadores_terciarizados;
 
 use App\Http\Controllers\ProfileController;
