@@ -31,8 +31,12 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
-    - name: Compilar el frontend
-      run: npm install && npm run build
+    - name: Instalar dependencias del Frontend
+      run: npm install
+    - name: Compilar el Frontend
+      run: npm run build
+    - name: Testear el Frontend
+      run: npm test
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       env:
         DB_CONNECTION: sqlite
