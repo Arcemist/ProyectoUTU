@@ -151,13 +151,13 @@ export default {
 
 <style scoped>
 .custom-calendar-container {
-  background-color: #4444;
+  background-color: #cecece;
   border-radius: 12px;
   padding: 15px;
 }
 
 .sidebar {
-  background-color: #444444;
+  background-color: #000000;
   padding: 10px;
   border-radius: 8px;
 }
