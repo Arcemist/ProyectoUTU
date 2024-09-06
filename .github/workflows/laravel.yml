@@ -10,7 +10,9 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: 'Programa'
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
@@ -20,20 +22,19 @@ jobs:
         node-version: 'latest'
     - uses: actions/checkout@v4
     - name: Copy .env
-      run: cd Programa && php -r "file_exists('.env') || copy('.env.example', '.env');"
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
-      run:  cd Programa && composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      run:  composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Generate key
-      run:  cd Programa && php artisan key:generate
+      run: php artisan key:generate
     - name: Create Database
       run: |
-        cd Programa
         mkdir -p database
         touch database/database.sqlite
     - name: Compilar el frontend
-      run:  cd Programa && npm install && npm run build
+      run: npm install && npm run build
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: cd Programa && php artisan test
+      run: php artisan test
