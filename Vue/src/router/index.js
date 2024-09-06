@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/FormularioGuardia',
     name: 'FormularioGuardia',
-    component: () => import('@/pages/formularioGuardia.vue'),
+    component: () => import('@/components/Formulario.vue'),
   },
   {
     path: '/AdminPage',
