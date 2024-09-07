@@ -12,7 +12,6 @@ use App\Models\trabajadores_terciarizados;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -40,8 +39,8 @@ Route::get('/database', function() {
         'Documentos de las empresas' => documentos_de_las_empresas::all(),
         'Trabajadores Terciarizados' => trabajadores_terciarizados::all(),
         'Documentos de los trabajadores' => documentos_de_los_trabajadores::all(),
-        'Arreglos' => DB::table('arreglos')->select('*')->get(),
-        'Solicitudes de arreglo' => DB::table('solicitudes_de_arreglo')->select('*')->get()
+        'Arreglos' => arreglos::all(),
+        'Solicitudes de arreglo' => solicitudes_de_arreglo::all()
     ];
 });
 
@@ -54,8 +53,8 @@ Route::get('/intento', function() {
         'documentos_de_las_empresas' => documentos_de_las_empresas::all(),
         'trabajadores_terciarizados' => trabajadores_terciarizados::all(),
         'documentos_de_los_trabajadores' => documentos_de_los_trabajadores::all(),
-        'arreglos' => DB::table('arreglos')->select('*')->get(),
-        'solicitudes_de_arreglo' => DB::table('solicitudes_de_arreglo')->select('*')->get()
+        'arreglos' => arreglos::all(),
+        'solicitudes_de_arreglo' => solicitudes_de_arreglo::all()
     ]);
 })->middleware(['auth', 'verified'])->name('intento');
 

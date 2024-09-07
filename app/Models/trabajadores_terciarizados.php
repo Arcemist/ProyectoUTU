@@ -15,12 +15,17 @@ class trabajadores_terciarizados extends Model
     protected $primaryKey = 'Cedula';
     protected $keyType = 'integer';
 
+    protected $attributes = [
+        'Nombre',
+        'Trabaja_en',
+    ];
+
     protected $fillable = [
         'Nombre',
         'Trabaja_en',
     ];
 
-    protected function Trabaja_en() {
+    public function Trabaja_en() {
         return $this->belongsTo(empresas_terciarizadas::class, 'Trabaja_en', 'RUT');
     }
 }

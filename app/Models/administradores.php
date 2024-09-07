@@ -15,7 +15,7 @@ class administradores extends Model
     protected $primaryKey = 'Cedula';
     protected $keyType = 'Integer';
 
-    protected $fillable = [
+    protected $attributes = [
         'Nombre'
-    ] ;
+    ];
 }

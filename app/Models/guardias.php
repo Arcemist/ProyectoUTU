@@ -15,6 +15,11 @@ class guardias extends Model
     protected $primaryKey = 'Cedula';
     protected $keyType = 'Integer';
 
+    protected $attributes = [
+        'Nombre',
+        'Trabaja_en'
+    ] ;
+
     protected $fillable = [
         'Nombre',
         'Trabaja_en'

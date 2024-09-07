@@ -11,7 +11,7 @@ class arreglos extends Model
 
     protected $table = 'arreglos';
 
-    protected $fillable = [
+    protected $attributes = [
         'Nombre',
         'Descripcion',
         'Creado_por',
@@ -20,10 +20,20 @@ class arreglos extends Model
         'Fecha_realizado' => null,
     ];
 
-    protected function Creado_por() {
+    protected $fillable = [
+        'Nombre',
+        'Descripcion',
+        'Creado_por',
+        'Sucursal',
+        'Fecha_creacion',
+        'Fecha_realizado',
+    ];
+
+    public function Creado_por() {
         return $this->belongsTo(administradores::class, 'Creado_por', 'Cedula');
     }
-    protected function Sucursal() {
+
+    public function Sucursal() {
         return $this->belongsTo(sucursales::class, 'Sucursal', 'Nombre');
     }
 }

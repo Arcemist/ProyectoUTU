@@ -11,7 +11,7 @@ class solicitudes_de_arreglo extends Model
 
     protected $table = 'solicitudes_de_arreglo';
 
-    protected $fillable = [
+    protected $attributes = [
         'Creada_por',
         'Solicita_arreglar',
         'Estado' => null,
@@ -19,13 +19,21 @@ class solicitudes_de_arreglo extends Model
         'Aprobada_por' => null
     ];
 
-    protected function Creada_por() {
+    protected $fillable = [
+        'Creada_por',
+        'Solicita_arreglar',
+        'Estado',
+        'Personal_asignado',
+        'Aprobada_por'
+    ];
+
+    public function Creada_por() {
         return $this->belongsTo(empresas_terciarizadas::class, 'Creada_por', 'RUT');
     }
-    protected function Solicita_arreglar() {
+    public function Solicita_arreglar() {
         return $this->belongsTo(arreglos::class, 'Solicita_arreglar');
     }
-    protected function Aprobada_por() {
+    public function Aprobada_por() {
         return $this->belongsTo(administradores::class, 'Aprobada_por', 'Cedula');
     }
 }

@@ -11,12 +11,17 @@ class documentos_de_las_empresas extends Model
 
     protected $table = 'documentos_de_las_empresas';
 
+    protected $attributes = [
+        'Pertenece_a',
+        'Archivo',
+    ];
+
     protected $fillable = [
         'Pertenece_a',
         'Archivo',
     ];
 
-    protected function Pertenece_a() {
+    public function Pertenece_a() {
         return $this->belongsTo(empresas_terciarizadas::class, 'Pertenece_a', 'RUT');
     }
 }

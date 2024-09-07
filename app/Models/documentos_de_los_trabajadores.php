@@ -11,12 +11,17 @@ class documentos_de_los_trabajadores extends Model
 
     protected $table = 'documentos_de_los_trabajadores';
 
+    protected $attributes = [
+        'Pertenece_a',
+        'Archivo',
+    ];
+
     protected $fillable = [
         'Pertenece_a',
         'Archivo',
     ];
 
-    protected function Pertenece_a() {
+    public function Pertenece_a() {
         return $this->belongsTo(trabajadores_terciarizados::class, 'Pertenece_a', 'Cedula');
     }
 }
