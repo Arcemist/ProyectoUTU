@@ -18,5 +18,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-_ide_helper.php
+.ide_helpers/
 .pest_results
