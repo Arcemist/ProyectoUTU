@@ -14,7 +14,7 @@ class solicitudes_de_arreglo extends Model
     protected $fillable = [
         'Creada_por',
         'Solicita_arreglar',
-        ['Estado'] => null,
+        'Estado' => null,
         'Personal_asignado',
         'Aprobada_por' => null
     ];

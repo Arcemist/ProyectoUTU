@@ -3,7 +3,6 @@
 Repositorio para el proyecto.
 Guia de como hacer que funcione esto despues de clonar el repositorio:
 ```bash
-cd Programa
 composer install
 cp .env.example .env
 php artisan key:generate
