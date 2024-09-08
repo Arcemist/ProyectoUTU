@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Estado_solicitud;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,11 @@ return new class extends Migration
             $table->id();
             $table->integer('Creada_por');
             $table->foreignId('Solicita_arreglar');
-            $table->enum('Estado', ['Rechazada', 'Aceptada', 'En_espera']);
+            $table->enum('Estado', [
+                Estado_solicitud::ACEPTADA->value,
+                Estado_solicitud::RECHAZADA->value,
+                Estado_solicitud::EN_ESPERA->value
+            ]);
             $table->json('Personal_asignado');
             $table->integer('Aprobada_por')->nullable(true);
 

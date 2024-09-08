@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserType;
 use App\Models\solicitudes_de_arreglo;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -20,7 +21,8 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Daniel',
             'email' => 'niverdanielarce@gmail.com',
-            'password' => Hash::make('epalapapa')
+            'password' => Hash::make('epalapapa'),
+            'UserType' => UserType::ADMINISTRADOR->value
         ]);
 
 

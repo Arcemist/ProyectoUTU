@@ -7,8 +7,6 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-require 'app/Enums/Estado_solicitud.php';
-
 class SolicitudesDeArregloSeeder extends Seeder
 {
     /**
@@ -19,7 +17,7 @@ class SolicitudesDeArregloSeeder extends Seeder
         DB::table('solicitudes_de_arreglo')->insert([
             'Creada_por' => '112233445566',
             'Solicita_arreglar' => 1,
-            'Estado' => Estado_solicitud::EN_ESPERA,
+            'Estado' => Estado_solicitud::EN_ESPERA->value,
             'Personal_asignado' => json_encode(['99887766']),
             'Aprobada_por' => null,
         ]);

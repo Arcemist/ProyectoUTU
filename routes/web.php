@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SucursalesController;
+use App\Http\Middleware\CheckUserIsAdmin;
 use App\Models\administradores;
 use App\Models\arreglos;
 use App\Models\documentos_de_las_empresas;
@@ -56,12 +58,14 @@ Route::get('/intento', function() {
         'arreglos' => arreglos::all(),
         'solicitudes_de_arreglo' => solicitudes_de_arreglo::all()
     ]);
-})->middleware(['auth', 'verified'])->name('intento');
+})->middleware(['auth', 'verified', CheckUserIsAdmin::class])->name('intento');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/sucursales', [SucursalesController::class, 'show'])->name('sucursales.show');
 });
 
 require __DIR__.'/auth.php';

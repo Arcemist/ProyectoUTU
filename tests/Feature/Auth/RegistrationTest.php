@@ -1,5 +1,9 @@
 <?php
 
+namespace Tests\Feature\Auth;
+
+use App\Enums\UserType;
+
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('registration screen can be rendered', function () {
@@ -8,12 +12,26 @@ test('registration screen can be rendered', function () {
     $response->assertStatus(200);
 });
 
-test('new users can register', function () {
+test('Los Guardias se pueden registrar directamente', function () {
     $response = $this->post('/register', [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'password' => 'password',
         'password_confirmation' => 'password',
+        'UserType' => UserType::GUARDIA->value
+    ]);
+
+    $this->assertAuthenticated();
+    $response->assertRedirect(route('dashboard', absolute: false));
+});
+
+test('Los Trabajadores se pueden registrar directamente', function () {
+    $response = $this->post('/register', [
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+        'password' => 'password',
+        'password_confirmation' => 'password',
+        'UserType' => UserType::TRABAJADOR->value
     ]);
 
     $this->assertAuthenticated();
