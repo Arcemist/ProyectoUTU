@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckUserIsAdmin
+class CheckUserIsGuard
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class CheckUserIsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!(Auth::user()->Type() == UserType::ADMINISTRADOR->value)) {
+        if (!(Auth::user()->Type() == UserType::GUARDIA->value )) {
             return response(null);
         }
 

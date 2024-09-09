@@ -20,3 +20,4 @@ yarn-error.log
 /.vscode
 .ide_helpers/
 .pest_results
+update_stubs.sh

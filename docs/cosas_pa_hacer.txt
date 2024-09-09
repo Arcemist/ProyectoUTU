@@ -1,5 +1,9 @@
 Cosas pa hacer:
 
+    -Hacer los middlewares
+
+    -Hacer la Pagina de "Error: no autorizado"
+
 	-Hacer los controladores
 
 	-Hacer las fabricas
