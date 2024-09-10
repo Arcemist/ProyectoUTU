@@ -11,3 +11,27 @@ Cosas pa hacer:
 	-fijarse el tutorial que mando el profe pa saber que mas hacer
 
 	-Arreglar el bootstrap del frontend
+
+
+Cosas de la Reunion:
+
+    -Hacer que halla un administrador general
+
+    -Hacer mas roles intermedios
+
+    -Hacer que un usuario pueda tener varios roles
+
+    -Enfasis en que los guardias necesitan poder ver los horarios
+
+    -Ver la forma de hacer que diferentes roles tengan diferentes accesos a la base de datos (Solo lectura por ejemplo)
+
+    -Enfasis en que halla roles con menos permisos que los que mas tienen
+
+    -Boton de chat que habra wasap web (NOTA: ver como se hace en celular)
+
+    -Hacer las versiones de celular de las paginas
+
+
+    CORREO: proyectos@camcel.com.uy
+
+    Idea: Usar de testers a los de Tecnicos de Camcel
