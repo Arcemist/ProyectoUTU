@@ -22,7 +22,7 @@ return new class extends Migration
                 Estado_solicitud::EN_ESPERA->value
             ]);
             $table->json('Personal_asignado');
-            $table->integer('Aprobada_por')->nullable(true);
+            $table->integer('Aprobada_por')->nullable();
 
             $table->foreign('Creada_por')->references('RUT')->on('empresas_terciarizadas');
             $table->foreign('Solicita_arreglar')->references('id')->on('Arreglos');

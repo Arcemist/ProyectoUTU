@@ -28,12 +28,7 @@ entity "Guardias" {
 	* Cedula : Int
 	--
 	* Nombre : Text
-}
-
-entity "Trabaja en" {
-	* Cedula_guardia : Int <<FK>>
-	* Nombre_sucursal : Nombre <<FK>>
-	--
+    * Trabaja_en : Json
 }
 
 entity "Empresas Terciarizadas" {
@@ -63,6 +58,15 @@ entity "Documentos de los trabajadores" {
 	* Archivo : Blob
 }
 
+entity "Usuarios" {
+    * ID : BigInt Autoincrement
+    --
+    * Nombre : String
+    * Email : String
+    * Contraseña : String
+    * Tipo de usuario : Enum [Administrador, Guardia, Empresa, Trabajador]
+}
+
 entity "Arreglos" {
 	* ID : Int Autoincrement
 	--
@@ -79,22 +83,23 @@ entity "Solicitudes de arreglo" {
 	--
 	* Creada_por : Int <<FK>>
 	* Solicita_arreglar : Int <<FK>>
-	* Estado : enum
-	* Trabajadores_asignados: json
+    * Estado : Enum [Aceptada, Rechazada, En espera]
+	* Trabajadores_asignados: Json
 	  Aprobada_por : Text <<FK>>
 }
 
 ' Añadiendo las relaciones:
-"Sucursales" ||-r-o{ "Trabaja en"
-"Guardias" ||-u-|{ "Trabaja en"
-"Administradores" ||-u-o{ "Arreglos"
-"Administradores" ||-u-o{ "Solicitudes de arreglo"
-"Arreglos" }o-r-||"Sucursales"
+"Sucursales" ||-l-o{ "Guardias"
+"Administradores" ||-d-o{ "Arreglos"
+"Administradores" ||-d-o{ "Solicitudes de arreglo"
+"Arreglos" }o-d-||"Sucursales"
 "Arreglos" ||-l-o{ "Solicitudes de arreglo"
 "Empresas Terciarizadas" ||-r-o{ "Solicitudes de arreglo"
 "Empresas Terciarizadas" ||-l-o{ "Documentos de las empresas"
 "Empresas Terciarizadas" ||-d-o{ "Trabajadores Terciarizados"
 "Trabajadores Terciarizados" ||-l-o{ "Documentos de los trabajadores"
+
+"Usuarios" --[hidden]r- "Administradores"
 
 ' Puedo poner ':' despues de una relacion pa poner comentario en el medio
 
