@@ -14,7 +14,7 @@ const entradas =ref([
   {etiqueta:"Nombre",valor:"",clase:"entrada",tipo:"text"},
   {etiqueta:"Correo Electrónico",valor:"",tipo:"email"},
   {etiqueta:"Cédula de Identidad",valor:"",tipo:"numbers"},
-  {etiqueta:"Contraseña",valor:"",tipo:"password"}
+  {etiqueta:"Dirección",valor:"",tipo:"text"}
 ])
 </script>
 
@@ -22,7 +22,7 @@ const entradas =ref([
 .tarjeta{
   margin: auto;
   width: 70%;
-  height: 40vh;
+  height: 30vh;
   margin-top: 10vh;
   background-color: brown;
   display: flex;
