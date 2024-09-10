@@ -10,7 +10,7 @@ skinparam {
 		FontColor Black
 		BorderColor Black
 		BorderThickness 2.5
-	} 
+	}
 	Component {
 		Style Rectangle
 		FontColor Black
@@ -49,21 +49,33 @@ left to right direction
 [Perfil Guardia] as "Perfil"
 [Calendario Guardia] <-l-> [Perfil Guardia]
 '_____________________________________________________________________________________________________________________
-:Servicio Terciarizado:
-[Login Terciarizado] as "Login"
-:Servicio Terciarizado: -r-> [Login Terciarizado]
+:Empresa Terciarizada:
+[Login Terciarizado E] as "Login"
+:Empresa Terciarizada: -r-> [Login Terciarizado E]
 
-[Registrarse]
-[Login Terciarizado] <-r-> [Registrarse]
+[Registrarse E] as "Registrarse"
+[Login Terciarizado E] <-r-> [Registrarse E]
 
-[Informacion de trabajos pendientes]
-[Login Terciarizado] -d-> [Informacion de trabajos pendientes]
+[Informacion de trabajos pendientes E] as "Informacion de trabajos pendientes"
+[Login Terciarizado E] -d-> [Informacion de trabajos pendientes E]
 
 [Gestor de empleados terciarizados] as "Gestor de empleados"
-[Informacion de trabajos pendientes] <-l-> [Gestor de empleados terciarizados]
+[Informacion de trabajos pendientes E] <-l-> [Gestor de empleados terciarizados]
 
 [Postularse a realizar un arreglo]
-[Informacion de trabajos pendientes] <-r-> [Postularse a realizar un arreglo]
+[Informacion de trabajos pendientes E] <-r-> [Postularse a realizar un arreglo]
 '_____________________________________________________________________________________________________________________
+:Trabajador Terciarizado:
+[Login Terciarizado T] as "Login"
+:Trabajador Terciarizado: -r-> [Login Terciarizado T]
+
+[Registrarse T] as "Registrarse"
+[Login Terciarizado T] <-r-> [Registrarse T]
+
+[Informacion de trabajos pendientes T] as "Informacion de trabajos pendientes"
+[Login Terciarizado T] -d-> [Informacion de trabajos pendientes T]
+'_____________________________________________________________________________________________________________________
+
+[Registrarse E] -[hidden]r- :Trabajador Terciarizado:
 
 @enduml
