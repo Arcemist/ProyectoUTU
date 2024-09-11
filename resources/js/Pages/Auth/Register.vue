@@ -7,7 +7,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
-    UserType: 'Guardia',
+    UserType: '',
     name: '',
     email: '',
     password: '',
@@ -16,6 +16,7 @@ const form = useForm({
 
 const submit = () => {
     form.post(route('register'), {
+        preserveScroll: true,
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };
@@ -27,21 +28,32 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="UserType" value="UserType" />
+                <InputLabel value="UserType" class="animate-[pulse_1.7s_ease-in-out_4]"/>
 
-                <TextInput
-                    id="UserType"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.UserType"
-                    required
-                    autofocus
-                />
+                <select v-model="form.UserType" class="w-full animate-[pulse_1.7s_ease-in-out_4]">
+                    <option disabled value=''>
+                        Porfavor elija un rol
+                    </option>
 
-                <InputError class="mt-2" />
+                    <option value="Guardia">
+                        Guardia
+                    </option>
+
+                    <option value="Empresa">
+                        Empresa
+                    </option>
+
+                    <option value="Trabajador">
+                        Trabajador
+                    </option>
+
+                    <option value="Administraddor">
+                        Administrador
+                    </option>
+                </select>
             </div>
 
-            <div>
+            <div class="mt-4">
                 <InputLabel for="name" value="Name" />
 
                 <TextInput

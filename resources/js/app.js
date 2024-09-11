@@ -6,7 +6,8 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
-import 'vuetify/styles';
+//import '@mdi/font/css/materialdesignicons.css';
+//import 'vuetify/styles';
 import { createVuetify } from 'vuetify/lib/framework.mjs';
 import * as vuetifyComponents from 'vuetify/components';
 import * as vuetifyDirectives from 'vuetify/directives';
@@ -24,7 +25,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(ZiggyVue)
+            .use(ZiggyVue, Ziggy)
             .use(vuetify)
             .mount(el);
     },

@@ -8,19 +8,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckUserIsAdmin
-{
+class CheckUserIs {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        if (!(Auth::user()->Type() == UserType::ADMINISTRADOR->value)) {
-            return response(null);
+    public function handle(Request $request, Closure $next, string $role): Response {
+
+        if (!($request->user()->Type() == $role)) {
+            //return response(null);
+            return null;
         }
 
+        $hola = ['hola','como anda'];
+
         return $next($request);
+
+
     }
 }

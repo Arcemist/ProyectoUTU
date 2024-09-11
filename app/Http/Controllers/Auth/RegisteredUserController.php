@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'UserType' => ['required', Rule::enum(UserType::class)->only([UserType::GUARDIA, UserType::TRABAJADOR])]
+            'UserType' => ['required', Rule::enum(UserType::class)->only([UserType::GUARDIA, UserType::TRABAJADOR, UserType::EMPRESA])]
         ]);
 
         $user = User::create([

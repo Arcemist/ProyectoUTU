@@ -2,8 +2,6 @@ Cosas pa hacer:
 
     -Hacer los middlewares
 
-    -Hacer la Pagina de "Error: no autorizado"
-
 	-Hacer los controladores
 
 	-Hacer las fabricas
@@ -21,16 +19,14 @@ Cosas de la Reunion:
 
     -Hacer que un usuario pueda tener varios roles
 
-    -Enfasis en que los guardias necesitan poder ver los horarios
-
     -Ver la forma de hacer que diferentes roles tengan diferentes accesos a la base de datos (Solo lectura por ejemplo)
-
-    -Enfasis en que halla roles con menos permisos que los que mas tienen
 
     -Boton de chat que habra wasap web (NOTA: ver como se hace en celular)
 
     -Hacer las versiones de celular de las paginas
 
+    -Enfasis en que halla roles con menos permisos que los que mas tienen
+    -Enfasis en que los guardias necesitan poder ver los horarios
 
     CORREO: proyectos@camcel.com.uy
 

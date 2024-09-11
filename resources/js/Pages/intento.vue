@@ -27,17 +27,17 @@ defineProps({
         </template>
 
         <div class="pl-[4%] pt-[4%] pr-[4%] w-9/10 text-center">
-            <p class="bg-white rounded">
+            <p class="bg-green-200 rounded-lg">
                 {{ date }}
             </p>
         </div>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-blue-100 overflow-hidden shadow-sm sm:rounded-lg">
 
                     <div class="p-6">
-                        <h2 class="text-blue"> Sucursales: </h2>
+                        <h2 class="text-blue-700"> Sucursales: </h2>
 
                         <div class="p-3 text-gray-900" v-for="sucursal in sucursales">
                             <p> {{ sucursal.Nombre }} </p>
@@ -45,7 +45,7 @@ defineProps({
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue"> Administradores: </h2>
+                        <h2 class="text-blue-700"> Administradores: </h2>
 
                         <div class="p-3 text-gray-900" v-for="administrador in administradores">
                             <p> {{ administrador.Nombre }} </p>
@@ -54,7 +54,7 @@ defineProps({
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue"> Guardias: </h2>
+                        <h2 class="text-blue-700"> Guardias: </h2>
 
                         <div class="p-3 text-gray-900" v-for="guardia in guardias">
                             <p> {{ guardia.Nombre }} </p>
@@ -63,7 +63,7 @@ defineProps({
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue"> Empresas Terciarizadas: </h2>
+                        <h2 class="text-blue-700"> Empresas Terciarizadas: </h2>
 
                         <div class="p-3 text-gray-900" v-for="empresa_terciarizada in empresas_terciarizadas">
                             <p> {{ empresa_terciarizada.Nombre }} </p>
@@ -72,7 +72,7 @@ defineProps({
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue"> Documentos de las Empresas: </h2>
+                        <h2 class="text-blue-700"> Documentos de las Empresas: </h2>
 
                         <div class="p-3 text-gray-900" v-for="documento in documentos_de_las_empresas">
                             <p> {{ documento.id }} </p>
@@ -82,7 +82,7 @@ defineProps({
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue"> Trabajadores Terciarizados: </h2>
+                        <h2 class="text-blue-700"> Trabajadores Terciarizados: </h2>
 
                         <div class="p-3 text-gray-900" v-for="trabajador in trabajadores_terciarizados">
                             <p> {{ trabajador.Cedula }} </p>
@@ -92,7 +92,7 @@ defineProps({
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue"> Documentos De Los Trabajadores: </h2>
+                        <h2 class="text-blue-700"> Documentos De Los Trabajadores: </h2>
 
                         <div class="p-3 text-gray-900" v-for="documento in documentos_de_los_trabajadores">
                             <p> {{ documento.id }} </p>
@@ -102,7 +102,7 @@ defineProps({
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue"> Arreglos: </h2>
+                        <h2 class="text-blue-700"> Arreglos: </h2>
 
                         <div class="p-3 text-gray-900" v-for="arreglo in arreglos">
                             <p> {{ arreglo.id }} </p>
@@ -116,7 +116,7 @@ defineProps({
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue"> Solicitudes De Arreglo: </h2>
+                        <h2 class="text-blue-700"> Solicitudes De Arreglo: </h2>
 
                         <div class="p-3 text-gray-900" v-for="solicitud in solicitudes_de_arreglo">
                             <p> {{ solicitud.id }} </p>
