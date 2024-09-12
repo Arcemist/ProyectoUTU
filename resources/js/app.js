@@ -5,6 +5,8 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+import VCalendar from 'v-calendar';
+import 'v-calendar/style.css';
 
 //import '@mdi/font/css/materialdesignicons.css';
 //import 'vuetify/styles';
@@ -27,6 +29,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(vuetify)
+            .use(VCalendar)
             .mount(el);
     },
     progress: {

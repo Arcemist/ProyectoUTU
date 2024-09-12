@@ -25,6 +25,13 @@ class DatabaseSeeder extends Seeder
             'UserType' => UserType::ADMINISTRADOR->value
         ]);
 
+        User::factory()->create([
+            'name' => 'Lucas',
+            'email' => 'rukasu@gmail.com',
+            'password' => Hash::make('arribamilei15'),
+            'UserType' => UserType::ADMINISTRADOR->value
+        ]);
+
 
 
         // cosas mias:
