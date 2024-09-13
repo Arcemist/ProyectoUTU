@@ -29,18 +29,24 @@ Route::get('/', function () {
 })->middleware('guest'); // esto hace que te mande a 'dashboard' o a 'home' o a '/' si ya estas logeado
 
 Route::get('/administrador', function () {
-    $EventosCalendario = [
-        'key' => 'Eventos',
+    $EventoCalendario = [
+        'key' => 1,
         'highlight' => [
             'color' => 'purple',
             'fillMode' => 'outline'
         ],
         'dates' => '9/9/2024',
-        'Descripcion' => 'hola' // esto no es necesario pal VCalendar pero sirve pa nosotros
     ];
+
+    $InfoEvento = [
+        'fecha' => '9/9/2024',
+        'descripcion' => 'hola como anda usted'
+    ];
+
     // Importante que 'EventosCalendario' sea un array de arrays sino no le gusta al Vcalendar
     return Inertia::render('Administrador', [
-        'EventosCalendario' => [$EventosCalendario]
+        'EventosCalendario' => [$EventoCalendario],
+        'InfoEventos' => [$InfoEvento]
     ]);
 })->middleware(['auth', 'verified']);
 
