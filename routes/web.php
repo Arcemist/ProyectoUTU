@@ -29,7 +29,17 @@ Route::get('/', function () {
 })->middleware('guest'); // esto hace que te mande a 'dashboard' o a 'home' o a '/' si ya estas logeado
 
 Route::get('/administrador', function () {
-    return Inertia::render('Administrador');
+    $EventosCalendario = [
+        'highlight' => [
+            'color' => 'purple',
+            'fillMode' => 'solid'
+        ],
+        'dates' => '9/9/2024'
+    ];
+
+    return Inertia::render('Administrador', [
+        'EventosCalendario' => $EventosCalendario
+    ]);
 });
 
 // Cosas generales de usuarios logeados
