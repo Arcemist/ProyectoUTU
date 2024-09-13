@@ -30,17 +30,19 @@ Route::get('/', function () {
 
 Route::get('/administrador', function () {
     $EventosCalendario = [
+        'key' => 'Eventos',
         'highlight' => [
             'color' => 'purple',
-            'fillMode' => 'solid'
+            'fillMode' => 'outline'
         ],
-        'dates' => '9/9/2024'
+        'dates' => '9/9/2024',
+        'Descripcion' => 'hola' // esto no es necesario pal VCalendar pero sirve pa nosotros
     ];
-
+    // Importante que 'EventosCalendario' sea un array de arrays sino no le gusta al Vcalendar
     return Inertia::render('Administrador', [
-        'EventosCalendario' => $EventosCalendario
+        'EventosCalendario' => [$EventosCalendario]
     ]);
-});
+})->middleware(['auth', 'verified']);
 
 // Cosas generales de usuarios logeados
 Route::middleware([
