@@ -48,7 +48,7 @@ Route::get('/administrador', function () {
         'EventosCalendario' => [$EventoCalendario],
         'InfoEventos' => [$InfoEvento]
     ]);
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified'])->name('administrador');
 
 // Cosas generales de usuarios logeados
 Route::middleware([

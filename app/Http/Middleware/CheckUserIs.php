@@ -18,7 +18,8 @@ class CheckUserIs {
 
         if (!($request->user()->Type() == $role)) {
             //return response(null);
-            return null;
+            //return null;
+            abort(404);
         }
 
         $hola = ['hola','como anda'];
