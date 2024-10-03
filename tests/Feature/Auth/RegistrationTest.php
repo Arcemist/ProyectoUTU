@@ -18,20 +18,8 @@ test('Los Guardias se pueden registrar directamente', function () {
         'email' => 'test@example.com',
         'password' => 'password',
         'password_confirmation' => 'password',
-        'UserType' => UserType::GUARDIA->value
-    ]);
-
-    $this->assertAuthenticated();
-    $response->assertRedirect(route('dashboard', absolute: false));
-});
-
-test('Los Trabajadores se pueden registrar directamente', function () {
-    $response = $this->post('/register', [
-        'name' => 'Test User',
-        'email' => 'test@example.com',
-        'password' => 'password',
-        'password_confirmation' => 'password',
-        'UserType' => UserType::TRABAJADOR->value
+        'user_type' => UserType::GUARDIA->value,
+        'roles' => ''
     ]);
 
     $this->assertAuthenticated();

@@ -15,6 +15,7 @@ class ArreglosSeeder extends Seeder
      */
     public function run(): void
     {
+        /**
         DB::table('arreglos')->insert([
             'Nombre' => 'Arreglar las tolvas',
             'Descripcion' => 'Recalibrar la tolva sur 3',
@@ -36,5 +37,6 @@ class ArreglosSeeder extends Seeder
             'Sucursal' => 'Montevideo',
             'Fecha_creacion' => now('now'),
         ]);
+        **/
     }
 }

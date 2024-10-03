@@ -22,28 +22,27 @@ class DatabaseSeeder extends Seeder
             'name' => 'Daniel',
             'email' => 'niverdanielarce@gmail.com',
             'password' => Hash::make('epalapapa'),
-            'UserType' => UserType::ADMINISTRADOR->value
+            'user_type' => UserType::ADMINISTRADOR->value
         ]);
 
         User::factory()->create([
             'name' => 'Lucas',
             'email' => 'rukasu@gmail.com',
             'password' => Hash::make('arribamilei15'),
-            'UserType' => UserType::ADMINISTRADOR->value
+            'user_type' => UserType::ADMINISTRADOR->value
         ]);
 
 
 
-        // cosas mias:
+        User::factory()->make([
+            'user_type' => UserType::GUARDIA->value
+        ])->count(15);
 
         $this->call([
             SucursalesSeeder::class,
-            AdministradoresSeeder::class,
             GuardiasSeeder::class,
             EmpresasTerciarizadasSeeder::class,
-            TrabajadoresTerciarizadosSeeder::class,
             ArreglosSeeder::class,
-            SolicitudesDeArregloSeeder::class,
         ]);
     }
 }

@@ -13,6 +13,7 @@ class EmpresasTerciarizadasSeeder extends Seeder
      */
     public function run(): void
     {
+        /**
         DB::table('empresas_terciarizadas')->insert([
             'RUT' => 112233445566,
             'Nombre' => 'Tolvas y mas',
@@ -38,5 +39,6 @@ class EmpresasTerciarizadasSeeder extends Seeder
             'Pertenece_a' => 334455667788,
             'Archivo' => 'Ejemplo de documento importante',
         ]);
+        **/
     }
 }

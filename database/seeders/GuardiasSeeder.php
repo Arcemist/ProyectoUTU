@@ -13,6 +13,7 @@ class GuardiasSeeder extends Seeder
      */
     public function run(): void
     {
+        /**
         DB::table('guardias')->insert([
             'Cedula' => 11223344,
             'Nombre' => 'Paladin',
@@ -28,5 +29,6 @@ class GuardiasSeeder extends Seeder
             'Nombre' => 'Mago',
             'Trabaja_en' => json_encode(['Rivera'])
         ]);
+        **/
     }
 }

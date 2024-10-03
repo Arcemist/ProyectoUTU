@@ -2,8 +2,9 @@
 
 namespace App\Enums;
 
-enum UserType: String {
+enum Roles: int {
     case ADMINISTRADOR = 'Administrador';
     case GUARDIA = 'Guardia';
     case EMPRESA = 'Empresa';
+    case TRABAJADOR = 'Trabajador';
 }

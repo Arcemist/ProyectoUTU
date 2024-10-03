@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documentos_de_los_trabajadores', function (Blueprint $table) {
+        Schema::create('sucursales', function (Blueprint $table) {
             $table->id();
-            $table->integer('Pertenece_a');
-            $table->binary('Archivo');
-
-            $table->foreign('Pertenece_a')->references('Cedula')->on('trabajadores_terciarizados');
+            $table->string('Nombre');
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('documentos_de_los_trabajadores');
+        Schema::dropIfExists('sucursales');
     }
 };

@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'UserType'
+        'user_type',
+        'roles'
     ];
 
     /**
@@ -32,7 +33,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'UserType',
+        'user_type',
+        'roles'
     ];
 
     /**
@@ -55,6 +57,6 @@ class User extends Authenticatable
     * @return string
     * */
     public function Type(): string {
-        return $this->attributes['UserType'];
+        return $this->attributes['user_type'];
     }
 }

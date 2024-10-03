@@ -107,15 +107,6 @@ Route::middleware([
 
 });
 
-// Cosas solo pa Trabajadores
-Route::middleware([
-    'auth',
-    'verified',
-    'CheckUserIs:'.UserType::TRABAJADOR->value
-])->group(function () {
-
-});
-
 // Ejemplo pa checkear base de datos
 Route::get('/database', function() {
     return [
