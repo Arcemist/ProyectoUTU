@@ -8,6 +8,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,11 +33,10 @@ class DatabaseSeeder extends Seeder
             'user_type' => UserType::ADMINISTRADOR->value
         ]);
 
-
-
-        User::factory()->make([
-            'user_type' => UserType::GUARDIA->value
-        ])->count(15);
+        User::factory(10)->state(new Sequence(
+            ['user_type' => UserType::GUARDIA->value],
+            ['user_type' => UserType::EMPRESA->value],
+        ))->create();
 
         $this->call([
             SucursalesSeeder::class,

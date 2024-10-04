@@ -10,6 +10,7 @@ class sucursales extends Model
     use HasFactory;
 
     protected $table = 'sucursales';
+    public $timestamps = false;
 
     public $incrementing = false;
     protected $primaryKey = 'Nombre';

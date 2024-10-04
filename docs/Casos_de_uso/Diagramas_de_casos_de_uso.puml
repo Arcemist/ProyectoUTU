@@ -27,6 +27,9 @@ left to right direction
 [Login Admin] as "Login"
 :Admin o Tecnico prevencionista: -r-> [Login Admin]
 
+[Registrarse Admin] as "Registrarse"
+[Login Admin] <-r-> [Registrarse Admin]
+
 [Calendario Admin] as "Calendario\nY Menu"
 [Login Admin] -d-> [Calendario Admin]
 
@@ -43,8 +46,8 @@ left to right direction
 [Calendario Guardia] as " Calendario\nSolo lectura"
 [Login Guardia] -d-> [Calendario Guardia]
 
-[Solicitar registro Guardia] as "Solicitar registro"
-[Login Guardia] <-r-> [Solicitar registro Guardia]
+[Registrarse Guardia] as "Registrarse"
+[Login Guardia] <-r-> [Registrarse Guardia]
 
 [Perfil Guardia] as "Perfil"
 [Calendario Guardia] <-l-> [Perfil Guardia]
@@ -65,17 +68,6 @@ left to right direction
 [Postularse a realizar un arreglo]
 [Informacion de trabajos pendientes E] <-r-> [Postularse a realizar un arreglo]
 '_____________________________________________________________________________________________________________________
-:Trabajador Terciarizado:
-[Login Terciarizado T] as "Login"
-:Trabajador Terciarizado: -r-> [Login Terciarizado T]
 
-[Registrarse T] as "Registrarse"
-[Login Terciarizado T] <-r-> [Registrarse T]
-
-[Informacion de trabajos pendientes T] as "Informacion de trabajos pendientes"
-[Login Terciarizado T] -d-> [Informacion de trabajos pendientes T]
-'_____________________________________________________________________________________________________________________
-
-[Registrarse E] -[hidden]r- :Trabajador Terciarizado:
 
 @enduml
