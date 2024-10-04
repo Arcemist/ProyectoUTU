@@ -1,14 +1,11 @@
 Cosas pa hacer:
 
-    -Hacer los middlewares
 
 	-Hacer los controladores
 
 	-Hacer las fabricas
 
 	-fijarse el tutorial que mando el profe pa saber que mas hacer
-
-	-Arreglar el bootstrap del frontend
 
 
 Cosas de la Reunion:
