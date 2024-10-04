@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class documentos_de_los_trabajadores extends Model
+class documentos extends Model
 {
     use HasFactory;
 
-    protected $table = 'documentos_de_los_trabajadores';
+    protected $table = 'documentos';
 
     protected $attributes = [
         'Pertenece_a',
@@ -22,6 +22,6 @@ class documentos_de_los_trabajadores extends Model
     ];
 
     public function Pertenece_a() {
-        return $this->belongsTo(trabajadores_terciarizados::class, 'Pertenece_a', 'Cedula');
+        return $this->belongsTo(user::class, 'Pertenece_a', 'id');
     }
 }

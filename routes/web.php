@@ -3,15 +3,10 @@
 use App\Enums\UserType;
 use App\Http\Controllers\SucursalesController;
 use App\Http\Middleware\CheckUserType;
-use App\Models\administradores;
 use App\Models\arreglos;
-use App\Models\documentos_de_las_empresas;
-use App\Models\documentos_de_los_trabajadores;
-use App\Models\empresas_terciarizadas;
-use App\Models\guardias;
-use App\Models\solicitudes_de_arreglo;
+use App\Models\documentos;
 use App\Models\sucursales;
-use App\Models\trabajadores_terciarizados;
+use App\Models\User;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -72,15 +67,10 @@ Route::middleware([
 ])->group(function () {
     Route::get('/intento', function () {
         return Inertia::render('intento', [
+            'usuarios' => user::all(),
             'sucursales' => sucursales::all(),
-            'administradores' => administradores::all(),
-            'guardias' => guardias::all(),
-            'empresas_terciarizadas' => empresas_terciarizadas::all(),
-            'documentos_de_las_empresas' => documentos_de_las_empresas::all(),
-            'trabajadores_terciarizados' => trabajadores_terciarizados::all(),
-            'documentos_de_los_trabajadores' => documentos_de_los_trabajadores::all(),
+            'documentos' => documentos::all(),
             'arreglos' => arreglos::all(),
-            'solicitudes_de_arreglo' => solicitudes_de_arreglo::all()
         ]);
     })->name('intento');
 
@@ -103,15 +93,6 @@ Route::middleware([
     'auth',
     'verified',
     'CheckUserIs:'.UserType::EMPRESA->value
-])->group(function () {
-
-});
-
-// Cosas solo pa Trabajadores
-Route::middleware([
-    'auth',
-    'verified',
-    'CheckUserIs:'.UserType::TRABAJADOR->value
 ])->group(function () {
 
 });

@@ -6,14 +6,9 @@ const date = new Date
 
 defineProps({
     sucursales: Object,
-    administradores: Object,
-    guardias: Object,
-    empresas_terciarizadas: Object,
-    documentos_de_las_empresas: Object,
-    trabajadores_terciarizados: Object,
-    documentos_de_los_trabajadores: Object,
+    usuarios: Object,
+    documentos: Object,
     arreglos: Object,
-    solicitudes_de_arreglo: Object
 });
 
 </script>
@@ -45,56 +40,20 @@ defineProps({
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue-700"> Administradores: </h2>
+                        <h2 class="text-blue-700"> Usuarios: </h2>
 
-                        <div class="p-3 text-gray-900" v-for="administrador in administradores">
-                            <p> {{ administrador.Nombre }} </p>
-                            <p> {{ administrador.Cedula }} </p>
+                        <div class="p-3 text-gray-900" v-for="usuario in usuarios">
+                            <p> {{ usuario.id }} </p>
+                            <p> {{ usuario.name }} </p>
+                            <p> {{ usuario.email }} </p>
+                            <p> {{ usuario.user_type }} </p>
                         </div>
                     </div>
 
                     <div class="p-6">
-                        <h2 class="text-blue-700"> Guardias: </h2>
+                        <h2 class="text-blue-700"> Documentos: </h2>
 
-                        <div class="p-3 text-gray-900" v-for="guardia in guardias">
-                            <p> {{ guardia.Nombre }} </p>
-                            <p> {{ guardia.Cedula }} </p>
-                        </div>
-                    </div>
-
-                    <div class="p-6">
-                        <h2 class="text-blue-700"> Empresas Terciarizadas: </h2>
-
-                        <div class="p-3 text-gray-900" v-for="empresa_terciarizada in empresas_terciarizadas">
-                            <p> {{ empresa_terciarizada.Nombre }} </p>
-                            <p> {{ empresa_terciarizada.RUT }} </p>
-                        </div>
-                    </div>
-
-                    <div class="p-6">
-                        <h2 class="text-blue-700"> Documentos de las Empresas: </h2>
-
-                        <div class="p-3 text-gray-900" v-for="documento in documentos_de_las_empresas">
-                            <p> {{ documento.id }} </p>
-                            <p> {{ documento.Pertenece_a }} </p>
-                            <p> {{ documento.Archivo }} </p>
-                        </div>
-                    </div>
-
-                    <div class="p-6">
-                        <h2 class="text-blue-700"> Trabajadores Terciarizados: </h2>
-
-                        <div class="p-3 text-gray-900" v-for="trabajador in trabajadores_terciarizados">
-                            <p> {{ trabajador.Cedula }} </p>
-                            <p> {{ trabajador.Nombre }} </p>
-                            <p> {{ trabajador.Trabaja_en }} </p>
-                        </div>
-                    </div>
-
-                    <div class="p-6">
-                        <h2 class="text-blue-700"> Documentos De Los Trabajadores: </h2>
-
-                        <div class="p-3 text-gray-900" v-for="documento in documentos_de_los_trabajadores">
+                        <div class="p-3 text-gray-900" v-for="documento in documentos">
                             <p> {{ documento.id }} </p>
                             <p> {{ documento.Pertenece_a }} </p>
                             <p> {{ documento.Archivo }} </p>
@@ -115,18 +74,6 @@ defineProps({
                         </div>
                     </div>
 
-                    <div class="p-6">
-                        <h2 class="text-blue-700"> Solicitudes De Arreglo: </h2>
-
-                        <div class="p-3 text-gray-900" v-for="solicitud in solicitudes_de_arreglo">
-                            <p> {{ solicitud.id }} </p>
-                            <p> {{ solicitud.Creada_por }} </p>
-                            <p> {{ solicitud.Solicita_arreglar }} </p>
-                            <p> {{ solicitud.Estado }} </p>
-                            <p> {{ solicitud.Personal_asignado }} </p>
-                            <p> {{ solicitud.Aprobada_por }} </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

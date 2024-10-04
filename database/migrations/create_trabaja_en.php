@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('administradores', function (Blueprint $table) {
-            $table->integer('Cedula')->primary();
-            $table->string('Nombre');
+        Schema::create('trabaja_en', function (Blueprint $table) {
+            $table->bigInteger('Usuario');
+            $table->string('Localidades');
+
+            $table->foreign('Usuario')->references('id')->on('usuario');
         });
     }
 
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('administradores');
+        Schema::dropIfExists('trabaja_en');
     }
 };

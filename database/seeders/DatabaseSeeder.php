@@ -8,6 +8,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,28 +23,26 @@ class DatabaseSeeder extends Seeder
             'name' => 'Daniel',
             'email' => 'niverdanielarce@gmail.com',
             'password' => Hash::make('epalapapa'),
-            'UserType' => UserType::ADMINISTRADOR->value
+            'user_type' => UserType::ADMINISTRADOR->value
         ]);
 
         User::factory()->create([
             'name' => 'Lucas',
             'email' => 'rukasu@gmail.com',
             'password' => Hash::make('arribamilei15'),
-            'UserType' => UserType::ADMINISTRADOR->value
+            'user_type' => UserType::ADMINISTRADOR->value
         ]);
 
-
-
-        // cosas mias:
+        User::factory(10)->state(new Sequence(
+            ['user_type' => UserType::GUARDIA->value],
+            ['user_type' => UserType::EMPRESA->value],
+        ))->create();
 
         $this->call([
             SucursalesSeeder::class,
-            AdministradoresSeeder::class,
             GuardiasSeeder::class,
             EmpresasTerciarizadasSeeder::class,
-            TrabajadoresTerciarizadosSeeder::class,
             ArreglosSeeder::class,
-            SolicitudesDeArregloSeeder::class,
         ]);
     }
 }

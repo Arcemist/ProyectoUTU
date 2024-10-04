@@ -18,43 +18,8 @@ entity "Sucursales" {
 	--
 }
 
-entity "Administradores" {
-	* Cedula : Int
-	--
-	* Nombre : Text
-}
-
-entity "Guardias" {
-	* Cedula : Int
-	--
-	* Nombre : Text
-    * Trabaja_en : Json
-}
-
-entity "Empresas Terciarizadas" {
-	* RUT : Int
-	--
-	* Nombre : Text
-}
-
-entity "Documentos de las empresas" {
-	* ID : Int Autoincrement
-	--
-	* Pertenece A : Int <<FK>>
-	* Archivo : Blob
-}
-
-entity "Trabajadores Terciarizados" {
-	* Cedula : Int
-	--
-	* Nombre : Text
-	* Trabaja_en : Int <<FK>>
-}
-
-entity "Documentos de los trabajadores" {
-	* ID : Int Autoincrement
-	--
-	* Pertenece A : Int <<FK>>
+entity "Documentos" {
+	* Pertenece A : BigInt <<FK>>
 	* Archivo : Blob
 }
 
@@ -64,7 +29,8 @@ entity "Usuarios" {
     * Nombre : String
     * Email : String
     * Contraseña : String
-    * Tipo de usuario : Enum [Administrador, Guardia, Empresa, Trabajador]
+    * Tipo_de_usuario : Enum [Administrador, Guardia, Empresa]
+    * Roles : String
 }
 
 entity "Arreglos" {
@@ -73,33 +39,18 @@ entity "Arreglos" {
 	* Nombre : Text
 	* Descripcion : Text
 	* Creado_por : Int <<FK>>
+    * Empresa_encargada : Int <<FK>>
 	* Sucursal : Text <<FK>>
 	* Fecha_creacion : Date
 	  Fecha_realizado : Date
 }
 
-entity "Solicitudes de arreglo" {
-	* ID : Int Autoincrement
-	--
-	* Creada_por : Int <<FK>>
-	* Solicita_arreglar : Int <<FK>>
-    * Estado : Enum [Aceptada, Rechazada, En espera]
-	* Trabajadores_asignados: Json
-	  Aprobada_por : Text <<FK>>
-}
 
 ' Añadiendo las relaciones:
-"Sucursales" ||-l-o{ "Guardias"
-"Administradores" ||-d-o{ "Arreglos"
-"Administradores" ||-d-o{ "Solicitudes de arreglo"
-"Arreglos" }o-d-||"Sucursales"
-"Arreglos" ||-l-o{ "Solicitudes de arreglo"
-"Empresas Terciarizadas" ||-r-o{ "Solicitudes de arreglo"
-"Empresas Terciarizadas" ||-l-o{ "Documentos de las empresas"
-"Empresas Terciarizadas" ||-d-o{ "Trabajadores Terciarizados"
-"Trabajadores Terciarizados" ||-l-o{ "Documentos de los trabajadores"
 
-"Usuarios" --[hidden]r- "Administradores"
+"Documentos" }o-r-|| "Usuarios"
+"Usuarios" }o-r-|| "Arreglos"
+"Arreglos" }o-d-|| "Sucursales"
 
 ' Puedo poner ':' despues de una relacion pa poner comentario en el medio
 

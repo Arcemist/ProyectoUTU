@@ -15,13 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('Nombre');
             $table->string('Descripcion');
-            $table->integer('Creado_por');
-            $table->string('Sucursal');
+            $table->bigInteger('Creado_por');
+            $table->bigInteger('Empresa_encargada');
+            $table->bigInteger('Sucursal');
             $table->date('Fecha_creacion');
             $table->date('Fecha_realizado')->nullable(true);
 
-            $table->foreign('Creado_por')->references('Cedula')->on('Administradores');
-            $table->foreign('Sucursal')->references('Nombre')->on('Sucursales');
+            // Capaz que combiene refenrenciar el Email en vez de el Nombre
+            $table->foreign('Creado_por')->references('id')->on('users');
+            $table->foreign('Empresa_encargada')->references('id')->on('users');
+            $table->foreign('Sucursal')->references('id')->on('sucursales');
         });
     }
 
