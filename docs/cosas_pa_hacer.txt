@@ -14,16 +14,9 @@ Cosas de la Reunion:
 
     -Hacer mas roles intermedios
 
-    -Hacer que un usuario pueda tener varios roles
-
     -Ver la forma de hacer que diferentes roles tengan diferentes accesos a la base de datos (Solo lectura por ejemplo)
 
-    -Boton de chat que habra wasap web (NOTA: ver como se hace en celular)
-
-    -Hacer las versiones de celular de las paginas
-
     -Enfasis en que halla roles con menos permisos que los que mas tienen
-    -Enfasis en que los guardias necesitan poder ver los horarios
 
     CORREO: proyectos@camcel.com.uy
 
