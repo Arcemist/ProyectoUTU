@@ -23,6 +23,10 @@ Route::get('/', function () {
     ]);
 })->middleware('guest'); // esto hace que te mande a 'dashboard' o a 'home' o a '/' si ya estas logeado
 
+Route::get('/logo', function () {
+    return response()->file('/home/archcemist/Documents/ProyectoUTU/resources/js/assets/Prueba de Logos.png');
+});
+
 Route::get('/administrador', function () {
     $EventoCalendario = [
         'key' => 1,
