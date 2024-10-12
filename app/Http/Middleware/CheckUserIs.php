@@ -22,8 +22,6 @@ class CheckUserIs {
             abort(404);
         }
 
-        $hola = ['hola','como anda'];
-
         return $next($request);
 
 
