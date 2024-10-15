@@ -5,6 +5,7 @@ import { Head } from '@inertiajs/vue3';
 const date = new Date
 
 defineProps({
+    Paginas: Object,
     sucursales: Object,
     usuarios: Object,
     documentos: Object,
@@ -16,7 +17,7 @@ defineProps({
 <template>
     <Head title="intento" />
 
-    <AuthenticatedLayout>
+    <AuthenticatedLayout :Paginas="Paginas">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Intento</h2>
         </template>

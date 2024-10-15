@@ -8,6 +8,11 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
+
+defineProps({
+    Paginas: Object
+});
+
 </script>
 
 <template>
@@ -39,6 +44,10 @@ const showingNavigationDropdown = ref(false);
 
                                 <NavLink :href="route('administrador')" :active="route().current('administrador')">
                                     Calendario Administrador
+                                </NavLink>
+
+                                <NavLink v-for="Pagina in Paginas" :href="route(Pagina)" :active="route().current(Pagina)"  >
+                                    {{ Pagina }}
                                 </NavLink>
                             </div>
                         </div>
