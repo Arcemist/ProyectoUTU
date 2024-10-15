@@ -13,6 +13,12 @@ const form = useForm({
     password: '',
     password_confirmation: '',
     user_type: '',
+    ci: '',
+    direccion: '',
+    telefono: '',
+    profesion: '',
+    tipo: '',
+
 });
 
 const submit = () => {
@@ -25,8 +31,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Register" />
-
+        <Head title="Register"></Head>
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="user_type" value="Tipo de usuario" class="animate-[pulse_1.7s_ease-in-out_2]"/>
@@ -37,7 +42,6 @@ const submit = () => {
                     class="w-full animate-[pulse_1.7s_ease-in-out_2]"
                     label="Porfavor elija un tipo de usuario"
                 >
-
                     <option value="Guardia">
                         Guardia
                     </option>
@@ -51,8 +55,7 @@ const submit = () => {
                     </option>
                 </select>
             </div>
-
-            <div :disabled="form.user_type.value != 'Administrador'">
+            <div>
                 <div class="mt-4">
                     <InputLabel for="name" value="Nombre" />
 
@@ -113,17 +116,107 @@ const submit = () => {
 
                     <InputError class="mt-2" :message="form.errors.password_confirmation" />
                 </div>
+                <div v-if="form.user_type === 'Guardia'" class="mt-4">
+                    <InputLabel for="ci" value="Cédula de Identidad"/>
+                    <TextInput
+                        id="ci"
+                        type="number"
+                        class="mt-1 block w-full"
+                        v-model="form.ci"
+                        required
+                        autofocus
+                        autocomplete="ci"
+                    />
+                    <InputError class="mt-2" :message="form.errors.ci" />
 
+                    <InputLabel for="direccion" value="Dirección"/>
+                    <TextInput
+                        id="direccion"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.direccion"
+                        required
+                        autofocus
+                        autocomplete="direccion"
+                    />
+                    <InputError class="mt-2" :message="form.errors.direccion"/>
+
+                    <InputLabel for="telefono" value="Teléfono"/>
+                    <TextInput
+                        id="telefono"
+                        type="number"
+                        class="mt-1 block w-full"
+                        v-model="form.telefono"
+                        required
+                        autofocus
+                        autocomplete="telefono"
+                    />
+                    <InputError class="mt-2" :message="form.errors.telefono" />
+
+                    <InputLabel for="profesion" value="Cargo"/>
+                    <TextInput
+                        id="profesion"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.profesion"
+                        required
+                        autofocus
+                        autocomplete="profesion"
+                    />
+                    <InputError class="mt-2" :message="form.errors.profesion" />
+
+                    <InputLabel for="horario" value="Horario" class="animate-[pulse_1.7s_ease-in-out_2]"/>
+
+                <select
+                    id="horario"
+                    v-model="form.horario"
+                    class="w-full animate-[pulse_1.7s_ease-in-out_2]"
+                    label="Por favor elija un horario"
+                >
+                    <option value="6-14">
+                        6:00 - 14:00
+                    </option>
+
+                    <option value="14-22">
+                        14:00 - 22:00
+                    </option>
+
+                    <option value="22-6">
+                        22:00 - 6:00
+                    </option>
+
+                    <option value="rotativo">
+                        Rotativo
+                    </option>
+                </select>
+                </div>
+
+                <div v-if="form.user_type === 'Empresa'" class="mt-4">
+                    <InputLabel for="tipo" value="Tipo de Empresa"/>
+                    <TextInput
+                        id="tipo"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.tipo"
+                        required
+                        autofocus
+                        autocomplete="tipo"
+                    />
+                    <InputError class="mt-2" :message="form.errors.tipo"/>
+                </div>
+                <div v-if="form.user_type === 'Administrador'" class="mt-4">
+                    <h1>EL CÓDIGO FUNCIONA AHORA CALLATE</h1>
+                </div>
                 <div class="flex items-center justify-end mt-4">
                     <Link
                         :href="route('login')"
                         class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Already registered?
+                        Inicia Sesión
                     </Link>
 
                     <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Register
+                        Registrar
                     </PrimaryButton>
                 </div>
             </div>
