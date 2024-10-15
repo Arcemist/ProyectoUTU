@@ -42,12 +42,6 @@ Route::middleware([
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-Route::get('/hola', function () {
-    return ['epa'];
-})->name('hola');
-
-
 // Ejemplo pa checkear base de datos
 Route::get('/database', function() {
     return [

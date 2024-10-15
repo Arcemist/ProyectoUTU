@@ -11,7 +11,8 @@
           @click="mostrarFormulario = true"
         />
       </div>
-      
+
+
       <!-- Formulario de Evento -->
       <div v-if="mostrarFormulario" class="w-full h-auto p-4 border-l border-gray-300">
         <h2 class="text-lg font-semibold mb-4">Formulario de Evento</h2>
@@ -95,6 +96,7 @@
 <script setup>
 import { ref } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+
 
 // Variables para manejar el calendario y los eventos
 const date = ref(new Date());
