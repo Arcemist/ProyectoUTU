@@ -74,6 +74,28 @@ Route::middleware([
         ]);
     })->name('intento');
 
+    Route::get('/administrador', function () {
+        $EventoCalendario = [
+            'key' => 1,
+            'highlight' => [
+                'color' => 'purple',
+                'fillMode' => 'outline'
+            ],
+            'dates' => '9/9/2024',
+        ];
+    
+        $InfoEvento = [
+            'fecha' => '9/9/2024',
+            'descripcion' => 'hola como anda usted'
+        ];
+    
+        // Importante que 'EventosCalendario' sea un array de arrays sino no le gusta al Vcalendar
+        return Inertia::render('Administrador', [
+            'EventosCalendario' => [$EventoCalendario],
+            'InfoEventos' => [$InfoEvento]
+        ]);
+    })->name('administrador');
+
     Route::get('/sucursales', [SucursalesController::class, 'show'])->name('sucursales.show');
 });
 
@@ -94,7 +116,9 @@ Route::middleware([
     'verified',
     'CheckUserIs:'.UserType::EMPRESA->value
 ])->group(function () {
-
+    Route::get('/empresa', function() {
+        return Inertia::render('Empresa', []);
+    });
 });
 
 // Ejemplo pa checkear base de datos
