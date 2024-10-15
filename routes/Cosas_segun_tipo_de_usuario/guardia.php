@@ -2,6 +2,7 @@
 
 use App\Enums\UserType;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 // Cosas solo pa Guardias
 Route::middleware([
@@ -9,8 +10,8 @@ Route::middleware([
     'verified',
     'CheckUserIs:'.UserType::GUARDIA->value
 ])->group(function () {
-    Route::get('/probando', function () {
-        return ['hola'];
+    Route::get('/guardia', function () {
+        return Inertia::render('Guardia');
     });
 });
 
