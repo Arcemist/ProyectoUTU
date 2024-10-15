@@ -38,7 +38,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/intento', function () {
         return Inertia::render('intento', [
-            'Paginas' => ['hola'],
+            'Paginas' => [],
             'usuarios' => user::all(),
             'sucursales' => sucursales::all(),
             'documentos' => documentos::all(),
