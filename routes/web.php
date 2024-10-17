@@ -2,16 +2,16 @@
 
 use App\Enums\UserType;
 use App\Http\Controllers\SucursalesController;
-use App\Http\Middleware\CheckUserType;
 use App\Models\arreglos;
 use App\Models\documentos;
 use App\Models\sucursales;
 use App\Models\User;
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use function PHPUnit\Framework\returnSelf;
+
 
 // Pagina de bienvenida por defecto
 Route::get('/', function () {
@@ -35,28 +35,6 @@ Route::get('Solicitudes_de_registro', function () {
     return Inertia::render('SolicitudesDeRegistro');
 })->name('solicitudes_de_registro');
 
-Route::get('/administrador', function () {
-    $EventoCalendario = [
-        'key' => 1,
-        'highlight' => [
-            'color' => 'purple',
-            'fillMode' => 'outline'
-        ],
-        'dates' => '9/9/2024',
-    ];
-
-    $InfoEvento = [
-        'fecha' => '9/9/2024',
-        'descripcion' => 'hola como anda usted'
-    ];
-
-    // Importante que 'EventosCalendario' sea un array de arrays sino no le gusta al Vcalendar
-    return Inertia::render('Administrador', [
-        'EventosCalendario' => [$EventoCalendario],
-        'InfoEventos' => [$InfoEvento]
-    ]);
-})->middleware(['auth', 'verified'])->name('administrador');
-
 // Cosas generales de usuarios logeados
 Route::middleware([
     'auth',
@@ -69,68 +47,6 @@ Route::middleware([
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-// cosas solo pa Administradores
-Route::middleware([
-    'auth',
-    'verified',
-    'CheckUserIs:'.UserType::ADMINISTRADOR->value
-])->group(function () {
-    Route::get('/intento', function () {
-        return Inertia::render('intento', [
-            'usuarios' => user::all(),
-            'sucursales' => sucursales::all(),
-            'documentos' => documentos::all(),
-            'arreglos' => arreglos::all(),
-        ]);
-    })->name('intento');
-
-    Route::get('/administrador', function () {
-        $EventoCalendario = [
-            'key' => 1,
-            'highlight' => [
-                'color' => 'purple',
-                'fillMode' => 'outline'
-            ],
-            'dates' => '9/9/2024',
-        ];
-    
-        $InfoEvento = [
-            'fecha' => '9/9/2024',
-            'descripcion' => 'hola como anda usted'
-        ];
-    
-        // Importante que 'EventosCalendario' sea un array de arrays sino no le gusta al Vcalendar
-        return Inertia::render('Administrador', [
-            'EventosCalendario' => [$EventoCalendario],
-            'InfoEventos' => [$InfoEvento]
-        ]);
-    })->name('administrador');
-
-    Route::get('/sucursales', [SucursalesController::class, 'show'])->name('sucursales.show');
-});
-
-// Cosas solo pa Guardias
-Route::middleware([
-    'auth',
-    'verified',
-    'CheckUserIs:'.UserType::GUARDIA->value
-])->group(function () {
-    Route::get('/probando', function () {
-        return ['hola'];
-    });
-});
-
-// Cosas solo pa Empresas
-Route::middleware([
-    'auth',
-    'verified',
-    'CheckUserIs:'.UserType::EMPRESA->value
-])->group(function () {
-    Route::get('/empresa', function() {
-        return Inertia::render('Empresa', []);
-    });
 });
 
 // Ejemplo pa checkear base de datos
@@ -148,4 +64,8 @@ Route::get('/database', function() {
     ];
 });
 
+
 require __DIR__.'/auth.php';
+require __DIR__.'/Cosas_segun_tipo_de_usuario/administrador.php';
+require __DIR__.'/Cosas_segun_tipo_de_usuario/guardia.php';
+require __DIR__.'/Cosas_segun_tipo_de_usuario/empresa.php';
