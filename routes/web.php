@@ -27,6 +27,14 @@ Route::get('/logo', function () {
     return response()->file('/home/archcemist/Documents/ProyectoUTU/resources/js/assets/Prueba de Logos.png');
 });
 
+Route::get('Usuarios_registrados', function () {
+    return Inertia::render('UsuariosRegistrados');
+})->name('usuarios_registrados');
+
+Route::get('Solicitudes_de_registro', function () {
+    return Inertia::render('SolicitudesDeRegistro');
+})->name('solicitudes_de_registro');
+
 Route::get('/administrador', function () {
     $EventoCalendario = [
         'key' => 1,

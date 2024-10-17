@@ -40,6 +40,14 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('administrador')" :active="route().current('administrador')">
                                     Calendario Administrador
                                 </NavLink>
+
+                                <NavLink :href="route('usuarios_registrados')" :active="route().current('usuarios_registrados')">
+                                    Usuarios Registrados
+                                </NavLink>
+
+                                <NavLink :href="route('solicitudes_de_registro')" :active="route().current('solicitudes_de_registro')">
+                                    Solicitudes de registro
+                                </NavLink>
                             </div>
                         </div>
 
