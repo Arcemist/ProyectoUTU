@@ -7,17 +7,8 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 
-// Controla el estado de mostrar el dropdown de navegación
 const showingNavigationDropdown = ref(false);
-
-// Controla el estado de mostrar el menú de notificaciones
-const showingNotificationDropdown = ref(false);
-
-// Lista simulada de solicitudes de registro (para simular notificaciones)
-const notifications = ref([
-    { id: 1, name: 'John Doe', message: 'Ha solicitado registrarse.' },
-    { id: 2, name: 'Jane Smith', message: 'Ha solicitado registrarse.' },
-]);
+const showingNotificationsDropdown = ref(false);  // Para controlar el dropdown de notificaciones
 
 defineProps({
     Paginas: Object
@@ -35,7 +26,9 @@ defineProps({
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800" />
+                                    <ApplicationLogo
+                                        class="block h-9 w-auto fill-current text-gray-800"
+                                    />
                                 </Link>
                             </div>
 
@@ -44,56 +37,58 @@ defineProps({
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
-                                <!-- Agregar los demás enlaces de navegación aquí -->
+
+                                <NavLink :href="route('intento')" :active="route().current('intento')">
+                                    intento
+                                </NavLink>
+
+                                <NavLink :href="route('administrador')" :active="route().current('administrador')">
+                                    Calendario Administrador
+                                </NavLink>
+
+                                <NavLink :href="route('usuarios_registrados')" :active="route().current('usuarios_registrados')">
+                                    Usuarios Registrados
+                                </NavLink>
+
+                                <NavLink :href="route('solicitudes_de_registro')" :active="route().current('solicitudes_de_registro')">
+                                    Solicitudes de registro
+                                </NavLink>
+
+                                <NavLink v-for="Pagina in Paginas" :href="route(Pagina)" :active="route().current(Pagina)"  >
+                                    {{ Pagina }}
+
+                                </NavLink>
                             </div>
                         </div>
 
-                        <!-- Notificaciones -->
-                        <div class="flex items-center space-x-4">
-                            <!-- Notification Bell Icon -->
-                            <div class="relative">
-                                <button
-                                    @click="showingNotificationDropdown = !showingNotificationDropdown"
-                                    class="relative inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                                >
-                                    <svg
-                                        class="h-6 w-6 text-gray-500"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.157V11a6.003 6.003 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.157c0 .538-.214 1.055-.595 1.438L4 17h5m0 0v1a3 3 0 006 0v-1m-6 0h6"
-                                        />
-                                    </svg>
-
-                                    <!-- Badge de número de notificaciones -->
-                                    <span v-if="notifications.length" class="absolute top-0 right-0 inline-block w-3 h-3 bg-red-600 rounded-full"></span>
-                                </button>
-
-                                <!-- Dropdown de Notificaciones -->
-                                <div
-                                    v-if="showingNotificationDropdown"
-                                    class="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2"
-                                >
-                                    <div v-if="notifications.length > 0">
-                                        <div
-                                            v-for="notification in notifications"
-                                            :key="notification.id"
-                                            class="px-4 py-2 border-b border-gray-200"
+                        <div class="hidden sm:flex sm:items-center sm:ms-6">
+                            <!-- Notifications Dropdown -->
+                            <div class="relative ms-3">
+                                <Dropdown align="right" width="48">
+                                    <template #trigger>
+                                        <button
+                                            type="button"
+                                            @click="showingNotificationsDropdown = !showingNotificationsDropdown"
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                         >
-                                            <p class="text-sm font-medium text-gray-700">{{ notification.name }}</p>
-                                            <p class="text-sm text-gray-500">{{ notification.message }}</p>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118.5 14.5V11a6.002 6.002 0 00-4.5-5.91V4a1.5 1.5 0 10-3 0v1.09A6.002 6.002 0 006 11v3.5c0 .537-.214 1.05-.595 1.425L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                            </svg>
+                                        </button>
+                                    </template>
+
+                                    <template #content>
+                                        <div class="p-4">
+                                            <p class="font-semibold text-gray-700">Notificaciones</p>
+                                            <ul class="mt-2 space-y-2">
+                                                <!-- Aquí puedes iterar sobre las notificaciones dinámicamente -->
+                                                <li v-for="(notificacion, index) in [ 'Notificación 1', 'Notificación 2', 'Notificación 3' ]" :key="index" class="text-gray-600 text-sm">
+                                                    {{ notificacion }}
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </div>
-                                    <div v-else class="px-4 py-2 text-sm text-gray-500">
-                                        No tienes notificaciones nuevas.
-                                    </div>
-                                </div>
+                                    </template>
+                                </Dropdown>
                             </div>
 
                             <!-- Settings Dropdown -->
@@ -107,7 +102,12 @@ defineProps({
                                             >
                                                 {{ $page.props.auth.user.name }}
 
-                                                <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <svg
+                                                    class="ms-2 -me-0.5 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
                                                     <path
                                                         fill-rule="evenodd"
                                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -130,26 +130,88 @@ defineProps({
                                 </Dropdown>
                             </div>
                         </div>
+
+                        <!-- Hamburger -->
+                        <div class="-me-2 flex items-center sm:hidden">
+                            <button
+                                @click="showingNavigationDropdown = !showingNavigationDropdown"
+                                class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                            >
+                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <path
+                                        :class="{
+                                            hidden: showingNavigationDropdown,
+                                            'inline-flex': !showingNavigationDropdown,
+                                        }"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                    <path
+                                        :class="{
+                                            hidden: !showingNavigationDropdown,
+                                            'inline-flex': showingNavigationDropdown,
+                                        }"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Responsive Navigation Menu -->
-                <div :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }" class="sm:hidden">
-                    <!-- Aquí va el menú de navegación responsive -->
+                <div
+                    :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
+                    class="sm:hidden"
+                >
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                            Dashboard
+                        </ResponsiveNavLink>
+                    </div>
+
+                    <!-- Responsive Settings Options -->
+                    <div class="pt-4 pb-1 border-t border-gray-200">
+                        <div class="px-4">
+                            <div class="font-medium text-base text-gray-800">
+                                {{ $page.props.auth.user.name }}
+                            </div>
+                            <div class="font-medium text-sm text-gray-500">
+                                {{ $page.props.auth.user.email }}
+                            </div>
+                        </div>
+
+                        <div class="mt-3 space-y-1">
+                            <ResponsiveNavLink :href="route('profile.edit')">
+                                Profile
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">
+                                Log Out
+                            </ResponsiveNavLink>
+                        </div>
+                    </div>
                 </div>
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
+            <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                        {{ route().current() }}
+                    </h2>
                 </div>
             </header>
 
             <!-- Page Content -->
             <main>
-                <slot />
+                <slot></slot>
             </main>
         </div>
     </div>
 </template>
+
