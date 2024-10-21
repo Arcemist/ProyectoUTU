@@ -19,5 +19,6 @@ yarn-error.log
 /.idea
 /.vscode
 .ide_helpers/
+_ide_helper.php
 .pest_results
 update_stubs.sh
