@@ -10,9 +10,41 @@ import { Link } from '@inertiajs/vue3';
 const showingNavigationDropdown = ref(false);
 const showingNotificationsDropdown = ref(false);  // Para controlar el dropdown de notificaciones
 
-defineProps({
-    Paginas: Object
-});
+const Links = [{
+    ruta: 'dashboard',
+    nombre: 'Dashboard'
+},{
+    ruta: 'intento',
+    nombre: 'intento'
+},{
+    ruta: 'administrador',
+    nombre: 'Calendario Administrador'
+},{
+    ruta: 'usuarios_registrados',
+    nombre: 'Usuarios Registrados'
+},{
+    ruta: 'solicitudes_de_registro',
+    nombre: 'Solicitudes de registro'
+}];
+
+const Notificaciones = [{
+    nombre: 'Notificacion 1'
+},{
+    nombre: 'Notificacion 2'
+},{
+    nombre: 'Notificacion 3'
+},{
+    nombre: 'Esta version se define en el script setup'
+}];
+
+const OpcionesPerfil = [{
+    ruta: 'profile.edit',
+    nombre: 'Perfil'
+},{
+    ruta: 'logout',
+    nombre: 'Cerrar sesión'
+}];
+
 </script>
 
 <template>
@@ -34,29 +66,8 @@ defineProps({
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </NavLink>
-
-                                <NavLink :href="route('intento')" :active="route().current('intento')">
-                                    intento
-                                </NavLink>
-
-                                <NavLink :href="route('administrador')" :active="route().current('administrador')">
-                                    Calendario Administrador
-                                </NavLink>
-
-                                <NavLink :href="route('usuarios_registrados')" :active="route().current('usuarios_registrados')">
-                                    Usuarios Registrados
-                                </NavLink>
-
-                                <NavLink :href="route('solicitudes_de_registro')" :active="route().current('solicitudes_de_registro')">
-                                    Solicitudes de registro
-                                </NavLink>
-
-                                <NavLink v-for="Pagina in Paginas" :href="route(Pagina)" :active="route().current(Pagina)"  >
-                                    {{ Pagina }}
-
+                                <NavLink v-for="Link in Links" :href="route(Link.ruta)" :active="route().current(Link.ruta)"  >
+                                    {{ Link.nombre }}
                                 </NavLink>
                             </div>
                         </div>
@@ -81,10 +92,11 @@ defineProps({
                                         <div class="p-4">
                                             <p class="font-semibold text-gray-700">Notificaciones</p>
                                             <ul class="mt-2 space-y-2">
-                                                <!-- Aquí puedes iterar sobre las notificaciones dinámicamente -->
-                                                <li v-for="(notificacion, index) in [ 'Notificación 1', 'Notificación 2', 'Notificación 3' ]" :key="index" class="text-gray-600 text-sm">
-                                                    {{ notificacion }}
-                                                </li>
+                                                <div class="text-gray-600 text-sm">
+                                                    <li v-for="notificacion in Notificaciones">
+                                                        {{ notificacion.nombre }}
+                                                    </li>
+                                                </div>
                                             </ul>
                                         </div>
                                     </template>
@@ -119,12 +131,8 @@ defineProps({
                                     </template>
 
                                     <template #content>
-                                        <DropdownLink :href="route('profile.edit')">
-                                            Profile
-                                        </DropdownLink>
-
-                                        <DropdownLink :href="route('logout')" method="post" as="button">
-                                            Log Out
+                                        <DropdownLink v-for="Opcion in OpcionesPerfil" :href="route(Opcion.ruta)" :active="route().current(Opcion.ruta)"  >
+                                            {{ Opcion.nombre }}
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>
@@ -170,8 +178,8 @@ defineProps({
                     class="sm:hidden"
                 >
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                        <ResponsiveNavLink v-for="Link in Links" :href="route(Link.ruta)" :active="route().current(Link.ruta)"  >
+                            {{ Link.nombre }}
                         </ResponsiveNavLink>
                     </div>
 
@@ -214,4 +222,3 @@ defineProps({
         </div>
     </div>
 </template>
-

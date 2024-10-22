@@ -24,8 +24,7 @@ Route::get('/', function () {
 })->middleware('guest'); // esto hace que te mande a 'dashboard' o a 'home' o a '/' si ya estas logeado
 
 Route::get('/logo', function () {
-    
-    return response()->file(public_path('Prueba de Logos.php'));
+    return response()->file(public_path('Logo.png'));
 });
 
 Route::get('Usuarios_registrados', function () {
