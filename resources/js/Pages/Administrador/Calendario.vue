@@ -1,5 +1,68 @@
+<script setup>
+    import { ref } from 'vue';
+    import AdministrartorLayout from '@/Layouts/AdministratorLayout.vue';
+
+
+    // Variables para manejar el calendario y los eventos
+    const date = ref(new Date());
+    const masks = ref({
+      modelValue: 'DD/MM/YYYY',
+    });
+
+    // Muestra el formulario de evento cuando se selecciona una fecha
+    const mostrarFormulario = ref(false);
+    const tituloEvento = ref('');
+    const descripcionEvento = ref('');
+    const horaEvento = ref('');
+    const eventos = ref([]); // Lista para almacenar los eventos agendados
+    const editando = ref(false); // Para saber si estamos editando un evento
+    let indexEditar = ref(null); // Índice del evento que se está editando
+
+    // Función para guardar o actualizar el evento
+    function guardarEvento() {
+      const nuevoEvento = {
+        fecha: date.value.toLocaleDateString(), // Usamos la fecha seleccionada
+        titulo: tituloEvento.value,
+        descripcion: descripcionEvento.value,
+        hora: horaEvento.value
+      };
+
+      if (editando.value) {
+        // Si estamos editando, actualizamos el evento
+        eventos.value[indexEditar.value] = nuevoEvento;
+        editando.value = false;
+      } else {
+        // Si no estamos editando, lo agregamos a la lista de eventos
+        eventos.value.push(nuevoEvento);
+      }
+
+      // Resetear los campos del formulario
+      tituloEvento.value = '';
+      descripcionEvento.value = '';
+      horaEvento.value = '';
+      mostrarFormulario.value = false;
+    }
+
+    // Función para editar un evento
+    function editarEvento(index) {
+      // Llenamos el formulario con los datos del evento seleccionado
+      const evento = eventos.value[index];
+      tituloEvento.value = evento.titulo;
+      descripcionEvento.value = evento.descripcion;
+      horaEvento.value = evento.hora;
+      indexEditar.value = index;
+      editando.value = true;
+      mostrarFormulario.value = true;
+    }
+
+    // Función para eliminar un evento
+    function eliminarEvento(index) {
+      eventos.value.splice(index, 1); // Eliminar el evento de la lista
+    }
+</script>
+
 <template>
-  <AuthenticatedLayout>
+  <AdministrartorLayout>
     <div class="grid grid-cols-2 gap-4">
       <!-- Calendario -->
       <div style="width: 50%;" class="w-full h-auto">
@@ -16,7 +79,7 @@
       <!-- Formulario de Evento -->
       <div v-if="mostrarFormulario" class="w-full h-auto p-4 border-l border-gray-300">
         <h2 class="text-lg font-semibold mb-4">Formulario de Evento</h2>
-        
+
         <div class="mb-4">
           <label for="titulo" class="block font-medium">Título</label>
           <input
@@ -27,7 +90,7 @@
             placeholder="Escriba el título del evento"
           />
         </div>
-        
+
         <div class="mb-4">
           <label for="descripcion" class="block font-medium">Descripción</label>
           <textarea
@@ -38,7 +101,7 @@
             placeholder="Escriba la descripción del evento"
           ></textarea>
         </div>
-        
+
         <div class="mb-4">
           <label for="hora" class="block font-medium">Hora</label>
           <input
@@ -90,89 +153,26 @@
         </div>
       </div>
     </div>
-  </AuthenticatedLayout>
+  </AdministrartorLayout>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-
-
-// Variables para manejar el calendario y los eventos
-const date = ref(new Date());
-const masks = ref({
-  modelValue: 'DD/MM/YYYY',
-});
-
-// Muestra el formulario de evento cuando se selecciona una fecha
-const mostrarFormulario = ref(false);
-const tituloEvento = ref('');
-const descripcionEvento = ref('');
-const horaEvento = ref('');
-const eventos = ref([]); // Lista para almacenar los eventos agendados
-const editando = ref(false); // Para saber si estamos editando un evento
-let indexEditar = ref(null); // Índice del evento que se está editando
-
-// Función para guardar o actualizar el evento
-function guardarEvento() {
-  const nuevoEvento = {
-    fecha: date.value.toLocaleDateString(), // Usamos la fecha seleccionada
-    titulo: tituloEvento.value,
-    descripcion: descripcionEvento.value,
-    hora: horaEvento.value
-  };
-
-  if (editando.value) {
-    // Si estamos editando, actualizamos el evento
-    eventos.value[indexEditar.value] = nuevoEvento;
-    editando.value = false;
-  } else {
-    // Si no estamos editando, lo agregamos a la lista de eventos
-    eventos.value.push(nuevoEvento);
-  }
-
-  // Resetear los campos del formulario
-  tituloEvento.value = '';
-  descripcionEvento.value = '';
-  horaEvento.value = '';
-  mostrarFormulario.value = false;
-}
-
-// Función para editar un evento
-function editarEvento(index) {
-  // Llenamos el formulario con los datos del evento seleccionado
-  const evento = eventos.value[index];
-  tituloEvento.value = evento.titulo;
-  descripcionEvento.value = evento.descripcion;
-  horaEvento.value = evento.hora;
-  indexEditar.value = index;
-  editando.value = true;
-  mostrarFormulario.value = true;
-}
-
-// Función para eliminar un evento
-function eliminarEvento(index) {
-  eventos.value.splice(index, 1); // Eliminar el evento de la lista
-}
-</script>
 
 <style scoped>
-/* Estilos personalizados */
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-th, td {
-  padding: 10px;
-  text-align: left;
-}
-th {
-  background-color: #ffffff;
-  color: black;
-}
-td {
-  background-color: #ffffff;
-  color:black;
-}
-
+    /* Estilos personalizados */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #ffffff;
+      color: black;
+    }
+    td {
+      background-color: #ffffff;
+      color:black;
+    }
 </style>

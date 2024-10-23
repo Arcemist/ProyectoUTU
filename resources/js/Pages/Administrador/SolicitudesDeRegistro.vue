@@ -1,10 +1,33 @@
+<script setup>
+    import { ref } from 'vue';
+    import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
+
+    // Lista de solicitudes de registro con fotos de perfil
+    const solicitudes = ref([
+      { nombre: 'Juan Pérez', correo: 'juan@example.com', fecha: '12/10/2024', fotoPerfil: 'https://randomuser.me/api/portraits/men/1.jpg' },
+      { nombre: 'Ana López', correo: 'ana@example.com', fecha: '13/10/2024', fotoPerfil: 'https://randomuser.me/api/portraits/women/2.jpg' }
+    ]);
+
+    // Función para aceptar una solicitud
+    function aceptarSolicitud(index) {
+      solicitudes.value.splice(index, 1); // Elimina la solicitud aceptada
+      alert('Solicitud aceptada');
+    }
+
+    // Función para rechazar una solicitud
+    function rechazarSolicitud(index) {
+      solicitudes.value.splice(index, 1); // Elimina la solicitud rechazada
+      alert('Solicitud rechazada');
+    }
+</script>
+
 <template>
-  <AuthenticatedLayout>
+  <AdministratorLayout>
     <div class="flex flex-col w-full h-auto">
       <!-- Lista de Solicitudes de Registro -->
       <div class="w-full">
         <h2 class="text-lg font-semibold mb-4">Solicitudes de Registro</h2>
-        
+
         <div v-if="solicitudes.length === 0" class="text-center">
           <p>No hay solicitudes de registro.</p>
         </div>
@@ -40,52 +63,29 @@
         </div>
       </div>
     </div>
-  </AuthenticatedLayout>
+  </AdministratorLayout>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-
-// Lista de solicitudes de registro con fotos de perfil
-const solicitudes = ref([
-  { nombre: 'Juan Pérez', correo: 'juan@example.com', fecha: '12/10/2024', fotoPerfil: 'https://randomuser.me/api/portraits/men/1.jpg' },
-  { nombre: 'Ana López', correo: 'ana@example.com', fecha: '13/10/2024', fotoPerfil: 'https://randomuser.me/api/portraits/women/2.jpg' }
-]);
-
-// Función para aceptar una solicitud
-function aceptarSolicitud(index) {
-  solicitudes.value.splice(index, 1); // Elimina la solicitud aceptada
-  alert('Solicitud aceptada');
-}
-
-// Función para rechazar una solicitud
-function rechazarSolicitud(index) {
-  solicitudes.value.splice(index, 1); // Elimina la solicitud rechazada
-  alert('Solicitud rechazada');
-}
-</script>
-
 <style scoped>
-/* Estilos personalizados para la tabla */
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-th, td {
-  padding: 15px;
-  text-align: left;
-}
-th {
-  background-color: #ffffff;
-  color: black;
-}
-td {
-  background-color: #ffffff;
-  color: black;
-}
+    /* Estilos personalizados para la tabla */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    th {
+      background-color: #ffffff;
+      color: black;
+    }
+    td {
+      background-color: #ffffff;
+      color: black;
+    }
 
-img {
-  border-radius: 50%; /* Para hacer que las imágenes sean circulares */
-}
+    img {
+      border-radius: 50%; /* Para hacer que las imágenes sean circulares */
+    }
 </style>

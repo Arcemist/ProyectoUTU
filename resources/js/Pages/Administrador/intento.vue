@@ -1,23 +1,22 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+    import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
+    import { Head } from '@inertiajs/vue3';
 
-const date = new Date
+    const date = new Date
 
-defineProps({
-    Paginas: Object,
-    sucursales: Object,
-    usuarios: Object,
-    documentos: Object,
-    arreglos: Object,
-});
+    defineProps({
+        sucursales: Object,
+        usuarios: Object,
+        documentos: Object,
+        arreglos: Object,
+    });
 
 </script>
 
 <template>
     <Head title="intento" />
 
-    <AuthenticatedLayout :Paginas="Paginas">
+    <AdministratorLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Intento</h2>
         </template>
@@ -78,5 +77,5 @@ defineProps({
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </AdministratorLayout>
 </template>

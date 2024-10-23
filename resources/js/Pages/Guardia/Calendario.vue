@@ -1,8 +1,6 @@
-
 <script setup>
   import { ref } from 'vue';
-  import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-
+  import GuardLayout from '@/Layouts/GuardLayout.vue';
 
   // Variables para manejar el calendario y los eventos
   const masks = ref({
@@ -19,32 +17,10 @@
   const descripcionEvento = ref('');
   const horaEvento = ref('');
   const eventos = ref([]); // Lista para almacenar los eventos agendado
-  </script>
-
-  <style scoped>
-    .right-align {
-        text-align: right;
-    }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  th, td {
-    padding: 10px;
-    text-align: left;
-  }
-  th {
-    background-color: #ffffff;
-    color: black;
-  }
-  td {
-    background-color: #ffffff;
-    color:black;
-  }
-  </style>
+</script>
 
 <template>
-    <AuthenticatedLayout>
+    <GuardLayout>
       <div class="grid grid-cols-2 gap-4">
         <!-- Calendario -->
         <div style="width: 50%;" class="w-full h-auto">
@@ -96,5 +72,27 @@
         </div>
         </div>
       </div>
-    </AuthenticatedLayout>
-  </template>
+    </GuardLayout>
+</template>
+
+<style scoped>
+    .right-align {
+        text-align: right;
+    }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #ffffff;
+    color: black;
+  }
+  td {
+    background-color: #ffffff;
+    color:black;
+  }
+</style>

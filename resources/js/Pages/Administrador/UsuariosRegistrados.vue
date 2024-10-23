@@ -1,5 +1,62 @@
+<script setup>
+    import { ref, computed } from 'vue';
+    import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
+
+    // Datos de usuarios registrados (simulados)
+    const usuarios = ref([
+      { nombre: 'Usuario 1', email: 'usuario1@example.com', telefono: '123456789', fotoPerfil: 'https://via.placeholder.com/50', documentos: [
+        { nombre: 'Documento 1', enlace: 'https://via.placeholder.com/150' },
+        { nombre: 'Documento 2', enlace: 'https://via.placeholder.com/150' }
+      ]},
+      { nombre: 'Usuario 2', email: 'usuario2@example.com', telefono: '987654321', fotoPerfil: 'https://via.placeholder.com/50', documentos: [
+        { nombre: 'Documento 3', enlace: 'https://via.placeholder.com/150' },
+      ]},
+      { nombre: 'Usuario 3', email: 'usuario3@example.com', telefono: '1122334455', fotoPerfil: 'https://via.placeholder.com/50', documentos: [
+        { nombre: 'Documento 4', enlace: 'https://via.placeholder.com/150' },
+        { nombre: 'Documento 5', enlace: 'https://via.placeholder.com/150' }
+      ]},
+      { nombre: 'Usuario 4', email: 'usuario4@example.com', telefono: '5566778899', fotoPerfil: 'https://via.placeholder.com/50', documentos: []},
+    ]);
+
+    // Variables para búsqueda y perfil seleccionado
+    const search = ref('');
+    const perfilSeleccionado = ref(null);
+
+    // Filtrar usuarios según la búsqueda
+    const usuariosFiltrados = computed(() => {
+      if (!search.value) {
+        return usuarios.value;
+      }
+      return usuarios.value.filter((usuario) =>
+        usuario.nombre.toLowerCase().includes(search.value.toLowerCase())
+      );
+    });
+
+    // Función para buscar usuario
+    function buscarUsuario() {
+      console.log('Buscar:', search.value);
+    }
+
+    // Función para ver el perfil del usuario
+    function verPerfil(usuario) {
+      perfilSeleccionado.value = usuario;
+    }
+
+    // Función para cerrar el modal de perfil
+    function cerrarPerfil() {
+      perfilSeleccionado.value = null;
+    }
+
+    // Función para eliminar un usuario
+    function eliminarUsuario(index) {
+      if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+        usuarios.value.splice(index, 1);
+      }
+    }
+</script>
+
 <template>
-  <AuthenticatedLayout>
+  <AdministratorLayout>
     <div class="p-4">
       <!-- Barra de búsqueda -->
       <div class="flex items-center mb-6">
@@ -100,75 +157,18 @@
         </div>
       </div>
     </div>
-  </AuthenticatedLayout>
+  </AdministratorLayout>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-
-// Datos de usuarios registrados (simulados)
-const usuarios = ref([
-  { nombre: 'Usuario 1', email: 'usuario1@example.com', telefono: '123456789', fotoPerfil: 'https://via.placeholder.com/50', documentos: [
-    { nombre: 'Documento 1', enlace: 'https://via.placeholder.com/150' },
-    { nombre: 'Documento 2', enlace: 'https://via.placeholder.com/150' }
-  ]},
-  { nombre: 'Usuario 2', email: 'usuario2@example.com', telefono: '987654321', fotoPerfil: 'https://via.placeholder.com/50', documentos: [
-    { nombre: 'Documento 3', enlace: 'https://via.placeholder.com/150' },
-  ]},
-  { nombre: 'Usuario 3', email: 'usuario3@example.com', telefono: '1122334455', fotoPerfil: 'https://via.placeholder.com/50', documentos: [
-    { nombre: 'Documento 4', enlace: 'https://via.placeholder.com/150' },
-    { nombre: 'Documento 5', enlace: 'https://via.placeholder.com/150' }
-  ]},
-  { nombre: 'Usuario 4', email: 'usuario4@example.com', telefono: '5566778899', fotoPerfil: 'https://via.placeholder.com/50', documentos: []},
-]);
-
-// Variables para búsqueda y perfil seleccionado
-const search = ref('');
-const perfilSeleccionado = ref(null);
-
-// Filtrar usuarios según la búsqueda
-const usuariosFiltrados = computed(() => {
-  if (!search.value) {
-    return usuarios.value;
-  }
-  return usuarios.value.filter((usuario) =>
-    usuario.nombre.toLowerCase().includes(search.value.toLowerCase())
-  );
-});
-
-// Función para buscar usuario
-function buscarUsuario() {
-  console.log('Buscar:', search.value);
-}
-
-// Función para ver el perfil del usuario
-function verPerfil(usuario) {
-  perfilSeleccionado.value = usuario;
-}
-
-// Función para cerrar el modal de perfil
-function cerrarPerfil() {
-  perfilSeleccionado.value = null;
-}
-
-// Función para eliminar un usuario
-function eliminarUsuario(index) {
-  if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-    usuarios.value.splice(index, 1);
-  }
-}
-</script>
-
 <style scoped>
-/* Estilos personalizados */
-button {
-  transition: background-color 0.2s;
-}
-button:hover {
-  background-color: #3b82f6;
-}
-.bg-red-500:hover {
-  background-color: #e53e3e;
-}
+    /* Estilos personalizados */
+    button {
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #3b82f6;
+    }
+    .bg-red-500:hover {
+      background-color: #e53e3e;
+    }
 </style>

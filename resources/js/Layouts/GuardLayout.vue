@@ -16,15 +16,6 @@ const Links = [{
 },{
     ruta: 'intento',
     nombre: 'intento'
-},{
-    ruta: 'administrador',
-    nombre: 'Calendario Administrador'
-},{
-    ruta: 'usuarios_registrados',
-    nombre: 'Usuarios Registrados'
-},{
-    ruta: 'solicitudes_de_registro',
-    nombre: 'Solicitudes de registro'
 }];
 
 const Notificaciones = [{
@@ -131,7 +122,7 @@ const OpcionesPerfil = [{
                                     </template>
 
                                     <template #content>
-                                        <DropdownLink v-for="Opcion in OpcionesPerfil" :href="route(Opcion.ruta)" :active="route().current(Opcion.ruta)"  >
+                                        <DropdownLink v-for="Opcion in OpcionesPerfil" :href="route(Opcion.ruta)" :method="Opcion.metodo" as="button" :active="route().current(Opcion.ruta)">
                                             {{ Opcion.nombre }}
                                         </DropdownLink>
                                     </template>
@@ -195,11 +186,8 @@ const OpcionesPerfil = [{
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.edit')">
-                                Profile
-                            </ResponsiveNavLink>
-                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">
-                                Log Out
+                            <ResponsiveNavLink v-for="Opcion in OpcionesPerfil" :href="route(Opcion.ruta)" :method="Opcion.metodo" :active="route().current(Opcion.ruta)">
+                                {{ Opcion.nombre }}
                             </ResponsiveNavLink>
                         </div>
                     </div>

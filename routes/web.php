@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use function PHPUnit\Framework\returnSelf;
 
-
 // Pagina de bienvenida por defecto
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -26,14 +25,6 @@ Route::get('/', function () {
 Route::get('/logo', function () {
     return response()->file(public_path('Logo.png'));
 });
-
-Route::get('Usuarios_registrados', function () {
-    return Inertia::render('UsuariosRegistrados');
-})->name('usuarios_registrados');
-
-Route::get('Solicitudes_de_registro', function () {
-    return Inertia::render('SolicitudesDeRegistro');
-})->name('solicitudes_de_registro');
 
 // Cosas generales de usuarios logeados
 Route::middleware([
