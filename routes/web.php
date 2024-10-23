@@ -23,7 +23,7 @@ Route::get('/', function () {
 })->middleware('guest'); // esto hace que te mande a 'dashboard' o a 'home' o a '/' si ya estas logeado
 
 Route::get('/logo', function () {
-    return response()->file(public_path('Logo.png'));
+    return response()->file(public_path('Logo.pdf'));
 });
 
 // Cosas generales de usuarios logeados

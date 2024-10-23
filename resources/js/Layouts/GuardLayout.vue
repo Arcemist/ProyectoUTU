@@ -14,8 +14,8 @@ const Links = [{
     ruta: 'dashboard',
     nombre: 'Dashboard'
 },{
-    ruta: 'intento',
-    nombre: 'intento'
+    ruta: 'guardia.eventos',
+    nombre: 'Eventos'
 }];
 
 const Notificaciones = [{
@@ -30,9 +30,11 @@ const Notificaciones = [{
 
 const OpcionesPerfil = [{
     ruta: 'profile.edit',
+    metodo: 'get',
     nombre: 'Perfil'
 },{
     ruta: 'logout',
+    metodo: 'post',
     nombre: 'Cerrar sesión'
 }];
 

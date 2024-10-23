@@ -1,3 +1,9 @@
+<script setup>
+    import VuePdfEmbed from 'vue-pdf-embed';
+
+    const logoSource = '/logo';
+</script>
+
 <template>
-    <img src="/logo" />
+    <VuePdfEmbed :source="logoSource" :width="160" />
 </template>
