@@ -13,6 +13,8 @@ class SucursalesSeeder extends Seeder
      */
     public function run(): void
     {
+        sucursales::factory()->create(['Nombre' => 'Melo']); //sucursal base de ejemplo
+
         sucursales::factory(10)->create();
     }
 }

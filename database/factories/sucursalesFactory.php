@@ -19,5 +19,3 @@ class sucursalesFactory extends Factory
         return [ 'Nombre' => fake()->unique()->name() ];
     }
 }
-
-// esto dudo usarlo pero lo dejo porque sirve de ejemplo

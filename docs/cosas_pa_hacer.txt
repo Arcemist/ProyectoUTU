@@ -1,11 +1,8 @@
-Cosas pa hacer:
+Cosas para preguntar a Camcel:
+
+    -Saber que el lo que tiene que quedar guardado y no se puede borrar:
 
 
-	-Hacer los controladores
-
-	-Hacer las fabricas
-
-	-fijarse el tutorial que mando el profe pa saber que mas hacer
 
 
 Cosas de la Reunion:

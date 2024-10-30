@@ -9,6 +9,7 @@
         usuarios: Object,
         documentos: Object,
         arreglos: Object,
+        arreglosHistorial: Object
     });
 
 </script>
@@ -35,7 +36,8 @@
                         <h2 class="text-blue-700"> Sucursales: </h2>
 
                         <div class="p-3 text-gray-900" v-for="sucursal in sucursales">
-                            <p> {{ sucursal.Nombre }} </p>
+                            <p> ID: {{ sucursal.id }} </p>
+                            <p> Nombre: {{ sucursal.Nombre }} </p>
                         </div>
                     </div>
 
@@ -43,10 +45,11 @@
                         <h2 class="text-blue-700"> Usuarios: </h2>
 
                         <div class="p-3 text-gray-900" v-for="usuario in usuarios">
-                            <p> {{ usuario.id }} </p>
-                            <p> {{ usuario.name }} </p>
-                            <p> {{ usuario.email }} </p>
-                            <p> {{ usuario.user_type }} </p>
+                            <p> ID: {{ usuario.id }} </p>
+                            <p> Nombre: {{ usuario.name }} </p>
+                            <p> Email: {{ usuario.email }} </p>
+                            <p> Tipo: {{ usuario.user_type }} </p>
+                            <p> Roles: {{ usuario.roles }} </p>
                         </div>
                     </div>
 
@@ -54,9 +57,9 @@
                         <h2 class="text-blue-700"> Documentos: </h2>
 
                         <div class="p-3 text-gray-900" v-for="documento in documentos">
-                            <p> {{ documento.id }} </p>
-                            <p> {{ documento.Pertenece_a }} </p>
-                            <p> {{ documento.Archivo }} </p>
+                            <p> ID: {{ documento.id }} </p>
+                            <p> Pertenece_a: {{ documento.Pertenece_a }} </p>
+                            <p> Archivo: {{ documento.Archivo }} </p>
                         </div>
                     </div>
 
@@ -64,13 +67,28 @@
                         <h2 class="text-blue-700"> Arreglos: </h2>
 
                         <div class="p-3 text-gray-900" v-for="arreglo in arreglos">
-                            <p> {{ arreglo.id }} </p>
-                            <p> {{ arreglo.Nombre }} </p>
-                            <p> {{ arreglo.Descripcion }} </p>
-                            <p> {{ arreglo.Creado_por }} </p>
-                            <p> {{ arreglo.Sucursal }} </p>
-                            <p> {{ arreglo.Fecha_creacion }} </p>
-                            <p> {{ arreglo.Fecha_realizado }} </p>
+                            <p> ID: {{ arreglo.id }} </p>
+                            <p> Nombre: {{ arreglo.Nombre }} </p>
+                            <p> Descripcion: {{ arreglo.Descripcion }} </p>
+                            <p> Creado_por: {{ arreglo.Creado_por }} </p>
+                            <p> Empresa_encargada: {{ arreglo.Empresa_encargada }} </p>
+                            <p> Sucursal: {{ arreglo.Sucursal }} </p>
+                            <p> Fecha_creacion: {{ arreglo.Created_at }} </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <h2 class="text-blue-700"> Arreglos Historial: </h2>
+
+                        <div class="p-3 text-gray-900" v-for="arreglo in arreglosHistorial">
+                            <p> ID: {{ arreglo.id }} </p>
+                            <p> Nombre: {{ arreglo.Nombre }} </p>
+                            <p> Descripcion: {{ arreglo.Descripcion }} </p>
+                            <p> Creado_por: {{ arreglo.Creado_por }} </p>
+                            <p> Empresa_encargada: {{ arreglo.Empresa_encargada }} </p>
+                            <p> Sucursal: {{ arreglo.Sucursal }} </p>
+                            <p> Fecha_creacion: {{ arreglo.Created_at }} </p>
+                            <p> Fecha_realizado: {{ arreglo.Fecha_realizado }} </p>
                         </div>
                     </div>
 

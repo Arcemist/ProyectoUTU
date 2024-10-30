@@ -55,7 +55,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SucursalesSeeder::class,
             GuardiasSeeder::class,
-            EmpresasTerciarizadasSeeder::class,
             ArreglosSeeder::class,
         ]);
     }

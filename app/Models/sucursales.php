@@ -12,7 +12,17 @@ class sucursales extends Model
     protected $table = 'sucursales';
     public $timestamps = false;
 
-    public $incrementing = false;
-    protected $primaryKey = 'Nombre';
-    protected $keyType = 'string';
+    public $incrementing = true;
+
+    protected $attributes = [
+        'Nombre' => ''
+    ];
+
+    protected $fillable = [
+        'Nombre'
+    ];
+
+    public function id() {
+        return $this->attributes['id'];
+    }
 }

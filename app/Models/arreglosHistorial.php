@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class arreglos extends Model
+class arreglosHistorial extends Model
 {
     use HasFactory;
 
-    protected $table = 'arreglos';
+    protected $table = 'arreglos_historial';
 
     public $timestamps = true;
 
@@ -19,7 +19,8 @@ class arreglos extends Model
         'Creado_por' => 0,
         'Empresa_encargada' => '',
         'Personal_encargado' => '',
-        'Sucursal' => 0
+        'Sucursal' => 0,
+        'Fecha_realizado' => ''
     ];
 
     protected $fillable = [
@@ -28,7 +29,8 @@ class arreglos extends Model
         'Creado_por',
         'Empresa_encargada',
         'Personal_encargado',
-        'Sucursal'
+        'Sucursal',
+        'Fecha_realizado'
     ];
 
     public function Creado_por() {

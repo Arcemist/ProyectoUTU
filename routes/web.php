@@ -26,6 +26,7 @@ Route::get('/logo', function () {
     return response()->file(public_path('Logo.pdf'));
 });
 
+
 // Cosas generales de usuarios logeados
 Route::middleware([
     'auth',
@@ -40,23 +41,109 @@ Route::middleware([
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Ejemplo pa checkear base de datos
-Route::get('/database', function() {
-    return [
-        'Sucursales' => sucursales::all(),
-        'Administradores' => administradores::all(),
-        'Guardias' => guardias::all(),
-        'Empresas Terciarizadas' => empresas_terciarizadas::all(),
-        'Documentos de las empresas' => documentos_de_las_empresas::all(),
-        'Trabajadores Terciarizados' => trabajadores_terciarizados::all(),
-        'Documentos de los trabajadores' => documentos_de_los_trabajadores::all(),
-        'Arreglos' => arreglos::all(),
-        'Solicitudes de arreglo' => solicitudes_de_arreglo::all()
-    ];
+
+// cosas solo pa Administradores
+Route::Group([
+    'prefix' => 'administrador',
+    'middleware' => [
+        'auth',
+        'verified',
+        'CheckUserIs:'.UserType::ADMINISTRADOR->value
+    ]],
+function() {
+    Route::get('/intento', function () {
+        return Inertia::render('Administrador/intento', [
+            'Paginas' => [],
+            'usuarios' => user::all(),
+            'sucursales' => sucursales::all(),
+            'documentos' => documentos::all(),
+            'arreglos' => arreglos::all(),
+            'arreglosHistorial' => arreglosHistorial::all()
+        ]);
+    })->name('intento');
+
+    Route::get('/calendario', function () {
+        $EventoCalendario = [
+            'key' => 1,
+            'highlight' => [
+                'color' => 'purple',
+                'fillMode' => 'outline'
+            ],
+            'dates' => '9/9/2024',
+        ];
+
+        $InfoEvento = [
+            'fecha' => '9/9/2024',
+            'descripcion' => 'hola como anda usted'
+        ];
+
+        // Importante que 'EventosCalendario' sea un array de arrays sino no le gusta al Vcalendar
+        return Inertia::render('Administrador/Calendario', [
+            'EventosCalendario' => [$EventoCalendario],
+            'InfoEventos' => [$InfoEvento]
+        ]);
+    })->name('administrador.calendario');
+
+    Route::get('usuarios_registrados', function () {
+        return Inertia::render('Administrador/UsuariosRegistrados');
+    })->name('administrador.usuarios_registrados');
+
+    Route::get('solicitudes_de_registro', function () {
+        return Inertia::render('Administrador/SolicitudesDeRegistro');
+    })->name('administrador.solicitudes_de_registro');
 });
 
 
+// Cosas solo pa Empresas
+Route::Group([
+    'prefix' => 'empresa',
+    'middleware' => [
+        'auth',
+        'verified',
+        'CheckUserIs:'.UserType::EMPRESA->value
+    ]],
+function () {
+
+    Route::get('/eventos', function () {
+        return Inertia::render('Empresa/Eventos');
+    })->name('empresa.eventos');
+
+});
+
+
+// Cosas solo pa Guardias
+Route::Group([
+    'prefix' => 'guardia',
+    'middleware' => [
+        'auth',
+        'verified',
+        'CheckUserIs:'.UserType::GUARDIA->value
+    ]],
+function () {
+
+    Route::get('/calendario', function () {
+        $EventoCalendario = [
+            'key' => 1,
+            'highlight' => [
+                'color' => 'purple',
+                'fillMode' => 'outline'
+            ],
+            'dates' => '10/17/2024',
+            'description' => 'esto es un test',
+        ];
+
+        $InfoEvento = [
+            'fecha' => '9/9/2024',
+            'descripcion' => 'The Reckoning Approaches'
+        ];
+
+        // Importante que 'EventosCalendario' sea un array de arrays sino no le gusta al Vcalendar
+        return Inertia::render('Guardia/Calendario', [
+            'EventosCalendario' => [$EventoCalendario],
+            'InfoEventos' => [$InfoEvento]
+        ]);
+    })->name('guardia.eventos');
+
+});
+
 require __DIR__.'/auth.php';
-require __DIR__.'/Cosas_segun_tipo_de_usuario/administrador.php';
-require __DIR__.'/Cosas_segun_tipo_de_usuario/guardia.php';
-require __DIR__.'/Cosas_segun_tipo_de_usuario/empresa.php';
