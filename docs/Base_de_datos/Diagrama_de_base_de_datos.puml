@@ -11,8 +11,6 @@ skinparam {
 	}
 }
 
-'left to right direction
-
 entity "Sucursales" {
 	* Nombre : Text
 	--
@@ -33,6 +31,19 @@ entity "Usuarios" {
     * Roles : String
 }
 
+entity "Detalles Administrador" {
+    * Administrador: Int <<FK>>
+}
+
+entity "Detalles Empresa" {
+    * Empresa: Int <<FK>>
+}
+
+entity "Detalles Guardia" {
+    * Guardia: Int <<FK>>
+    * Trabaja en: String
+}
+
 entity "Arreglos" {
 	* ID : Int Autoincrement
 	--
@@ -40,17 +51,34 @@ entity "Arreglos" {
 	* Descripcion : Text
 	* Creado_por : Int <<FK>>
     * Empresa_encargada : Int <<FK>>
+    * Personal_encargado: String
 	* Sucursal : Text <<FK>>
-	* Fecha_creacion : Date
-	  Fecha_realizado : Date
+    * Created_at : Date
+	* Updated_at : Date
+}
+
+entity "Historial Arreglos" {
+	* ID : Int Autoincrement
+	--
+	* Nombre : Text
+	* Descripcion : Text
+	* Creado_por : Int <<FK>>
+    * Empresa_encargada : Int <<FK>>
+    * Personal_encargado: String
+	* Sucursal : Text <<FK>>
+    * Created_at : Date
+	* Updated_at : Date
 }
 
 
 ' Añadiendo las relaciones:
-
 "Documentos" }o-r-|| "Usuarios"
+"Usuarios" ||-d-o| "Detalles Administrador"
+"Usuarios" ||-d-o| "Detalles Empresa"
+"Usuarios" ||-d-o| "Detalles Guardia"
 "Usuarios" }o-r-|| "Arreglos"
 "Arreglos" }o-d-|| "Sucursales"
+"Arreglos" -[hidden]r- "Historial Arreglos"
 
 ' Puedo poner ':' despues de una relacion pa poner comentario en el medio
 

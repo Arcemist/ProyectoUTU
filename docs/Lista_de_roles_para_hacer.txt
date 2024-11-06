@@ -1,0 +1,19 @@
+Roles que almenos ya me di cuenta que tengo que hacer {
+
+    -Tecnico Prevencionista
+
+    -Administrador General
+
+    -El permiso para crear arreglos nuevos
+
+}
+
+Informacion sobre el Criterio de los roles: Los roles son para especificar usuarios que pueden realizar acciones especiales que los otros usuarios del mismo tipo, por lo tanto las cosas que sean genericas para todos los usuarios de un tipo no seran roles sino caracteristicas basicas de ese tipo de usuario.
+
+Lista de cosas que todos los usuarios de un tipo necesitan hacer:
+
+Administador {}
+
+Empresa {}
+
+Guardia {}

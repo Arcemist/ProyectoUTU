@@ -3,6 +3,7 @@
 use App\Enums\UserType;
 use App\Http\Controllers\SucursalesController;
 use App\Models\arreglos;
+use App\Models\arreglosHistorial;
 use App\Models\documentos;
 use App\Models\sucursales;
 use App\Models\User;
@@ -26,6 +27,15 @@ Route::get('/logo', function () {
     return response()->file(public_path('Logo.pdf'));
 });
 
+Route::get('/database', function () {
+    return response()->json([
+        'Sucursales' => sucursales::all(),
+        'Usuarios' => User::all(),
+        'Documentos' => documentos::all(),
+        'Arreglos' => arreglos::all(),
+        'ArreglosHistorial' => arreglosHistorial::all(),
+    ]);
+});
 
 // Cosas generales de usuarios logeados
 Route::middleware([

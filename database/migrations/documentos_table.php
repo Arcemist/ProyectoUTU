@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('documentos', function (Blueprint $table) {
-            $table->String('Subido_por');
-            $table->binary('Archivo');
+            $table->bigInteger('Subido_por');
+            $table->string('Ruta');
+            $table->timestamps();
 
             $table->foreign('Subido_por')->references('id')->on('users');
         });

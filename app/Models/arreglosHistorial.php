@@ -16,10 +16,10 @@ class arreglosHistorial extends Model
     protected $attributes = [
         'Nombre' => '',
         'Descripcion' => '',
-        'Creado_por' => 0,
-        'Empresa_encargada' => '',
+        'Creado_por' => [],
+        'Empresa_encargada' => [],
         'Personal_encargado' => '',
-        'Sucursal' => 0,
+        'Sucursal' => [],
         'Fecha_realizado' => ''
     ];
 
@@ -33,11 +33,10 @@ class arreglosHistorial extends Model
         'Fecha_realizado'
     ];
 
-    public function Creado_por() {
-        return $this->belongsTo(User::class, 'Creado_por', 'id');
-    }
+    protected $casts = [
+        'Creado_por' => 'array',
+        'Empresa_encargada' => 'array',
+        'Sucursal' => 'array'
+    ];
 
-    public function Sucursal() {
-        return $this->belongsTo(sucursales::class, 'Sucursal', 'id');
-    }
 }

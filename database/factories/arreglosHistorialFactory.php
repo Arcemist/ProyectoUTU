@@ -23,31 +23,21 @@ class arreglosHistorialFactory extends Factory
     public function definition(): array
     {
         return [ // Nota: el modelo de esto no existe todavia
-            'Nombre' => fake()->unique()->name(),
+            'Nombre' => fake()
+                ->unique()
+                ->name(),
             'Descripcion' => Str::random(20),
-            'Creado_por' => 1,
-            'Empresa_encargada' => 4,
+            'Creado_por' => User::factory()
+                ->create(['user_type' => UserType::ADMINISTRADOR->value])
+                ->toJson(),
+            'Empresa_encargada' => User::factory()
+                ->create(['user_type' => UserType::EMPRESA->value])
+                ->toJson(),
             'Personal_encargado' => implode(',',[fake()->name(),fake()->name()]),
-            'Sucursal' => 1,
+            'Sucursal' => sucursales::factory()
+                ->create()
+                ->toJson(),
             'Fecha_realizado' => now()
         ];
-    }
-
-    public function Crear_administrador() {
-        return $this->state(fn (array $attributes) => [
-            'Creado_por' => User::factory()->create(['user_type' => UserType::ADMINISTRADOR->value ])->id()
-        ]);
-    }
-
-    public function Crear_empresa() {
-        return $this->state(fn (array $attributes) => [
-            'Empresa_encargada' => User::factory()->create(['user_type' => UserType::EMPRESA->value ])->id()
-        ]);
-    }
-
-    public function Crear_sucursal() {
-        return $this->state(fn (array $attributes) => [
-            'Sucursal' => sucursales::factory()->create()->id()
-        ]);
     }
 }

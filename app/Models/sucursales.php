@@ -10,9 +10,7 @@ class sucursales extends Model
     use HasFactory;
 
     protected $table = 'sucursales';
-    public $timestamps = false;
-
-    public $incrementing = true;
+    public $timestamps = true;
 
     protected $attributes = [
         'Nombre' => ''
@@ -21,8 +19,4 @@ class sucursales extends Model
     protected $fillable = [
         'Nombre'
     ];
-
-    public function id() {
-        return $this->attributes['id'];
-    }
 }

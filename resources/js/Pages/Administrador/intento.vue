@@ -72,22 +72,36 @@
                             <p> Descripcion: {{ arreglo.Descripcion }} </p>
                             <p> Creado_por: {{ arreglo.Creado_por }} </p>
                             <p> Empresa_encargada: {{ arreglo.Empresa_encargada }} </p>
+                            <p> Personal_encargado: {{ arreglo.Personal_encargado }} </p>
                             <p> Sucursal: {{ arreglo.Sucursal }} </p>
-                            <p> Fecha_creacion: {{ arreglo.Created_at }} </p>
+                            <p> Fecha_creacion: {{ arreglo.created_at }} </p>
                         </div>
                     </div>
 
                     <div class="p-6">
                         <h2 class="text-blue-700"> Arreglos Historial: </h2>
 
-                        <div class="p-3 text-gray-900" v-for="arreglo in arreglosHistorial">
+                        <div class="p-3 text-gray-900" v-for="arreglo in arreglosHistorial" >
                             <p> ID: {{ arreglo.id }} </p>
                             <p> Nombre: {{ arreglo.Nombre }} </p>
                             <p> Descripcion: {{ arreglo.Descripcion }} </p>
-                            <p> Creado_por: {{ arreglo.Creado_por }} </p>
-                            <p> Empresa_encargada: {{ arreglo.Empresa_encargada }} </p>
-                            <p> Sucursal: {{ arreglo.Sucursal }} </p>
-                            <p> Fecha_creacion: {{ arreglo.Created_at }} </p>
+                            <p> Creado_por:
+                                <div class="pl-8" v-for="attributo in arreglo.Creado_por">
+                                    {{ attributo }}
+                                </div>
+                            </p>
+                            <p> Empresa_encargada:
+                                <div class="pl-8" v-for="attributo in arreglo.Empresa_encargada">
+                                    {{ attributo }}
+                                </div>
+                            </p>
+                            <p> Personal_encargado: {{ arreglo.Personal_encargado }} </p>
+                            <p> Sucursal:
+                                <div class="pl-8" v-for="attributo in arreglo.Sucursal">
+                                    {{ attributo }}
+                                </div>
+                            </p>
+                            <p> Fecha_creacion: {{ arreglo.created_at }} </p>
                             <p> Fecha_realizado: {{ arreglo.Fecha_realizado }} </p>
                         </div>
                     </div>

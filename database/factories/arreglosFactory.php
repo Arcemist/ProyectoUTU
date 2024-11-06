@@ -34,19 +34,19 @@ class arreglosFactory extends Factory
 
     public function Crear_administrador() {
         return $this->state(fn (array $attributes) => [
-            'Creado_por' => User::factory()->create(['user_type' => UserType::ADMINISTRADOR->value ])->id()
+            'Creado_por' => User::factory()->create(['user_type' => UserType::ADMINISTRADOR->value ])->id
         ]);
     }
 
     public function Crear_empresa() {
         return $this->state(fn (array $attributes) => [
-            'Empresa_encargada' => User::factory()->create(['user_type' => UserType::EMPRESA->value ])->id()
+            'Empresa_encargada' => User::factory()->create(['user_type' => UserType::EMPRESA->value ])->id
         ]);
     }
 
     public function Crear_sucursal() {
         return $this->state(fn (array $attributes) => [
-            'Sucursal' => sucursales::factory()->create()->id()
+            'Sucursal' => sucursales::factory()->create()->id
         ]);
     }
 }

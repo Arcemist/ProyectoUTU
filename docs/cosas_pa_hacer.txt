@@ -1,7 +1,31 @@
+Cosas que tengo para hacer:
+
+    Backend:
+        -Decidirme si al final hago que el historial de los arreglos sea otra tabla
+        y no quede en la misma tabla.
+
+        -Hacer el coso de notificaciones
+
+        -Mejorar bastante los tests que tenemos por el momento
+
+    Frontend:
+        *Lucas
+        -Dejar puesta/dicha la paleta de colores de la aplicacion.
+
+        -Ver para hacer algun que otro test
+
+
+    Administrativo:
+        -Añadir al README del repositorio una lista de extensiones de php que necesita la aplicacion.
+
+        -Hacer diagramas ejemplificando diversos aspectos de la aplicacion.
+
+
 Cosas para preguntar a Camcel:
 
-    -Saber que el lo que tiene que quedar guardado y no se puede borrar:
+    -Saber que el lo que tiene que quedar guardado y no se puede borrar.
 
+    -Ver si puedo usar una version en imagen del logo de Camcel y no el pdf que nos mandaron.
 
 
 
