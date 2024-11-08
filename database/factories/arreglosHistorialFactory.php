@@ -27,16 +27,10 @@ class arreglosHistorialFactory extends Factory
                 ->unique()
                 ->name(),
             'Descripcion' => Str::random(20),
-            'Creado_por' => User::factory()
-                ->create(['user_type' => UserType::ADMINISTRADOR->value])
-                ->toJson(),
-            'Empresa_encargada' => User::factory()
-                ->create(['user_type' => UserType::EMPRESA->value])
-                ->toJson(),
+            'Creado_por' => User::factory()->create(['user_type' => UserType::ADMINISTRADOR->value])->toArray(),
+            'Empresa_encargada' => User::factory()->create(['user_type' => UserType::EMPRESA->value])->toArray(),
             'Personal_encargado' => implode(',',[fake()->name(),fake()->name()]),
-            'Sucursal' => sucursales::factory()
-                ->create()
-                ->toJson(),
+            'Sucursal' => sucursales::factory()->create()->toArray(),
             'Fecha_realizado' => now()
         ];
     }

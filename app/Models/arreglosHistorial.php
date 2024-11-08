@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,10 +17,10 @@ class arreglosHistorial extends Model
     protected $attributes = [
         'Nombre' => '',
         'Descripcion' => '',
-        'Creado_por' => [],
-        'Empresa_encargada' => [],
+        'Creado_por' => '',
+        'Empresa_encargada' => '',
         'Personal_encargado' => '',
-        'Sucursal' => [],
+        'Sucursal' => '',
         'Fecha_realizado' => ''
     ];
 
@@ -33,10 +34,14 @@ class arreglosHistorial extends Model
         'Fecha_realizado'
     ];
 
-    protected $casts = [
-        'Creado_por' => 'array',
-        'Empresa_encargada' => 'array',
-        'Sucursal' => 'array'
-    ];
+    protected function casts(): array
+    {
+        $tipo = AsArrayObject::class;
+        return [
+            'Creado_por' => $tipo,
+            'Empresa_encargada' => $tipo,
+            'Sucursal' => $tipo
+        ];
+    }
 
 }

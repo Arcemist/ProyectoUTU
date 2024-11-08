@@ -57,9 +57,10 @@
                         <h2 class="text-blue-700"> Documentos: </h2>
 
                         <div class="p-3 text-gray-900" v-for="documento in documentos">
-                            <p> ID: {{ documento.id }} </p>
-                            <p> Pertenece_a: {{ documento.Pertenece_a }} </p>
-                            <p> Archivo: {{ documento.Archivo }} </p>
+                            <p>
+                                Subido_por: {{ documento.Subido_por }} <br>
+                                      Ruta: {{ documento.Ruta }}
+                            </p>
                         </div>
                     </div>
 

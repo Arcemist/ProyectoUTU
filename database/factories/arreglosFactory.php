@@ -27,7 +27,7 @@ class arreglosFactory extends Factory
             'Descripcion' => Str::random(20),
             'Creado_por' => 1,
             'Empresa_encargada' => 4,
-            'Personal_encargado' => implode(',',[fake()->name(),fake()->name()]),
+            'Personal_encargado' => json_encode([fake()->name(),fake()->name()]),
             'Sucursal' => 1
         ];
     }

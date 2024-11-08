@@ -48,30 +48,32 @@ class ArreglosSeeder extends Seeder
             ->count(rand(5,15))
             ->create(['Sucursal' => $id_sucursal]);
 
+
+
         arreglosHistorial::factory()
             ->count(rand(5,15))
             ->create();
 
-        $id_administrador_historial = User::factory()
+        $administrador_historial = User::factory()
             ->create(['user_type' => UserType::ADMINISTRADOR->value])
-            ->id;
+            ->toArray();
         arreglosHistorial::factory()
             ->count(rand(5,15))
-            ->create(['Creado_por' => $id_administrador_historial]);
+            ->create(['Creado_por' => $administrador_historial]);
 
-        $id_empresa_historial = User::factory()
+        $empresa_historial = User::factory()
             ->create(['user_type' => UserType::EMPRESA->value])
-            ->id;
+            ->toArray();
         arreglosHistorial::factory()
             ->count(rand(5,15))
-            ->create(['Empresa_encargada' => $id_empresa_historial]);
+            ->create(['Empresa_encargada' => $empresa_historial]);
 
-        $id_sucursal_historial = sucursales::factory()
+        $sucursal_historial = sucursales::factory()
             ->create(['Nombre' => 'Montevideo'])
-            ->id;
+            ->toArray();
         arreglosHistorial::factory()
             ->count(rand(5,15))
-            ->create(['Sucursal' => $id_sucursal_historial]);
+            ->create(['Sucursal' => $sucursal_historial]);
 
     }
 }
