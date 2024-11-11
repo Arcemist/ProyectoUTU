@@ -62,6 +62,9 @@
 </script>
 
 <template>
+
+    <Head title="Calendario" />
+
   <AdministratorLayout>
     <div class="grid grid-cols-2 gap-4">
       <!-- Calendario -->

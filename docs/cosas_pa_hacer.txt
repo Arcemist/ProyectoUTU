@@ -1,7 +1,40 @@
+Cosas que tengo para hacer:
+
+    Backend:
+        -Hacer el coso de notificaciones
+
+        -Mejorar bastante los tests que tenemos por el momento
+
+        -Quitar Intento.vue
+        -Quitar la ruta de la base de datos
+
+    Frontend:
+        -Dejar puesta/dicha la paleta de colores de la aplicacion.
+
+        -Ver para hacer algun que otro test
+
+        -Hacer que el coso de solicitudes de registro reciba del backend
+        -Hacer que el calendario del administrador tome eventos del backend
+        -Hacer que el coso de lista de usuarios registrados tome del backend
+        -Hacer que el coso de los eventos de las empresas tome del backend
+        -Hacer que el calendario de las empresas tome del backend
+
+    Administrativo:
+        -Añadir al README del repositorio una lista de extensiones de php que necesita la aplicacion.
+
+        -Hacer diagramas ejemplificando diversos aspectos de la aplicacion.
+
+
+
+
+
+
+
 Cosas para preguntar a Camcel:
 
-    -Saber que el lo que tiene que quedar guardado y no se puede borrar:
+    -Saber que el lo que tiene que quedar guardado y no se puede borrar.
 
+    -Ver si puedo usar una version en imagen del logo de Camcel y no el pdf que nos mandaron.
 
 
 

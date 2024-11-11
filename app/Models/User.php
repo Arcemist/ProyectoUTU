@@ -59,13 +59,4 @@ class User extends Authenticatable
     public function Type(): string {
         return $this->attributes['user_type'];
     }
-
-    /**
-    * Get the id of the User.
-    *
-    * @return string
-    * */
-    public function id() {
-        return $this->attributes['id'];
-    }
 }

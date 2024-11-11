@@ -15,6 +15,6 @@ class SucursalesSeeder extends Seeder
     {
         sucursales::factory()->create(['Nombre' => 'Melo']); //sucursal base de ejemplo
 
-        sucursales::factory(10)->create();
+        sucursales::factory(rand(5,20))->create();
     }
 }

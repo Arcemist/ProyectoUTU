@@ -1,17 +1,13 @@
+
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import EnterpriseLayout from '@/Layouts/EnterpriseLayout.vue';
 import { Head } from '@inertiajs/vue3';
 </script>
 
-<!--
-Hacer una version de esta pagina
-para cada tipo de usuario
--->
-
 <template>
-    <Head title="Dashboard" />
+    <Head title="Bienvenida" />
 
-    <AuthenticatedLayout> <!-- Cambiar esto a el tipo que sea  -->
+    <EnterpriseLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
         </template>
@@ -23,5 +19,5 @@ para cada tipo de usuario
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </EnterpriseLayout>
 </template>

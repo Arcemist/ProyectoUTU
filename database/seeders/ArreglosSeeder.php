@@ -24,57 +24,56 @@ class ArreglosSeeder extends Seeder
             ->Crear_administrador()
             ->Crear_empresa()
             ->Crear_sucursal()
-            ->count(10)
+            ->count(rand(5,15))
             ->create();
 
         $id_administrador = User::factory()
             ->create(['user_type' => UserType::ADMINISTRADOR->value])
-            ->id();
+            ->id;
         arreglos::factory()
-            ->count(10)
+            ->count(rand(5,15))
             ->create(['Creado_por' => $id_administrador]);
 
         $id_empresa = User::factory()
             ->create(['user_type' => UserType::EMPRESA->value])
-            ->id();
+            ->id;
         arreglos::factory()
-            ->count(10)
+            ->count(rand(5,15))
             ->create(['Empresa_encargada' => $id_empresa]);
 
         $id_sucursal = sucursales::factory()
             ->create(['Nombre' => 'Rivera'])
-            ->id();
+            ->id;
         arreglos::factory()
-            ->count(10)
+            ->count(rand(5,15))
             ->create(['Sucursal' => $id_sucursal]);
 
+
+
         arreglosHistorial::factory()
-            ->Crear_administrador()
-            ->Crear_empresa()
-            ->Crear_sucursal()
-            ->count(10)
+            ->count(rand(5,15))
             ->create();
 
-        $id_administrador_historial = User::factory()
+        $administrador_historial = User::factory()
             ->create(['user_type' => UserType::ADMINISTRADOR->value])
-            ->id();
+            ->toArray();
         arreglosHistorial::factory()
-            ->count(10)
-            ->create(['Creado_por' => $id_administrador_historial]);
+            ->count(rand(5,15))
+            ->create(['Creado_por' => $administrador_historial]);
 
-        $id_empresa_historial = User::factory()
+        $empresa_historial = User::factory()
             ->create(['user_type' => UserType::EMPRESA->value])
-            ->id();
+            ->toArray();
         arreglosHistorial::factory()
-            ->count(10)
-            ->create(['Empresa_encargada' => $id_empresa_historial]);
+            ->count(rand(5,15))
+            ->create(['Empresa_encargada' => $empresa_historial]);
 
-        $id_sucursal_historial = sucursales::factory()
+        $sucursal_historial = sucursales::factory()
             ->create(['Nombre' => 'Montevideo'])
-            ->id();
+            ->toArray();
         arreglosHistorial::factory()
-            ->count(10)
-            ->create(['Sucursal' => $id_sucursal_historial]);
+            ->count(rand(5,15))
+            ->create(['Sucursal' => $sucursal_historial]);
 
     }
 }

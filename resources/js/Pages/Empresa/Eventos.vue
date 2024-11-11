@@ -40,6 +40,8 @@
 </script>
 
 <template>
+    <Head title="Eventos" />
+
   <EnterpriseLayout>
     <div class="p-4">
       <!-- Citas Agendadas -->

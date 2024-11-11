@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sucursales', function (Blueprint $table) {
             $table->id();
             $table->string('Nombre');
+            $table->timestamps();
         });
     }
 

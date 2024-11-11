@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documentos', function (Blueprint $table) {
-            $table->bigInteger('Subido_por');
-            $table->string('Ruta');
+        Schema::create('detalles_guardia', function (Blueprint $table) {
+            $table->bigInteger('Guardia')->unique();
             $table->timestamps();
+            $table->string('Trabaja_en'); //array de sucursales en las que trabaja
 
-            $table->foreign('Subido_por')->references('id')->on('users');
+            $table->foreign('Guardia')->references('id')->on('usuario');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('documentos');
+        Schema::dropIfExists('detalles_guardia');
     }
 };
