@@ -5,6 +5,7 @@ use App\Http\Controllers\SucursalesController;
 use App\Models\arreglos;
 use App\Models\documentos;
 use App\Models\sucursales;
+use App\Models\arreglosHistorial;
 use App\Models\User;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;

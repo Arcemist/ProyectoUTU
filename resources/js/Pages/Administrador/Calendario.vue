@@ -1,6 +1,6 @@
 <script setup>
     import { ref } from 'vue';
-    import AdministrartorLayout from '@/Layouts/AdministratorLayout.vue';
+    import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
 
 
     // Variables para manejar el calendario y los eventos
@@ -62,7 +62,7 @@
 </script>
 
 <template>
-  <AdministrartorLayout>
+  <AdministratorLayout>
     <div class="grid grid-cols-2 gap-4">
       <!-- Calendario -->
       <div style="width: 50%;" class="w-full h-auto">
@@ -153,7 +153,7 @@
         </div>
       </div>
     </div>
-  </AdministrartorLayout>
+  </AdministratorLayout>
 </template>
 
 
