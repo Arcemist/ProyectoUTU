@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\UserType;
+use App\Http\Controllers\BienvenidaController;
 use App\Http\Controllers\SucursalesController;
 use App\Models\arreglos;
 use App\Models\arreglosHistorial;
@@ -42,9 +43,12 @@ Route::middleware([
     'auth',
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+
+    //
+    // ESTA NECESITA UN CAMBIO DE NOMBRE
+    //
+
+    Route::get('/dashboard', [BienvenidaController::class, 'show'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -63,7 +67,6 @@ Route::Group([
 function() {
     Route::get('/intento', function () {
         return Inertia::render('Administrador/intento', [
-            'Paginas' => [],
             'usuarios' => user::all(),
             'sucursales' => sucursales::all(),
             'documentos' => documentos::all(),
@@ -71,6 +74,10 @@ function() {
             'arreglosHistorial' => arreglosHistorial::all()
         ]);
     })->name('intento');
+
+    //
+    // Las Rutas abajo de esto necesitan controladores
+    //
 
     Route::get('/calendario', function () {
         $EventoCalendario = [
@@ -114,6 +121,10 @@ Route::Group([
     ]],
 function () {
 
+    //
+    //Esto necesita un controlador
+    //
+
     Route::get('/eventos', function () {
         return Inertia::render('Empresa/Eventos');
     })->name('empresa.eventos');
@@ -130,6 +141,10 @@ Route::Group([
         'CheckUserIs:'.UserType::GUARDIA->value
     ]],
 function () {
+
+    //
+    //Estas Tambien Necesitan Un Controlador
+    //
 
     Route::get('/calendario', function () {
         $EventoCalendario = [

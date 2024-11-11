@@ -56,6 +56,8 @@
 </script>
 
 <template>
+    <Head title="Usuarios Registrados" />
+
   <AdministratorLayout>
     <div class="p-4">
       <!-- Barra de búsqueda -->

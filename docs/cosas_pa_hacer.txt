@@ -1,24 +1,33 @@
 Cosas que tengo para hacer:
 
     Backend:
-        -Decidirme si al final hago que el historial de los arreglos sea otra tabla
-        y no quede en la misma tabla.
-
         -Hacer el coso de notificaciones
 
         -Mejorar bastante los tests que tenemos por el momento
 
+        -Quitar Intento.vue
+        -Quitar la ruta de la base de datos
+
     Frontend:
-        *Lucas
         -Dejar puesta/dicha la paleta de colores de la aplicacion.
 
         -Ver para hacer algun que otro test
 
+        -Hacer que el coso de solicitudes de registro reciba del backend
+        -Hacer que el calendario del administrador tome eventos del backend
+        -Hacer que el coso de lista de usuarios registrados tome del backend
+        -Hacer que el coso de los eventos de las empresas tome del backend
+        -Hacer que el calendario de las empresas tome del backend
 
     Administrativo:
         -Añadir al README del repositorio una lista de extensiones de php que necesita la aplicacion.
 
         -Hacer diagramas ejemplificando diversos aspectos de la aplicacion.
+
+
+
+
+
 
 
 Cosas para preguntar a Camcel:

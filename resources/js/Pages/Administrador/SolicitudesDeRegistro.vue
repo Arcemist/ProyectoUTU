@@ -22,6 +22,8 @@
 </script>
 
 <template>
+    <Head title="Solicitudes De Registro" />
+
   <AdministratorLayout>
     <div class="flex flex-col w-full h-auto">
       <!-- Lista de Solicitudes de Registro -->
