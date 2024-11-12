@@ -27,7 +27,6 @@ return new class extends Migration
                 UserType::GUARDIA->value,
                 UserType::EMPRESA->value,
             ]);
-            $table->string('roles')->nullable(); // roles separados por ','
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

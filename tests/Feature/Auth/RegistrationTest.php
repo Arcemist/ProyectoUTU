@@ -19,7 +19,6 @@ test('Los Guardias se pueden registrar directamente', function () {
         'password' => 'password',
         'password_confirmation' => 'password',
         'user_type' => UserType::GUARDIA->value,
-        'roles' => ''
     ]);
 
     $this->assertAuthenticated();

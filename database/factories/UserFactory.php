@@ -32,7 +32,6 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'user_type' => UserType::GUARDIA->value,
             'remember_token' => Str::random(10),
-            'roles' => ''
         ];
     }
 
