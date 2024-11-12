@@ -6,7 +6,6 @@ use App\Enums\UserType;
 use App\Models\User;
 use App\Models\sucursales;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 //use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -25,10 +24,10 @@ class arreglosFactory extends Factory
         return [
             'Nombre' => fake()->unique()->name(),
             'Descripcion' => Str::random(20),
-            'Creado_por' => 1,
-            'Empresa_encargada' => 4,
+            'Creado_por' => User::firstWhere('user_type', '=', UserType::ADMINISTRADOR->value)->id,
+            'Empresa_encargada' => User::firstWhere('user_type', '=', UserType::EMPRESA->value)->id,
             'Personal_encargado' => json_encode([fake()->name(),fake()->name()]),
-            'Sucursal' => 1
+            'Sucursal' => sucursales::first()->id
         ];
     }
 

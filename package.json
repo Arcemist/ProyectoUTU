@@ -20,10 +20,12 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
-        "@esbuild/win32-x64": "^0.24.0",
         "@popperjs/core": "^2.11.8",
         "v-calendar": "^3.1.2",
         "vue-pdf-embed": "^2.1.1",
         "vuetify": "^3.7.1"
+    },
+    "optionalDependencies":{
+        "@esbuild/win32-x64": "^0.24.0"
     }
 }
