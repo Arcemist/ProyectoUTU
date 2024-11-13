@@ -49,7 +49,6 @@
                             <p> Nombre: {{ usuario.name }} </p>
                             <p> Email: {{ usuario.email }} </p>
                             <p> Tipo: {{ usuario.user_type }} </p>
-                            <p> Roles: {{ usuario.roles }} </p>
                         </div>
                     </div>
 

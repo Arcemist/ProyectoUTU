@@ -11,6 +11,8 @@ Cosas que tengo para hacer:
     Frontend:
         -Dejar puesta/dicha la paleta de colores de la aplicacion.
 
+        -Ver alguna otra forma de poner el logo que no tarde en cargar
+
         -Ver para hacer algun que otro test
 
         -Hacer que el coso de solicitudes de registro reciba del backend
@@ -21,6 +23,8 @@ Cosas que tengo para hacer:
 
     Administrativo:
         -Añadir al README del repositorio una lista de extensiones de php que necesita la aplicacion.
+
+        -Rellenar los formularios de casos de uso
 
         -Hacer diagramas ejemplificando diversos aspectos de la aplicacion.
 
@@ -41,8 +45,6 @@ Cosas para preguntar a Camcel:
 Cosas de la Reunion:
 
     -Hacer que halla un administrador general
-
-    -Hacer mas roles intermedios
 
     -Ver la forma de hacer que diferentes roles tengan diferentes accesos a la base de datos (Solo lectura por ejemplo)
 

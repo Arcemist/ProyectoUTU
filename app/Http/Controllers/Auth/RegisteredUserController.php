@@ -38,7 +38,6 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'user_type' => ['required', Rule::enum(UserType::class)->only([UserType::GUARDIA, UserType::EMPRESA, UserType::ADMINISTRADOR])],
             // Lo de Administrador esta medio provisional aca
-            //'roles' => 'required|string|max:255'
         ]);
 
         $user = User::create([
@@ -46,7 +45,6 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'user_type' => $request->user_type,
-            'roles' => $request->roles
         ]);
 
         event(new Registered($user));

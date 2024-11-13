@@ -1,14 +1,14 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Aplicacion Creada para el proyecto de la UTU",
     "keywords": ["laravel", "framework"],
-    "license": "MIT",
+    "license": "GPL-V3",
     "require": {
         "php": "^8.2",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/breeze": "^2.1",
-        "laravel/framework": "^11.9",
+        "laravel/framework": "^11.31.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "tightenco/ziggy": "^2.0"

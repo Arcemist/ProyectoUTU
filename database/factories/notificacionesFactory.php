@@ -6,13 +6,14 @@ use App\Enums\UserType;
 use App\Models\User;
 use App\Models\sucursales;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 //use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class arreglosFactory extends Factory
+class notificacionesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -24,28 +25,25 @@ class arreglosFactory extends Factory
         return [
             'Nombre' => fake()->unique()->name(),
             'Descripcion' => Str::random(20),
-            'Creado_por' => User::firstWhere('user_type', '=', UserType::ADMINISTRADOR->value)->id,
-            'Empresa_encargada' => User::firstWhere('user_type', '=', UserType::EMPRESA->value)->id,
-            'Personal_encargado' => json_encode([fake()->name(),fake()->name()]),
-            'Sucursal' => sucursales::first()->id
+            'Pertenece_a' => 1,
         ];
     }
 
     public function Crear_administrador() {
         return $this->state(fn (array $attributes) => [
-            'Creado_por' => User::factory()->create(['user_type' => UserType::ADMINISTRADOR->value ])->id
+            'Pertence_a' => User::factory()->create(['user_type' => UserType::ADMINISTRADOR->value ])->id
         ]);
     }
 
     public function Crear_empresa() {
         return $this->state(fn (array $attributes) => [
-            'Empresa_encargada' => User::factory()->create(['user_type' => UserType::EMPRESA->value ])->id
+            'Pertenece_a' => User::factory()->create(['user_type' => UserType::EMPRESA->value ])->id
         ]);
     }
 
-    public function Crear_sucursal() {
+    public function Crear_guardia() {
         return $this->state(fn (array $attributes) => [
-            'Sucursal' => sucursales::factory()->create()->id
+            'Pertenece_a' => User::factory()->create(['user_type' => UserType::GUARDIA->value ])->id
         ]);
     }
 }

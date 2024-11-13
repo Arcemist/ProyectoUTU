@@ -27,53 +27,42 @@ class ArreglosSeeder extends Seeder
             ->count(rand(5,15))
             ->create();
 
-        $id_administrador = User::factory()
-            ->create(['user_type' => UserType::ADMINISTRADOR->value])
-            ->id;
         arreglos::factory()
-            ->count(rand(5,15))
-            ->create(['Creado_por' => $id_administrador]);
-
-        $id_empresa = User::factory()
-            ->create(['user_type' => UserType::EMPRESA->value])
-            ->id;
-        arreglos::factory()
-            ->count(rand(5,15))
-            ->create(['Empresa_encargada' => $id_empresa]);
-
-        $id_sucursal = sucursales::factory()
-            ->create(['Nombre' => 'Rivera'])
-            ->id;
-        arreglos::factory()
-            ->count(rand(5,15))
-            ->create(['Sucursal' => $id_sucursal]);
-
-
-
-        arreglosHistorial::factory()
+            ->Crear_administrador()
             ->count(rand(5,15))
             ->create();
 
-        $administrador_historial = User::factory()
-            ->create(['user_type' => UserType::ADMINISTRADOR->value])
-            ->toArray();
-        arreglosHistorial::factory()
+        arreglos::factory()
+            ->Crear_empresa()
             ->count(rand(5,15))
-            ->create(['Creado_por' => $administrador_historial]);
+            ->create();
 
-        $empresa_historial = User::factory()
-            ->create(['user_type' => UserType::EMPRESA->value])
-            ->toArray();
-        arreglosHistorial::factory()
+        arreglos::factory()
+            ->Crear_sucursal()
             ->count(rand(5,15))
-            ->create(['Empresa_encargada' => $empresa_historial]);
+            ->create();
 
-        $sucursal_historial = sucursales::factory()
-            ->create(['Nombre' => 'Montevideo'])
-            ->toArray();
         arreglosHistorial::factory()
+            ->Crear_administrador()
+            ->Crear_empresa()
+            ->Crear_sucursal()
             ->count(rand(5,15))
-            ->create(['Sucursal' => $sucursal_historial]);
+            ->create();
+
+        arreglosHistorial::factory()
+            ->Crear_administrador()
+            ->count(rand(5,15))
+            ->create();
+
+        arreglosHistorial::factory()
+            ->Crear_empresa()
+            ->count(rand(5,15))
+            ->create();
+
+        arreglosHistorial::factory()
+            ->Crear_sucursal()
+            ->count(rand(5,15))
+            ->create();
 
     }
 }
