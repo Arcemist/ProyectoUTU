@@ -22,7 +22,6 @@
     "dependencies": {
         "@popperjs/core": "^2.11.8",
         "v-calendar": "^3.1.2",
-        "vue-pdf-embed": "^2.1.1",
         "vuetify": "^3.7.1"
     },
     "optionalDependencies":{

@@ -1,6 +1,15 @@
 <?php
 
 use App\Enums\UserType;
+use App\Http\Controllers\LayoutInfo\AdminRoutesController;
+use App\Http\Controllers\LayoutInfo\AdminProfileOptionsController;
+use App\Http\Controllers\LayoutInfo\EnterpriseRoutesController;
+use App\Http\Controllers\LayoutInfo\EnterpriseProfileOptionsController;
+use App\Http\Controllers\LayoutInfo\GuardRoutesController;
+use App\Http\Controllers\LayoutInfo\GuardProfileOptionsController;
+use App\Http\Controllers\Notifications\AdminNotificationsController;
+use App\Http\Controllers\Notifications\EnterpriseNotificationsController;
+use App\Http\Controllers\Notifications\GuardNotificationsController;
 use App\Http\Controllers\BienvenidaController;
 use App\Http\Controllers\SucursalesController;
 use App\Models\arreglos;
@@ -25,7 +34,7 @@ Route::get('/', function () {
 })->middleware('guest'); // esto hace que te mande a 'dashboard' o a 'home' o a '/' si ya estas logeado
 
 Route::get('/logo', function () {
-    return response()->file(public_path('Logo.pdf'));
+    return response()->file(public_path('Logo.png'));
 });
 
 Route::get('/database', function () {
@@ -61,44 +70,10 @@ Route::Group([
         'CheckUserIs:'.UserType::ADMINISTRADOR->value
     ]],
 function() {
-    Route::get('rutas', function () {
-        return [[
-            'ruta' => 'dashboard',
-            'nombre' => 'Dashboard'
-        ],[
-            'ruta' => 'intento',
-            'nombre' => 'intento'
-        ],[
-            'ruta' => 'administrador.calendario',
-            'nombre' => 'Calendario administrador'
-        ],[
-            'ruta' => 'administrador.usuarios_registrados',
-            'nombre' => 'Usuarios registrados'
-        ],[
-            'ruta' => 'administrador.solicitudes_de_registro',
-            'nombre' => 'Solicitudes de registro'
-        ]];
-    });
+    Route::get('rutas', [AdminRoutesController::class, 'show']);
+    Route::get('opciones_perfil', [AdminProfileOptionsController::class, 'show']);
 
-    Route::get('opciones_perfil', function () {
-        return [[
-            'ruta' => 'profile.edit',
-            'metodo' => 'get',
-            'nombre' => 'Perfil'
-        ],[
-            'ruta' => 'logout',
-            'metodo' => 'post',
-            'nombre' => 'Cerrar sesion'
-        ]];
-    });
-
-    Route::get('/notificaciones', function () {
-        return [
-            ['nombre' => 'epa'],
-            ['nombre' => 'fium'],
-            ['nombre' => 'ba']
-        ];
-    });
+    Route::get('/notificaciones', [AdminNotificationsController::class, 'show']);
 
     Route::get('/intento', function () {
         return Inertia::render('Administrador/intento', [
@@ -109,10 +84,6 @@ function() {
             'arreglosHistorial' => arreglosHistorial::all()
         ]);
     })->name('intento');
-
-    //
-    // Las Rutas abajo de esto necesitan controladores
-    //
 
     Route::get('/calendario', function () {
         $EventoCalendario = [
@@ -156,35 +127,10 @@ Route::Group([
     ]],
 function () {
 
-    Route::get('rutas', function () {
-        return [[
-            'ruta' => 'dashboard',
-            'nombre' => 'Dashboard'
-        ],[
-            'ruta' => 'empresa.eventos',
-            'nombre' => 'intento'
-        ]];
-    });
+    Route::get('rutas', [EnterpriseRoutesController::class, 'show']);
+    Route::get('opciones_perfil', [EnterpriseProfileOptionsController::class, 'show']);
 
-    Route::get('opciones_perfil', function () {
-        return [[
-            'ruta' => 'profile.edit',
-            'metodo' => 'get',
-            'nombre' => 'Perfil'
-        ],[
-            'ruta' => 'logout',
-            'metodo' => 'post',
-            'nombre' => 'Cerrar sesion'
-        ]];
-    });
-
-    Route::get('/notificaciones', function () {
-        return [
-            ['nombre' => 'epa'],
-            ['nombre' => 'fium'],
-            ['nombre' => 'ba']
-        ];
-    });
+    Route::get('/notificaciones', [EnterpriseNotificationsController::class, 'show']);
 
     Route::get('/eventos', function () {
         return Inertia::render('Empresa/Eventos');
@@ -203,35 +149,10 @@ Route::Group([
     ]],
 function () {
 
-    Route::get('rutas', function () {
-        return [[
-            'ruta' => 'dashboard',
-            'nombre' => 'Dashboard'
-        ],[
-            'ruta' => 'guardia.eventos',
-            'nombre' => 'Eventos'
-        ]];
-    });
+    Route::get('rutas', [GuardRoutesController::class, 'show']);
+    Route::get('opciones_perfil', [GuardProfileOptionsController::class, 'show']);
 
-    Route::get('opciones_perfil', function () {
-        return [[
-            'ruta' => 'profile.edit',
-            'metodo' => 'get',
-            'nombre' => 'Perfil'
-        ],[
-            'ruta' => 'logout',
-            'metodo' => 'post',
-            'nombre' => 'Cerrar sesion'
-        ]];
-    });
-
-    Route::get('/notificaciones', function () {
-        return [
-            ['nombre' => 'epa'],
-            ['nombre' => 'fium'],
-            ['nombre' => 'ba']
-        ];
-    });
+    Route::get('/notificaciones', [GuardNotificationsController::class, 'show']);
 
     Route::get('/calendario', function () {
         $EventoCalendario = [
