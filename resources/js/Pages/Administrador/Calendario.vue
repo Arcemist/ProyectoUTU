@@ -2,7 +2,6 @@
     import { ref } from 'vue';
     import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
 
-
     // Variables para manejar el calendario y los eventos
     const date = ref(new Date());
     const masks = ref({
@@ -24,7 +23,7 @@
         fecha: date.value.toLocaleDateString(), // Usamos la fecha seleccionada
         titulo: tituloEvento.value,
         descripcion: descripcionEvento.value,
-        hora: horaEvento.value
+        hora: horaEvento.value,
       };
 
       if (editando.value) {
@@ -59,6 +58,7 @@
     function eliminarEvento(index) {
       eventos.value.splice(index, 1); // Eliminar el evento de la lista
     }
+
 </script>
 
 <template>
@@ -68,7 +68,7 @@
   <AdministratorLayout>
     <div class="grid grid-cols-2 gap-4">
       <!-- Calendario -->
-      <div style="width: 50%;" class="w-full h-auto">
+      <div style="float: right; position: relative; left:1%; top:10%;" class="w-full h-auto">
         <VDatePicker
           v-model="date"
           :masks="masks"
@@ -161,6 +161,13 @@
 
 
 <style scoped>
+
+    .calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
     /* Estilos personalizados */
     table {
       border-collapse: collapse;
@@ -177,5 +184,12 @@
     td {
       background-color: #ffffff;
       color:black;
+    }
+    .input{
+  position: relative;
+
+  top:10%;
+  left: 50%;
+  padding:30px;
     }
 </style>
