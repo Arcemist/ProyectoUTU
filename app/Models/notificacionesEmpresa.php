@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class notificaciones extends Model
+
+class notificacionesEmpresa extends Model
 {
     use HasFactory;
 
-    protected $table = 'notificaciones';
+    protected $table = 'notificaciones_empresa';
 
     public $timestamps = false;
 
@@ -17,12 +18,14 @@ class notificaciones extends Model
         'Nombre' => '',
         'Descripcion' => '',
         'Pertenece_a' => 0,
+        'Ruta' => '',
     ];
 
     protected $fillable = [
         'Nombre',
         'Descripcion',
         'Pertenece_a',
+        'Ruta'
     ];
 
     public function Pertenece_a() {

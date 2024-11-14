@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notificaciones', function (Blueprint $table) {
+        Schema::create('notificaciones_guardia', function (Blueprint $table) {
             $table->id();
             $table->foreignId('Pertenece_a');
 
             $table->string('Nombre');
             $table->string('Descripcion');
+            $table->string('Ruta');
 
-            $table->foreign('Pertenece_a')->references('id')->on('Users');
+            $table->foreign('Pertenece_a')->references('id')->on('sucursales');
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notificaciones');
+        Schema::dropIfExists('notificaciones_guardia');
     }
 };

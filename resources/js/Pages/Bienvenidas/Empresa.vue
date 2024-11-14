@@ -1,4 +1,3 @@
-
 <script setup>
 import EnterpriseLayout from '@/Layouts/EnterpriseLayout.vue';
 import { Head } from '@inertiajs/vue3';

@@ -44,10 +44,6 @@ Route::middleware([
     'verified'
 ])->group(function () {
 
-    //
-    // ESTA NECESITA UN CAMBIO DE NOMBRE
-    //
-
     Route::get('/dashboard', [BienvenidaController::class, 'show'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -65,6 +61,45 @@ Route::Group([
         'CheckUserIs:'.UserType::ADMINISTRADOR->value
     ]],
 function() {
+    Route::get('rutas', function () {
+        return [[
+            'ruta' => 'dashboard',
+            'nombre' => 'Dashboard'
+        ],[
+            'ruta' => 'intento',
+            'nombre' => 'intento'
+        ],[
+            'ruta' => 'administrador.calendario',
+            'nombre' => 'Calendario administrador'
+        ],[
+            'ruta' => 'administrador.usuarios_registrados',
+            'nombre' => 'Usuarios registrados'
+        ],[
+            'ruta' => 'administrador.solicitudes_de_registro',
+            'nombre' => 'Solicitudes de registro'
+        ]];
+    });
+
+    Route::get('opciones_perfil', function () {
+        return [[
+            'ruta' => 'profile.edit',
+            'metodo' => 'get',
+            'nombre' => 'Perfil'
+        ],[
+            'ruta' => 'logout',
+            'metodo' => 'post',
+            'nombre' => 'Cerrar sesion'
+        ]];
+    });
+
+    Route::get('/notificaciones', function () {
+        return [
+            ['nombre' => 'epa'],
+            ['nombre' => 'fium'],
+            ['nombre' => 'ba']
+        ];
+    });
+
     Route::get('/intento', function () {
         return Inertia::render('Administrador/intento', [
             'usuarios' => user::all(),
@@ -86,11 +121,11 @@ function() {
                 'color' => 'purple',
                 'fillMode' => 'outline'
             ],
-            'dates' => '9/9/2024',
+            'dates' => '20/11/2024',
         ];
 
         $InfoEvento = [
-            'fecha' => '9/9/2024',
+            'fecha' => '20/11/2024',
             'descripcion' => 'hola como anda usted'
         ];
 
@@ -121,9 +156,35 @@ Route::Group([
     ]],
 function () {
 
-    //
-    //Esto necesita un controlador
-    //
+    Route::get('rutas', function () {
+        return [[
+            'ruta' => 'dashboard',
+            'nombre' => 'Dashboard'
+        ],[
+            'ruta' => 'empresa.eventos',
+            'nombre' => 'intento'
+        ]];
+    });
+
+    Route::get('opciones_perfil', function () {
+        return [[
+            'ruta' => 'profile.edit',
+            'metodo' => 'get',
+            'nombre' => 'Perfil'
+        ],[
+            'ruta' => 'logout',
+            'metodo' => 'post',
+            'nombre' => 'Cerrar sesion'
+        ]];
+    });
+
+    Route::get('/notificaciones', function () {
+        return [
+            ['nombre' => 'epa'],
+            ['nombre' => 'fium'],
+            ['nombre' => 'ba']
+        ];
+    });
 
     Route::get('/eventos', function () {
         return Inertia::render('Empresa/Eventos');
@@ -142,9 +203,35 @@ Route::Group([
     ]],
 function () {
 
-    //
-    //Estas Tambien Necesitan Un Controlador
-    //
+    Route::get('rutas', function () {
+        return [[
+            'ruta' => 'dashboard',
+            'nombre' => 'Dashboard'
+        ],[
+            'ruta' => 'guardia.eventos',
+            'nombre' => 'Eventos'
+        ]];
+    });
+
+    Route::get('opciones_perfil', function () {
+        return [[
+            'ruta' => 'profile.edit',
+            'metodo' => 'get',
+            'nombre' => 'Perfil'
+        ],[
+            'ruta' => 'logout',
+            'metodo' => 'post',
+            'nombre' => 'Cerrar sesion'
+        ]];
+    });
+
+    Route::get('/notificaciones', function () {
+        return [
+            ['nombre' => 'epa'],
+            ['nombre' => 'fium'],
+            ['nombre' => 'ba']
+        ];
+    });
 
     Route::get('/calendario', function () {
         $EventoCalendario = [
@@ -153,13 +240,13 @@ function () {
                 'color' => 'purple',
                 'fillMode' => 'outline'
             ],
-            'dates' => '10/17/2024',
+            'dates' => '20/11/2024',
             'description' => 'esto es un test',
         ];
 
         $InfoEvento = [
-            'fecha' => '9/9/2024',
-            'descripcion' => 'The Reckoning Approaches'
+            'fecha' => '20/11/2024',
+            'descripcion' => 'Sigue siendo un test'
         ];
 
         // Importante que 'EventosCalendario' sea un array de arrays sino no le gusta al Vcalendar

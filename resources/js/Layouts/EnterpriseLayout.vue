@@ -10,33 +10,17 @@ import { Link } from '@inertiajs/vue3';
 const showingNavigationDropdown = ref(false);
 const showingNotificationsDropdown = ref(false);  // Para controlar el dropdown de notificaciones
 
-const Links = [{
-    ruta: 'dashboard',
-    nombre: 'Dashboard'
-},{
-    ruta: 'empresa.eventos',
-    nombre: 'Eventos'
-}];
+const Notificaciones = ref();
+axios.get('/empresa/notificaciones').then(response => Notificaciones.value = response.data);
 
-const Notificaciones = [{
-    nombre: 'Notificacion 1'
-},{
-    nombre: 'Notificacion 2'
-},{
-    nombre: 'Notificacion 3'
-},{
-    nombre: 'Esta version se define en el script setup'
-}];
+const Rutas = ref([{
+    nombre: 'cargando...',
+    ruta: 'dashboard'
+}]);
+axios.get('/empresa/rutas').then(response => Rutas.value = response.data);
 
-const OpcionesPerfil = [{
-    ruta: 'profile.edit',
-    metodo: 'get',
-    nombre: 'Perfil'
-},{
-    ruta: 'logout',
-    metodo: 'post',
-    nombre: 'Cerrar sesión'
-}];
+const OpcionesPerfil = ref();
+axios.get('/empresa/opciones_perfil').then(response => OpcionesPerfil.value = response.data);
 
 </script>
 
@@ -59,8 +43,8 @@ const OpcionesPerfil = [{
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink v-for="Link in Links" :href="route(Link.ruta)" :active="route().current(Link.ruta)"  >
-                                    {{ Link.nombre }}
+                                <NavLink v-for="Ruta in Rutas" :href="route(Ruta.ruta)" :active="route().current(Ruta.ruta)"  >
+                                    {{ Ruta.nombre }}
                                 </NavLink>
                             </div>
                         </div>
@@ -171,8 +155,8 @@ const OpcionesPerfil = [{
                     class="sm:hidden"
                 >
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink v-for="Link in Links" :href="route(Link.ruta)" :active="route().current(Link.ruta)"  >
-                            {{ Link.nombre }}
+                        <ResponsiveNavLink v-for="Ruta in Rutas" :href="route(Ruta.ruta)" :active="route().current(Ruta.ruta)"  >
+                            {{ Ruta.nombre }}
                         </ResponsiveNavLink>
                     </div>
 

@@ -1,4 +1,3 @@
-
 <script setup>
 import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
 import { Head } from '@inertiajs/vue3';
