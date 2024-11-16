@@ -11,7 +11,10 @@ use App\Http\Controllers\Notifications\AdminNotificationsController;
 use App\Http\Controllers\Notifications\EnterpriseNotificationsController;
 use App\Http\Controllers\Notifications\GuardNotificationsController;
 use App\Http\Controllers\BienvenidaController;
+use App\Http\Controllers\SolicitudDeRegistroController;
 use App\Http\Controllers\SucursalesController;
+use App\Http\Controllers\PowerDeleteProfileController;
+use App\Models\SolicitudDeRegistro;
 use App\Models\arreglos;
 use App\Models\arreglosHistorial;
 use App\Models\documentos;
@@ -35,16 +38,6 @@ Route::get('/', function () {
 
 Route::get('/logo', function () {
     return response()->file(public_path('Logo.png'));
-});
-
-Route::get('/database', function () {
-    return response()->json([
-        'Sucursales' => sucursales::all(),
-        'Usuarios' => User::all(),
-        'Documentos' => documentos::all(),
-        'Arreglos' => arreglos::all(),
-        'ArreglosHistorial' => arreglosHistorial::all(),
-    ]);
 });
 
 // Cosas generales de usuarios logeados
@@ -72,18 +65,12 @@ Route::Group([
 function() {
     Route::get('rutas', [AdminRoutesController::class, 'show']);
     Route::get('opciones_perfil', [AdminProfileOptionsController::class, 'show']);
-
     Route::get('/notificaciones', [AdminNotificationsController::class, 'show']);
 
-    Route::get('/intento', function () {
-        return Inertia::render('Administrador/intento', [
-            'usuarios' => user::all(),
-            'sucursales' => sucursales::all(),
-            'documentos' => documentos::all(),
-            'arreglos' => arreglos::all(),
-            'arreglosHistorial' => arreglosHistorial::all()
-        ]);
-    })->name('intento');
+    Route::delete('/eliminar_usuario', [PowerDeleteProfileController::class, 'destroy']);
+
+    Route::post('/aceptar_solicitud_de_registro', [SolicitudDeRegistroController::class, 'update']);
+    Route::delete('/rechazar_solicitud_de_registro', [SolicitudDeRegistroController::class, 'destroy']);
 
     Route::get('/calendario', function () {
         $EventoCalendario = [
@@ -108,11 +95,15 @@ function() {
     })->name('administrador.calendario');
 
     Route::get('usuarios_registrados', function () {
-        return Inertia::render('Administrador/UsuariosRegistrados');
+        return Inertia::render('Administrador/UsuariosRegistrados', [
+            'usuarios' => User::all()->toArray()
+        ]);
     })->name('administrador.usuarios_registrados');
 
     Route::get('solicitudes_de_registro', function () {
-        return Inertia::render('Administrador/SolicitudesDeRegistro');
+        return Inertia::render('Administrador/SolicitudesDeRegistro', [
+                'solicitudes' => SolicitudDeRegistro::all()
+        ]);
     })->name('administrador.solicitudes_de_registro');
 });
 

@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             SucursalesSeeder::class,
             UserSeeder::class,
             ArreglosSeeder::class,
+            SolicitudesDeRegistroSeeder::class
         ]);
     }
 }

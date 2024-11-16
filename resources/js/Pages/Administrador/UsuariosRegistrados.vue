@@ -1,22 +1,12 @@
 <script setup>
     import { ref, computed } from 'vue';
+    import { Link, Head } from '@inertiajs/vue3';
     import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
+    import axios from 'axios';
 
-    // Datos de usuarios registrados (simulados)
-    const usuarios = ref([
-      { nombre: 'Usuario 1', email: 'usuario1@example.com', telefono: '123456789', fotoPerfil: 'https://via.placeholder.com/50', documentos: [
-        { nombre: 'Documento 1', enlace: 'https://via.placeholder.com/150' },
-        { nombre: 'Documento 2', enlace: 'https://via.placeholder.com/150' }
-      ]},
-      { nombre: 'Usuario 2', email: 'usuario2@example.com', telefono: '987654321', fotoPerfil: 'https://via.placeholder.com/50', documentos: [
-        { nombre: 'Documento 3', enlace: 'https://via.placeholder.com/150' },
-      ]},
-      { nombre: 'Usuario 3', email: 'usuario3@example.com', telefono: '1122334455', fotoPerfil: 'https://via.placeholder.com/50', documentos: [
-        { nombre: 'Documento 4', enlace: 'https://via.placeholder.com/150' },
-        { nombre: 'Documento 5', enlace: 'https://via.placeholder.com/150' }
-      ]},
-      { nombre: 'Usuario 4', email: 'usuario4@example.com', telefono: '5566778899', fotoPerfil: 'https://via.placeholder.com/50', documentos: []},
-    ]);
+    const props = defineProps({
+        usuarios: Array
+    });
 
     // Variables para búsqueda y perfil seleccionado
     const search = ref('');
@@ -25,10 +15,10 @@
     // Filtrar usuarios según la búsqueda
     const usuariosFiltrados = computed(() => {
       if (!search.value) {
-        return usuarios.value;
+        return props.usuarios;
       }
-      return usuarios.value.filter((usuario) =>
-        usuario.nombre.toLowerCase().includes(search.value.toLowerCase())
+      return props.usuarios.filter((usuario) =>
+        usuario.name.toLowerCase().includes(search.value.toLowerCase())
       );
     });
 
@@ -48,11 +38,19 @@
     }
 
     // Función para eliminar un usuario
-    function eliminarUsuario(index) {
+    function eliminarUsuario(id, index) {
       if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-        usuarios.value.splice(index, 1);
+        axios.delete('/administrador/eliminar_usuario', {
+            data: {id: id}
+        }).then(
+            props.usuarios.splice(index, 1)
+        ).catch(
+            //console.log('error')
+        );
       }
     }
+
+
 </script>
 
 <template>
@@ -75,19 +73,11 @@
 
       <!-- Lista de usuarios registrados -->
       <div class="grid grid-cols-1 gap-4">
-        <div v-for="(usuario, index) in usuariosFiltrados" :key="index" class="flex items-center border rounded p-4 bg-white shadow">
-          <!-- Foto de perfil -->
-          <div class="w-12 h-12 rounded-full bg-gray-300 mr-4 flex justify-center items-center">
-            <img
-              :src="usuario.fotoPerfil"
-              alt="Foto de Perfil"
-              class="rounded-full w-full h-full object-cover"
-            />
-          </div>
+        <div v-for="(usuario, index) in usuariosFiltrados" class="flex items-center border rounded p-4 bg-white shadow">
 
           <!-- Nombre del usuario -->
           <div class="flex-grow">
-            <p class="text-lg font-semibold">{{ usuario.nombre }}</p>
+            <p class="text-lg font-semibold">{{ usuario.name }}</p>
           </div>
 
           <!-- Botón "Ver Perfil" -->
@@ -99,7 +89,7 @@
 
           <!-- Botón "Eliminar Usuario" -->
           <div>
-            <button @click="eliminarUsuario(index)" class="bg-red-500 text-white px-4 py-2 rounded">
+            <button @click="eliminarUsuario(usuario.id, index)" class="bg-red-500 text-white px-4 py-2 rounded">
               Eliminar
             </button>
           </div>
@@ -111,25 +101,16 @@
         <div class="bg-white p-8 rounded shadow-lg w-1/2">
           <!-- Header del modal -->
           <div class="mb-6 text-center">
-            <h2 class="text-2xl font-bold mb-4">Perfil de {{ perfilSeleccionado.nombre }}</h2>
+            <h2 class="text-2xl font-bold mb-4">Perfil de {{ perfilSeleccionado.name }}</h2>
           </div>
 
           <!-- Foto y detalles del usuario -->
           <div class="flex justify-between items-center mb-8">
-            <!-- Foto de perfil -->
-            <div class="w-24 h-24 rounded-full bg-gray-300 flex justify-center items-center mr-4">
-              <img
-                :src="perfilSeleccionado.fotoPerfil"
-                alt="Foto de Perfil"
-                class="rounded-full w-full h-full object-cover"
-              />
-            </div>
 
             <!-- Información del usuario -->
             <div class="flex-grow pl-6">
-              <p class="text-lg"><strong>Nombre:</strong> {{ perfilSeleccionado.nombre }}</p>
+              <p class="text-lg"><strong>Nombre:</strong> {{ perfilSeleccionado.name }}</p>
               <p class="text-lg mt-4"><strong>Email:</strong> {{ perfilSeleccionado.email }}</p>
-              <p class="text-lg mt-4"><strong>Teléfono:</strong> {{ perfilSeleccionado.telefono }}</p>
             </div>
           </div>
 
@@ -138,7 +119,7 @@
             <h3 class="text-xl font-semibold mb-4">Documentos Publicados</h3>
             <ul class="space-y-4">
               <li v-for="(documento, docIndex) in perfilSeleccionado.documentos" :key="docIndex" class="flex justify-between items-center border rounded p-4 bg-gray-100">
-                <span>{{ documento.nombre }}</span>
+                  <!-- <span>{{ documento.nombre }}</span> -->
                 <a
                   :href="documento.enlace"
                   target="_blank"

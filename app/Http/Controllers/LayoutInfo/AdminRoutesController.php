@@ -21,9 +21,6 @@ class AdminRoutesController extends Controller
             'ruta' => 'dashboard',
             'nombre' => 'dashboard'
         ],[
-            'ruta' => 'intento',
-            'nombre' => 'intento'
-        ],[
             'ruta' => 'administrador.calendario',
             'nombre' => 'calendario administrador'
         ],[

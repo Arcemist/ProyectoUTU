@@ -1,28 +1,27 @@
 <script setup>
-import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
-import axios from 'axios'
+    import { ref } from 'vue';
+    import { Link } from '@inertiajs/vue3';
+    import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+    import Dropdown from '@/Components/Dropdown.vue';
+    import DropdownLink from '@/Components/DropdownLink.vue';
+    import NavLink from '@/Components/NavLink.vue';
+    import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+    import axios from 'axios'
 
-const showingNavigationDropdown = ref(false);
-const showingNotificationsDropdown = ref(false);  // Para controlar el dropdown de notificaciones
+    const showingNavigationDropdown = ref(false);
+    const showingNotificationsDropdown = ref(false);  // Para controlar el dropdown de notificaciones
 
-const Notificaciones = ref();
-axios.get('/administrador/notificaciones').then(response => Notificaciones.value = response.data);
+    const Notificaciones = ref('Cargando...');
+    axios.get('/administrador/notificaciones').then(response => Notificaciones.value = response.data);
 
-const Rutas = ref([{
-    nombre: 'cargando...',
-    ruta: 'dashboard'
-}]);
-axios.get('/administrador/rutas').then(response => Rutas.value = response.data);
+    const Rutas = ref([{
+        nombre: 'Cargando...',
+        ruta: 'dashboard'
+    }]);
+    axios.get('/administrador/rutas').then(response => Rutas.value = response.data);
 
-const OpcionesPerfil = ref();
-axios.get('/administrador/opciones_perfil').then(response => OpcionesPerfil.value = response.data);
-
+    const OpcionesPerfil = ref();
+    axios.get('/administrador/opciones_perfil').then(response => OpcionesPerfil.value = response.data);
 </script>
 
 <template>
@@ -69,8 +68,14 @@ axios.get('/administrador/opciones_perfil').then(response => OpcionesPerfil.valu
                                             <p class="font-semibold text-gray-700">Notificaciones</p>
                                             <ul class="mt-2 space-y-2">
                                                 <div class="text-gray-600 text-sm">
-                                                    <li v-for="notificacion in Notificaciones">
-                                                        {{ notificacion.nombre }}
+                                                    <div v-if="Notificaciones[0] == 'Cargando...'">
+                                                        Cargando...
+                                                    </div>
+                                                    <div v-else-if="Notificaciones[0] == 'No hay'">
+                                                        No hay nofificaciones
+                                                    </div>
+                                                    <li v-else v-for="notificacion in Notificaciones">
+                                                        {{ notificacion.Nombre }}
                                                     </li>
                                                 </div>
                                             </ul>

@@ -83,7 +83,6 @@ function handleImageError() {
                                 </Link>
                             </template>
                         </nav>
-                        sobra decir que es provisional esto
                     </div>
                 </main>
 

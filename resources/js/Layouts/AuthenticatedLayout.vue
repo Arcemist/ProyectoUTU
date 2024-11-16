@@ -1,8 +1,7 @@
 <script setup>
-import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
-import EnterpriseLayout from '@/Layouts/EnterpriseLayout.vue';
-import GuardLayout from '@/Layouts/GuardLayout.vue';
-
+    import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
+    import EnterpriseLayout from '@/Layouts/EnterpriseLayout.vue';
+    import GuardLayout from '@/Layouts/GuardLayout.vue';
 </script>
 
 <template>

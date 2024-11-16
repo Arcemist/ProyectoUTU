@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Enums\UserType;
+use App\Events\AdminRegistrationAttempt;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -32,25 +33,79 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'user_type' => ['required', Rule::enum(UserType::class)->only([UserType::GUARDIA, UserType::EMPRESA, UserType::ADMINISTRADOR])],
-            // Lo de Administrador esta medio provisional aca
-        ]);
+        switch ($request->user_type) {
+            case UserType::ADMINISTRADOR->value:
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'user_type' => $request->user_type,
-        ]);
+                $request->validate([
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+                    'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                ]);
 
-        event(new Registered($user));
+                $user = User::make([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'user_type' => $request->user_type
+                ]);
 
-        Auth::login($user);
+                event(new AdminRegistrationAttempt($user));
+                return redirect(route('register', absolute: false));
 
-        return redirect(route('dashboard', absolute: false));
+                break;
+
+
+            case UserType::EMPRESA->value:
+
+                $request->validate([
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+                    'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                ]);
+
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'user_type' => $request->user_type,
+                ]);
+
+                event(new Registered($user));
+                Auth::login($user);
+                return redirect(route('dashboard', absolute: false));
+
+                break;
+
+
+            case UserType::GUARDIA->value:
+
+                $request->validate([
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+                    'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                ]);
+
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'user_type' => $request->user_type,
+                ]);
+
+                event(new Registered($user));
+                Auth::login($user);
+                return redirect(route('dashboard', absolute: false));
+
+                break;
+
+
+            default:
+                // haciendo que tire su propio error
+                $request->validate([
+                    'user_type' => ['required', Rule::enum(UserType::class)]
+                ]);
+
+                break;
+        }
     }
 }

@@ -1,27 +1,26 @@
 <script setup>
-import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+    import { ref } from 'vue';
+    import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+    import Dropdown from '@/Components/Dropdown.vue';
+    import DropdownLink from '@/Components/DropdownLink.vue';
+    import NavLink from '@/Components/NavLink.vue';
+    import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+    import { Link } from '@inertiajs/vue3';
 
-const showingNavigationDropdown = ref(false);
-const showingNotificationsDropdown = ref(false);  // Para controlar el dropdown de notificaciones
+    const showingNavigationDropdown = ref(false);
+    const showingNotificationsDropdown = ref(false);  // Para controlar el dropdown de notificaciones
 
-const Notificaciones = ref();
-axios.get('/empresa/notificaciones').then(response => Notificaciones.value = response.data);
+    const Notificaciones = ref();
+    axios.get('/empresa/notificaciones').then(response => Notificaciones.value = response.data);
 
-const Rutas = ref([{
-    nombre: 'cargando...',
-    ruta: 'dashboard'
-}]);
-axios.get('/empresa/rutas').then(response => Rutas.value = response.data);
+    const Rutas = ref([{
+        nombre: 'cargando...',
+        ruta: 'dashboard'
+    }]);
+    axios.get('/empresa/rutas').then(response => Rutas.value = response.data);
 
-const OpcionesPerfil = ref();
-axios.get('/empresa/opciones_perfil').then(response => OpcionesPerfil.value = response.data);
-
+    const OpcionesPerfil = ref();
+    axios.get('/empresa/opciones_perfil').then(response => OpcionesPerfil.value = response.data);
 </script>
 
 <template>

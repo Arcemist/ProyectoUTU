@@ -5,30 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class notificacionesEmpresa extends Model
+class NotificacionAdministrador extends Model
 {
     use HasFactory;
 
-    protected $table = 'notificaciones_empresa';
+    protected $table = 'notificaciones_administrador';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $attributes = [
         'Nombre' => '',
         'Descripcion' => '',
-        'Pertenece_a' => 0,
         'Ruta' => '',
+        'Tipo' => ''
     ];
 
     protected $fillable = [
         'Nombre',
         'Descripcion',
-        'Pertenece_a',
-        'Ruta'
+        'Ruta',
+        'Tipo'
     ];
-
-    public function Pertenece_a() {
-        return $this->belongsTo(User::class, 'Pertenece_a', 'id');
-    }
 }

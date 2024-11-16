@@ -1,5 +1,6 @@
 <script setup>
     import { ref } from 'vue';
+    import { Link, Head } from '@inertiajs/vue3';
     import AdministratorLayout from '@/Layouts/AdministratorLayout.vue';
 
     // Variables para manejar el calendario y los eventos

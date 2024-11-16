@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Notifications;
 
+use App\Models\NotificacionAdministrador;
 use app\http\controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,29 +16,17 @@ class AdminNotificationsController extends Controller
 
     public function show(Request $request): array
     {
-        return [
-            ['nombre' => 'epa'],
-            ['nombre' => 'fium'],
-            ['nombre' => 'ba']
-        ];
+        $notificaciones = NotificacionAdministrador::all()->toArray();
+
+        if ($notificaciones != null) {
+            return $notificaciones;
+        } else {
+            return ['No hay'];
+        }
     }
 
     /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): Response
-    {
-    }
-
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-    }
-
-    /**
-     * Delete the user's account.
+     * Borra la notificacion
      */
     public function destroy(Request $request): RedirectResponse
     {

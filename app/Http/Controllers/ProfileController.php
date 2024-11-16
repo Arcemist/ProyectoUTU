@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\arreglos;
+use App\Models\documentos;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -52,6 +54,10 @@ class ProfileController extends Controller
         $user = $request->user();
 
         Auth::logout();
+
+        documentos::where('Subido_por', '=', $user->id)->delete();
+        arreglos::where('Creado_por', '=', $user->id)->delete();
+        arreglos::where('Empresa_encargada', '=', $user->id)->delete();
 
         $user->delete();
 
