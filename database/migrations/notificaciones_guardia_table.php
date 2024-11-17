@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('Descripcion');
             $table->string('Ruta');
 
+            $table->timestamps();
+
             $table->foreign('Pertenece_a')->references('id')->on('sucursales');
         });
     }

@@ -12,8 +12,9 @@ skinparam {
 }
 
 entity "Sucursales" {
-	* Nombre : Text
+    * ID : BigInt Autoincrement
 	--
+	* Nombre : Text
 }
 
 entity "Documentos" {
@@ -28,57 +29,99 @@ entity "Usuarios" {
     * Email : String
     * Contraseña : String
     * Tipo_de_usuario : Enum [Administrador, Guardia, Empresa]
-    * Roles : String
 }
 
-entity "Detalles Administrador" {
-    * Administrador: Int <<FK>>
-}
+entity "Solicitudes de Registro" {
+    * ID: BigInt Autoincrement
+    --
+    * Nombre: String
+    * Email: String
+    * Contraseña: String
+    * Tipo_de_usuario : Enum [Administrador, Guardia, Empresa]
 
-entity "Detalles Empresa" {
-    * Empresa: Int <<FK>>
+    * Created_at : Date
+	* Updated_at : Date
 }
 
 entity "Detalles Guardia" {
-    * Guardia: Int <<FK>>
+    * Guardia: BigInt <<FK>>
     * Trabaja en: String
+    * Created_at : Date
+	* Updated_at : Date
+}
+
+entity "Notificaciones Administrador" {
+    * ID : BigInt Autoincrement
+    --
+    * Nombre: String
+    * Descripcion: String
+    * Ruta: String
+    * Tipe: Enum [Solicitud de registro]
+    * Created_at : Date
+	* Updated_at : Date
+}
+
+entity "Notificaciones Empresa" {
+    * ID : BigInt Autoincrement
+    --
+    * Pertenece a: Int <<FK>>
+    * Nombre: String
+    * Descripcion: String
+    * Ruta: String
+
+    * Created_at : Date
+	* Updated_at : Date
+}
+
+entity "Notificaciones Guardia" {
+    * ID : BigInt Autoincrement
+    --
+    * Pertenece a: Int <<FK>>
+    * Nombre: String
+    * Descripcion: String
+    * Ruta: String
+
+    * Created_at : Date
+	* Updated_at : Date
 }
 
 entity "Arreglos" {
-	* ID : Int Autoincrement
+	* ID : BigInt Autoincrement
 	--
 	* Nombre : Text
 	* Descripcion : Text
 	* Creado_por : Int <<FK>>
     * Empresa_encargada : Int <<FK>>
     * Personal_encargado: String
-	* Sucursal : Text <<FK>>
+    * Sucursal : Int <<FK>>
     * Created_at : Date
 	* Updated_at : Date
 }
 
 entity "Historial Arreglos" {
-	* ID : Int Autoincrement
+	* ID : BigInt Autoincrement
 	--
 	* Nombre : Text
 	* Descripcion : Text
-	* Creado_por : Int <<FK>>
-    * Empresa_encargada : Int <<FK>>
+    * Creado_por : Json
+      Empresa_encargada : Json
     * Personal_encargado: String
-	* Sucursal : Text <<FK>>
+    * Sucursal : Json
+    * Fecha_realizado: Date
     * Created_at : Date
 	* Updated_at : Date
 }
 
 
 ' Añadiendo las relaciones:
-"Documentos" }o-r-|| "Usuarios"
-"Usuarios" ||-d-o| "Detalles Administrador"
-"Usuarios" ||-d-o| "Detalles Empresa"
-"Usuarios" ||-d-o| "Detalles Guardia"
+"Usuarios" ||-u-o{ "Documentos"
+"Usuarios" ||-u-o| "Detalles Guardia"
 "Usuarios" }o-r-|| "Arreglos"
+"Usuarios" ||-d-o{ "Notificaciones Empresa"
+"Usuarios" ||-d-o{ "Notificaciones Guardia"
 "Arreglos" }o-d-|| "Sucursales"
 "Arreglos" -[hidden]r- "Historial Arreglos"
+"Usuarios" -[hidden]l- "Notificaciones Administrador"
 
 ' Puedo poner ':' despues de una relacion pa poner comentario en el medio
 
