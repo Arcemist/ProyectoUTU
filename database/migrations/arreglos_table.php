@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('Nombre');
             $table->string('Descripcion');
-            $table->bigInteger('Creado_por');
-            $table->bigInteger('Empresa_encargada')->nullable(true);
+            $table->foreignId('Creado_por');
+            $table->foreignId('Empresa_encargada')->nullable(true);
             $table->string('Personal_encargado')->nullable(true); // Lista de personas encargadas, posiblemente se vuelva un json
-            $table->bigInteger('Sucursal');
+            $table->foreignId('Sucursal');
             $table->timestamps();
 
             $table->foreign('Creado_por')->references('id')->on('users');

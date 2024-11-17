@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('Descripcion');
             $table->string('Ruta');
 
-            $table->foreign('Pertenece_a')->references('id')->on('Users');
+            $table->foreign('Pertenece_a')->references('id')->on('users');
         });
     }
 

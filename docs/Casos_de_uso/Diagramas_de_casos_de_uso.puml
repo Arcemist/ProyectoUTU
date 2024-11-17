@@ -33,8 +33,11 @@ left to right direction
 [Calendario Admin] as "Calendario\nY Menu"
 [Login Admin] -d-> [Calendario Admin]
 
-[Gestor de arreglos Admin] as "Gestor de Arreglos"
-[Calendario Admin] <-r-> [Gestor de arreglos Admin]
+[Gestor de usuarios Admin] as "Gestor de Usuarios"
+[Calendario Admin] <-r-> [Gestor de usuarios Admin]
+
+[Solicitudes de Registro Admin] as "Solicitudes de Registro"
+[Calendario Admin] <-d-> [Solicitudes de Registro Admin]
 
 [Perfil Admin] as "Perfil"
 [Calendario Admin] <-l-> [Perfil Admin]
@@ -63,10 +66,10 @@ left to right direction
 [Login Terciarizado E] -d-> [Informacion de trabajos pendientes E]
 
 [Gestor de empleados terciarizados] as "Gestor de empleados"
-[Informacion de trabajos pendientes E] <-l-> [Gestor de empleados terciarizados]
+[Informacion de trabajos pendientes E] <-r-> [Gestor de empleados terciarizados]
 
-[Postularse a realizar un arreglo]
-[Informacion de trabajos pendientes E] <-r-> [Postularse a realizar un arreglo]
+[Perfil Empresa] as "Perfil"
+[Informacion de trabajos pendientes E] <-l-> [Perfil Empresa]
 '_____________________________________________________________________________________________________________________
 
 

@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detalles_guardia', function (Blueprint $table) {
-            $table->bigInteger('Guardia')->unique();
+            $table->foreignId('Guardia')->unique();
             $table->timestamps();
             $table->string('Trabaja_en'); //array de sucursales en las que trabaja
 
-            $table->foreign('Guardia')->references('id')->on('usuario');
+            $table->foreign('Guardia')->references('id')->on('users');
         });
     }
 
