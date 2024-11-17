@@ -110,25 +110,10 @@
             <!-- Información del usuario -->
             <div class="flex-grow pl-6">
               <p class="text-lg"><strong>Nombre:</strong> {{ perfilSeleccionado.name }}</p>
-              <p class="text-lg mt-4"><strong>Email:</strong> {{ perfilSeleccionado.email }}</p>
+              <p class="text-lg"><strong>Email:</strong> {{ perfilSeleccionado.email }}</p>
+              <p class="text-lg"><strong>ID:</strong> {{ perfilSeleccionado.id }}</p>
+              <p class="text-lg"><strong>Tipo:</strong> {{ perfilSeleccionado.user_type }}</p>
             </div>
-          </div>
-
-          <!-- Sección de Documentos Publicados -->
-          <div class="mb-8">
-            <h3 class="text-xl font-semibold mb-4">Documentos Publicados</h3>
-            <ul class="space-y-4">
-              <li v-for="(documento, docIndex) in perfilSeleccionado.documentos" :key="docIndex" class="flex justify-between items-center border rounded p-4 bg-gray-100">
-                  <!-- <span>{{ documento.nombre }}</span> -->
-                <a
-                  :href="documento.enlace"
-                  target="_blank"
-                  class="text-blue-500 underline"
-                >
-                  Ver/Descargar
-                </a>
-              </li>
-            </ul>
           </div>
 
           <!-- Footer con botón de cerrar -->
