@@ -10,6 +10,8 @@ npm run build
 # Crear un .env local
 cp .env.example .env
 
+sed -i "s/DB_CONNECTION=/& 'mysql'/" ".env"
+
 echo -n "Introduce el nombre de la base de datos: "
 read INPUT
 sed -i "s/DB_DATABASE=/& $INPUT/" ".env"
