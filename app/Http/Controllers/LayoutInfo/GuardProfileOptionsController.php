@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Layoutinfo;
 
-use app\http\controllers\Controller;
-use illuminate\http\Redirectresponse;
-use illuminate\http\Request;
-use illuminate\support\facades\Auth;
-use illuminate\support\facades\Redirect;
-use inertia\Inertia;
-use inertia\Response;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Redirectresponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class GuardProfileOptionsController extends Controller
 {
