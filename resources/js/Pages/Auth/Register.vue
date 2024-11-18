@@ -117,6 +117,7 @@ const submit = () => {
                     <InputError class="mt-2" :message="form.errors.password_confirmation" />
                 </div>
                 <div v-if="form.user_type === 'Guardia'" class="mt-4">
+                    <!--
                     <InputLabel for="ci" value="Cédula de Identidad"/>
                     <TextInput
                         id="ci"
@@ -167,31 +168,33 @@ const submit = () => {
 
                     <InputLabel for="horario" value="Horario" class="animate-[pulse_1.7s_ease-in-out_2]"/>
 
-                <select
-                    id="horario"
-                    v-model="form.horario"
-                    class="w-full animate-[pulse_1.7s_ease-in-out_2]"
-                    label="Por favor elija un horario"
-                >
-                    <option value="6-14">
-                        6:00 - 14:00
-                    </option>
+                    <select
+                        id="horario"
+                        v-model="form.horario"
+                        class="w-full animate-[pulse_1.7s_ease-in-out_2]"
+                        label="Por favor elija un horario"
+                    >
+                        <option value="6-14">
+                            6:00 - 14:00
+                        </option>
 
-                    <option value="14-22">
-                        14:00 - 22:00
-                    </option>
+                        <option value="14-22">
+                            14:00 - 22:00
+                        </option>
 
-                    <option value="22-6">
-                        22:00 - 6:00
-                    </option>
+                        <option value="22-6">
+                            22:00 - 6:00
+                        </option>
 
-                    <option value="rotativo">
-                        Rotativo
-                    </option>
-                </select>
-                </div>
+                        <option value="rotativo">
+                            Rotativo
+                        </option>
+                    </select>
+                    -->
+                    </div>
 
                 <div v-if="form.user_type === 'Empresa'" class="mt-4">
+                    <!--
                     <InputLabel for="tipo" value="Tipo de Empresa"/>
                     <TextInput
                         id="tipo"
@@ -203,9 +206,10 @@ const submit = () => {
                         autocomplete="tipo"
                     />
                     <InputError class="mt-2" :message="form.errors.tipo"/>
+                    -->
                 </div>
                 <div v-if="form.user_type === 'Administrador'" class="mt-4">
-                    <h1>EL CÓDIGO FUNCIONA AHORA CALLATE</h1>
+
                 </div>
                 <div class="flex items-center justify-end mt-4">
                     <Link

@@ -22,7 +22,7 @@ class EnterpriseRoutesController extends Controller
             'nombre' => 'Dashboard'
         ],[
             'ruta' => 'empresa.eventos',
-            'nombre' => 'intento'
+            'nombre' => 'Eventos'
         ]];
     }
 }

@@ -152,12 +152,12 @@ function () {
                 'color' => 'purple',
                 'fillMode' => 'outline'
             ],
-            'dates' => '20/11/2024',
+            'dates' => '11/20/2024',
             'description' => 'esto es un test',
         ];
 
         $InfoEvento = [
-            'fecha' => '20/11/2024',
+            'fecha' => '11/20/2024',
             'descripcion' => 'Sigue siendo un test'
         ];
 
