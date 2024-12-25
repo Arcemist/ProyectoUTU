@@ -1,4 +1,8 @@
-# Proyecto de la UTU
+# Proyecto ya archivado, para la UTU
+
+Este repositorio queda archivado para quedar como recuerdo a los que trabajamos en este proyecto, ya que no se seguira el desarrollo de la aplicacion contenida en este.
+
+Contenido original:
 
 Repositorio para el proyecto.
 Guia de como hacer que funcione esto despues de clonar el repositorio:
